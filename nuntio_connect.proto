@@ -16,6 +16,7 @@ service PublicService {
     rpc CreateUser(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc SendResetEmail(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc ResetPassword(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc VerifyUser(ConnectPublicRequest) returns (ConnectPublicResponse) {}
 }
 
 service AdminService {
@@ -92,14 +93,14 @@ message ConnectMetric {
     int32 numberOfAgeGroup80To89 = 16;
     int32 numberOfAgeGroup90To99 = 17;
     int32 numberOfAgeGroup100To120 = 18;
-    int32 numberOfGenderInvalid = 17;
-    int32 numberOfFemales = 18;
-    int32 numberOfMales = 19;
-    int32 numberOfOthers = 20;
-    int32 amountFromCountryInvalid = 21;
-    int32 amountFromDk = 22;
-    int32 amountFromNo = 23;
-    int32 amountFromDe = 24;
+    int32 numberOfGenderInvalid = 19;
+    int32 numberOfFemales = 20;
+    int32 numberOfMales = 21;
+    int32 numberOfOthers = 22;
+    int32 amountFromCountryInvalid = 23;
+    int32 amountFromDk = 24;
+    int32 amountFromNo = 25;
+    int32 amountFromDe = 26;
 }
 
 message ConnectMetrics {
@@ -220,6 +221,7 @@ message ConnectPublicRequest {
     bool consent = 5;
     string jwtIdToken = 6;
     SsnProvider ssnProvider = 7;
+    string authToken = 8;
 }
 
 message ConnectPublicResponse {
