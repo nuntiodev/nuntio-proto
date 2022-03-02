@@ -216,8 +216,7 @@ message ConnectPublicResponse {
 
 message ConnectAdminRequest {
     ClientApp app = 1;
-    bool overwriteId = 2;
-    Timespan timespan = 3;
+    Timespan timespan = 2;
 }
 
 message ConnectAdminResponse {
