@@ -1,0 +1,246 @@
+syntax = "proto3";
+
+package NuntioConnect;
+
+option go_package = "./go_softcorp";
+
+import "google/protobuf/timestamp.proto";
+
+service PublicService {
+    rpc Heartbeat(Request) returns (Response) {}
+    rpc ValidateLoginChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc ValidateUserCredentials(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc ValidateConsentChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc GiveConsent(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc Logout(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc CreateUser(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc SendResetEmail(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc ResetPassword(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+}
+
+service AdminService {
+    rpc Heartbeat(Request) returns (Response) {}
+    rpc CreateApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc GetAppById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc UpdateAppDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc UpdateAppOAuth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc ResetAppOAuth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc UpdateAppSecurity(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc GetAppMetrics(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc DeleteApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+}
+
+enum Timespan {
+    INVALID_TIMESPAN = 0;
+    TIMESPAN_DAY = 1;
+    TIMESPAN_WEEK = 2;
+    TIMESPAN_MONTH = 3;
+    TIMESPAN_YEAR = 4;
+    TIMESPAN_ALL = 5;
+}
+
+enum Gender {
+    INVALID_GENDER = 0;
+    MALE = 1;
+    FEMALE = 2;
+    OTHER = 3;
+}
+
+enum ScopeType {
+    INVALID_SCOPE = 0;
+    DEFAULT_SCOPE = 1;
+    OFFLINE_ACCESS_SCOPE = 2;
+    GENDER_SCOPE = 3;
+    NAME_SCOPE = 4;
+    BIRTHDAY_SCOPE = 5;
+    PREFERRED_LANGUAGE_SCOPE = 6;
+    COUNTRY_SCOPE = 7;
+    EMAIL_SCOPE = 8;
+}
+enum AgeGroup {
+    AGE_GROUP_INVALID = 0;
+    AGE_GROUP_1_12 = 1;
+    AGE_GROUP_13_19 = 2;
+    AGE_GROUP_20_29 = 3;
+    AGE_GROUP_30_39 = 4;
+    AGE_GROUP_40_49 = 5;
+    AGE_GROUP_50_59 = 6;
+    AGE_GROUP_60_69 = 7;
+    AGE_GROUP_70_79 = 8;
+    AGE_GROUP_80_89 = 9;
+    AGE_GROUP_90_99 = 10;
+    AGE_GROUP_100_120 = 11;
+}
+
+
+message ConnectMetric {
+    google.protobuf.Timestamp date = 1;
+    int32 numberOfRequests = 2;
+    int32 numberOfConsentTrue = 3;
+    int32 numberOfConsentFalse = 4;
+    int32 numberOfUsersValidated = 5;
+    int32 numberOfUsersNotValidated = 6;
+    int32 numberOfAgeGroupInvalid = 7;
+    int32 numberOfAgeGroup1To12 = 8;
+    int32 numberOfAgeGroup13To19 = 9;
+    int32 numberOfAgeGroup20To29 = 10;
+    int32 numberOfAgeGroup30To39 = 11;
+    int32 numberOfAgeGroup40To49 = 12;
+    int32 numberOfAgeGroup50To59 = 13;
+    int32 numberOfAgeGroup60To69 = 14;
+    int32 numberOfAgeGroup70To79 = 15;
+    int32 numberOfAgeGroup80To89 = 16;
+    int32 numberOfAgeGroup90To99 = 17;
+    int32 numberOfAgeGroup100To120 = 18;
+    int32 numberOfGenderInvalid = 17;
+    int32 numberOfFemales = 18;
+    int32 numberOfMales = 19;
+    int32 numberOfOthers = 20;
+    int32 amountFromCountryInvalid = 21;
+    int32 amountFromDk = 22;
+    int32 amountFromNo = 23;
+    int32 amountFromDe = 24;
+}
+
+message ConnectMetrics {
+    repeated ConnectMetric metrics = 1;
+}
+
+message Scope {
+    ScopeType scopeType = 1;
+    bool readId = 2;
+    bool readEmail = 3;
+    bool readGender = 4;
+    bool readCreatedAt = 5;
+    bool offlineAccess = 6;
+    bool readName = 7;
+    bool readBirthday = 8;
+    bool readCountry = 9;
+    bool readPrefLangauge = 10;
+    string name = 11;
+    string key = 12;
+}
+
+enum GrantType {
+    INVALID_GRANT = 0;
+    AUTH_GRANT = 1;
+    REFRESH_GRANT = 2;
+}
+
+message Grant {
+    GrantType grantType = 1;
+    string name = 2;
+}
+
+enum ResponeType {
+    INVALID_RESPONSE = 0;
+    CODE_RESPONSE = 1;
+    TOKEN_RESPONSE = 2;
+    ID_RESPONSE = 3;
+}
+
+message OauthResponse {
+    ResponeType responseType = 1;
+    string name = 2;
+}
+
+enum LanguageCodeType {
+    INVALID_LANGUAGE = 0 ;
+    LANGUAGE_DK = 1;
+    LANGUAGE_EN = 2;
+    LANGUAGE_DE = 3;
+}
+
+message LanguageCode {
+    LanguageCodeType languageCodeType = 1;
+    string name = 2;
+}
+
+enum CountryCodeType {
+    INVALID_COUNTRY = 0;
+    COUTRY_DK = 1;
+    COUNTRY_NO = 2;
+    COUNTRY_DE = 3;    
+}
+
+message CountryCode {
+    CountryCodeType countryCodeType = 1;
+    string name = 2;
+}
+
+enum SsnProviderType {
+    INVALID = 0;
+    MIT_ID = 1;
+}
+
+message SsnProvider {
+    SsnProviderType ssnProviderType = 1;
+    string name = 2;
+}
+
+message ClientMetadata {
+    bool isOpen = 1;
+    repeated string allowedEmails = 21;
+    string about = 3;
+    string userOwnerId = 4;
+    int32 ageLowerLimit = 5;
+    int32 ageUpperLimit = 6;
+    repeated CountryCode allowedCountries = 7;
+    bool onlyIdentifiedUsers = 8;
+}
+
+message ClientApp {
+    string id = 1;
+    string name = 2;
+    string password = 3;
+    string contactEmail = 4;
+    string ownerId = 5;
+    string appWebsite = 6;
+    string logoUrl = 7;
+    string termsUrl = 8;
+    ClientMetadata clientMetadata = 9;
+    repeated string audience = 10;
+    repeated Scope scopes = 11;
+    repeated Grant grants = 12;
+    repeated OauthResponse responses = 13;
+    repeated string callbacks = 14;
+    google.protobuf.Timestamp createdAt = 15;
+    google.protobuf.Timestamp updatedAt = 16;
+    repeated Scope availableScopes = 17;
+    repeated Grant availableGrants = 18;
+    repeated OauthResponse availableResponses = 19;
+    repeated CountryCode availableCountries = 20;
+}
+
+message ConnectPublicRequest {
+    string challenge = 1;
+    string email = 2;
+    string password = 3;
+    Gender gender = 4;
+    bool consent = 5;
+    string jwtIdToken = 6;
+    SsnProvider ssnProvider = 7;
+}
+
+message ConnectPublicResponse {
+    ClientApp client = 1;
+    string nameOfUser = 2;
+    string redirectAddr = 3;
+}
+
+message ConnectAdminRequest {
+    ClientApp app = 1;
+    bool overwriteId = 2;
+    Timespan timespan = 3;
+}
+
+message ConnectAdminResponse {
+    ClientApp app = 1;
+    map<int32, ConnectMetrics> metrics = 2;
+}
+
+message Request {}
+
+message Response {
+    string msg = 1;
+}
