@@ -2251,12 +2251,8 @@ var file_nuntio_connect_proto_rawDesc = []byte{
 	0x43, 0x4f, 0x55, 0x4e, 0x54, 0x52, 0x59, 0x5f, 0x44, 0x45, 0x10, 0x03, 0x2a, 0x2a, 0x0a, 0x0f,
 	0x53, 0x73, 0x6e, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12,
 	0x0b, 0x0a, 0x07, 0x49, 0x4e, 0x56, 0x41, 0x4c, 0x49, 0x44, 0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06,
-	0x4d, 0x49, 0x54, 0x5f, 0x49, 0x44, 0x10, 0x01, 0x32, 0xad, 0x07, 0x0a, 0x0d, 0x50, 0x75, 0x62,
-	0x6c, 0x69, 0x63, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x3e, 0x0a, 0x09, 0x48, 0x65,
-	0x61, 0x72, 0x74, 0x62, 0x65, 0x61, 0x74, 0x12, 0x16, 0x2e, 0x4e, 0x75, 0x6e, 0x74, 0x69, 0x6f,
-	0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x17, 0x2e, 0x4e, 0x75, 0x6e, 0x74, 0x69, 0x6f, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2e,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x65, 0x0a, 0x16, 0x56, 0x61,
+	0x4d, 0x49, 0x54, 0x5f, 0x49, 0x44, 0x10, 0x01, 0x32, 0xed, 0x06, 0x0a, 0x0d, 0x50, 0x75, 0x62,
+	0x6c, 0x69, 0x63, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x65, 0x0a, 0x16, 0x56, 0x61,
 	0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x43, 0x68, 0x61, 0x6c, 0x6c,
 	0x65, 0x6e, 0x67, 0x65, 0x12, 0x23, 0x2e, 0x4e, 0x75, 0x6e, 0x74, 0x69, 0x6f, 0x43, 0x6f, 0x6e,
 	0x6e, 0x65, 0x63, 0x74, 0x2e, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x50, 0x75, 0x62, 0x6c,
@@ -2437,46 +2433,44 @@ var file_nuntio_connect_proto_depIdxs = []int32{
 	18, // 24: NuntioConnect.ConnectAdminResponse.app:type_name -> NuntioConnect.ClientApp
 	25, // 25: NuntioConnect.ConnectAdminResponse.metrics:type_name -> NuntioConnect.ConnectAdminResponse.MetricsEntry
 	10, // 26: NuntioConnect.ConnectAdminResponse.MetricsEntry.value:type_name -> NuntioConnect.ConnectMetrics
-	23, // 27: NuntioConnect.PublicService.Heartbeat:input_type -> NuntioConnect.Request
-	19, // 28: NuntioConnect.PublicService.ValidateLoginChallenge:input_type -> NuntioConnect.ConnectPublicRequest
-	19, // 29: NuntioConnect.PublicService.ValidateUserCredentials:input_type -> NuntioConnect.ConnectPublicRequest
-	19, // 30: NuntioConnect.PublicService.ValidateConsentChallenge:input_type -> NuntioConnect.ConnectPublicRequest
-	19, // 31: NuntioConnect.PublicService.GiveConsent:input_type -> NuntioConnect.ConnectPublicRequest
-	19, // 32: NuntioConnect.PublicService.Logout:input_type -> NuntioConnect.ConnectPublicRequest
-	19, // 33: NuntioConnect.PublicService.CreateUser:input_type -> NuntioConnect.ConnectPublicRequest
-	19, // 34: NuntioConnect.PublicService.SendResetEmail:input_type -> NuntioConnect.ConnectPublicRequest
-	19, // 35: NuntioConnect.PublicService.ResetPassword:input_type -> NuntioConnect.ConnectPublicRequest
-	19, // 36: NuntioConnect.PublicService.VerifyUser:input_type -> NuntioConnect.ConnectPublicRequest
-	23, // 37: NuntioConnect.AdminService.Heartbeat:input_type -> NuntioConnect.Request
-	21, // 38: NuntioConnect.AdminService.CreateApp:input_type -> NuntioConnect.ConnectAdminRequest
-	21, // 39: NuntioConnect.AdminService.GetAppById:input_type -> NuntioConnect.ConnectAdminRequest
-	21, // 40: NuntioConnect.AdminService.UpdateAppDetails:input_type -> NuntioConnect.ConnectAdminRequest
-	21, // 41: NuntioConnect.AdminService.UpdateAppOAuth:input_type -> NuntioConnect.ConnectAdminRequest
-	21, // 42: NuntioConnect.AdminService.ResetAppOAuth:input_type -> NuntioConnect.ConnectAdminRequest
-	21, // 43: NuntioConnect.AdminService.UpdateAppSecurity:input_type -> NuntioConnect.ConnectAdminRequest
-	21, // 44: NuntioConnect.AdminService.GetAppMetrics:input_type -> NuntioConnect.ConnectAdminRequest
-	21, // 45: NuntioConnect.AdminService.DeleteApp:input_type -> NuntioConnect.ConnectAdminRequest
-	24, // 46: NuntioConnect.PublicService.Heartbeat:output_type -> NuntioConnect.Response
-	20, // 47: NuntioConnect.PublicService.ValidateLoginChallenge:output_type -> NuntioConnect.ConnectPublicResponse
-	20, // 48: NuntioConnect.PublicService.ValidateUserCredentials:output_type -> NuntioConnect.ConnectPublicResponse
-	20, // 49: NuntioConnect.PublicService.ValidateConsentChallenge:output_type -> NuntioConnect.ConnectPublicResponse
-	20, // 50: NuntioConnect.PublicService.GiveConsent:output_type -> NuntioConnect.ConnectPublicResponse
-	20, // 51: NuntioConnect.PublicService.Logout:output_type -> NuntioConnect.ConnectPublicResponse
-	20, // 52: NuntioConnect.PublicService.CreateUser:output_type -> NuntioConnect.ConnectPublicResponse
-	20, // 53: NuntioConnect.PublicService.SendResetEmail:output_type -> NuntioConnect.ConnectPublicResponse
-	20, // 54: NuntioConnect.PublicService.ResetPassword:output_type -> NuntioConnect.ConnectPublicResponse
-	20, // 55: NuntioConnect.PublicService.VerifyUser:output_type -> NuntioConnect.ConnectPublicResponse
-	24, // 56: NuntioConnect.AdminService.Heartbeat:output_type -> NuntioConnect.Response
-	22, // 57: NuntioConnect.AdminService.CreateApp:output_type -> NuntioConnect.ConnectAdminResponse
-	22, // 58: NuntioConnect.AdminService.GetAppById:output_type -> NuntioConnect.ConnectAdminResponse
-	22, // 59: NuntioConnect.AdminService.UpdateAppDetails:output_type -> NuntioConnect.ConnectAdminResponse
-	22, // 60: NuntioConnect.AdminService.UpdateAppOAuth:output_type -> NuntioConnect.ConnectAdminResponse
-	22, // 61: NuntioConnect.AdminService.ResetAppOAuth:output_type -> NuntioConnect.ConnectAdminResponse
-	22, // 62: NuntioConnect.AdminService.UpdateAppSecurity:output_type -> NuntioConnect.ConnectAdminResponse
-	22, // 63: NuntioConnect.AdminService.GetAppMetrics:output_type -> NuntioConnect.ConnectAdminResponse
-	22, // 64: NuntioConnect.AdminService.DeleteApp:output_type -> NuntioConnect.ConnectAdminResponse
-	46, // [46:65] is the sub-list for method output_type
-	27, // [27:46] is the sub-list for method input_type
+	19, // 27: NuntioConnect.PublicService.ValidateLoginChallenge:input_type -> NuntioConnect.ConnectPublicRequest
+	19, // 28: NuntioConnect.PublicService.ValidateUserCredentials:input_type -> NuntioConnect.ConnectPublicRequest
+	19, // 29: NuntioConnect.PublicService.ValidateConsentChallenge:input_type -> NuntioConnect.ConnectPublicRequest
+	19, // 30: NuntioConnect.PublicService.GiveConsent:input_type -> NuntioConnect.ConnectPublicRequest
+	19, // 31: NuntioConnect.PublicService.Logout:input_type -> NuntioConnect.ConnectPublicRequest
+	19, // 32: NuntioConnect.PublicService.CreateUser:input_type -> NuntioConnect.ConnectPublicRequest
+	19, // 33: NuntioConnect.PublicService.SendResetEmail:input_type -> NuntioConnect.ConnectPublicRequest
+	19, // 34: NuntioConnect.PublicService.ResetPassword:input_type -> NuntioConnect.ConnectPublicRequest
+	19, // 35: NuntioConnect.PublicService.VerifyUser:input_type -> NuntioConnect.ConnectPublicRequest
+	23, // 36: NuntioConnect.AdminService.Heartbeat:input_type -> NuntioConnect.Request
+	21, // 37: NuntioConnect.AdminService.CreateApp:input_type -> NuntioConnect.ConnectAdminRequest
+	21, // 38: NuntioConnect.AdminService.GetAppById:input_type -> NuntioConnect.ConnectAdminRequest
+	21, // 39: NuntioConnect.AdminService.UpdateAppDetails:input_type -> NuntioConnect.ConnectAdminRequest
+	21, // 40: NuntioConnect.AdminService.UpdateAppOAuth:input_type -> NuntioConnect.ConnectAdminRequest
+	21, // 41: NuntioConnect.AdminService.ResetAppOAuth:input_type -> NuntioConnect.ConnectAdminRequest
+	21, // 42: NuntioConnect.AdminService.UpdateAppSecurity:input_type -> NuntioConnect.ConnectAdminRequest
+	21, // 43: NuntioConnect.AdminService.GetAppMetrics:input_type -> NuntioConnect.ConnectAdminRequest
+	21, // 44: NuntioConnect.AdminService.DeleteApp:input_type -> NuntioConnect.ConnectAdminRequest
+	20, // 45: NuntioConnect.PublicService.ValidateLoginChallenge:output_type -> NuntioConnect.ConnectPublicResponse
+	20, // 46: NuntioConnect.PublicService.ValidateUserCredentials:output_type -> NuntioConnect.ConnectPublicResponse
+	20, // 47: NuntioConnect.PublicService.ValidateConsentChallenge:output_type -> NuntioConnect.ConnectPublicResponse
+	20, // 48: NuntioConnect.PublicService.GiveConsent:output_type -> NuntioConnect.ConnectPublicResponse
+	20, // 49: NuntioConnect.PublicService.Logout:output_type -> NuntioConnect.ConnectPublicResponse
+	20, // 50: NuntioConnect.PublicService.CreateUser:output_type -> NuntioConnect.ConnectPublicResponse
+	20, // 51: NuntioConnect.PublicService.SendResetEmail:output_type -> NuntioConnect.ConnectPublicResponse
+	20, // 52: NuntioConnect.PublicService.ResetPassword:output_type -> NuntioConnect.ConnectPublicResponse
+	20, // 53: NuntioConnect.PublicService.VerifyUser:output_type -> NuntioConnect.ConnectPublicResponse
+	24, // 54: NuntioConnect.AdminService.Heartbeat:output_type -> NuntioConnect.Response
+	22, // 55: NuntioConnect.AdminService.CreateApp:output_type -> NuntioConnect.ConnectAdminResponse
+	22, // 56: NuntioConnect.AdminService.GetAppById:output_type -> NuntioConnect.ConnectAdminResponse
+	22, // 57: NuntioConnect.AdminService.UpdateAppDetails:output_type -> NuntioConnect.ConnectAdminResponse
+	22, // 58: NuntioConnect.AdminService.UpdateAppOAuth:output_type -> NuntioConnect.ConnectAdminResponse
+	22, // 59: NuntioConnect.AdminService.ResetAppOAuth:output_type -> NuntioConnect.ConnectAdminResponse
+	22, // 60: NuntioConnect.AdminService.UpdateAppSecurity:output_type -> NuntioConnect.ConnectAdminResponse
+	22, // 61: NuntioConnect.AdminService.GetAppMetrics:output_type -> NuntioConnect.ConnectAdminResponse
+	22, // 62: NuntioConnect.AdminService.DeleteApp:output_type -> NuntioConnect.ConnectAdminResponse
+	45, // [45:63] is the sub-list for method output_type
+	27, // [27:45] is the sub-list for method input_type
 	27, // [27:27] is the sub-list for extension type_name
 	27, // [27:27] is the sub-list for extension extendee
 	0,  // [0:27] is the sub-list for field type_name

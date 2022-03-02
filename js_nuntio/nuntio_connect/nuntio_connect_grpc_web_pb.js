@@ -75,67 +75,6 @@ proto.NuntioConnect.PublicServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.Request,
- *   !proto.NuntioConnect.Response>}
- */
-const methodDescriptor_PublicService_Heartbeat = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicService/Heartbeat',
-  grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.Request,
-  proto.NuntioConnect.Response,
-  /**
-   * @param {!proto.NuntioConnect.Request} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.NuntioConnect.Response.deserializeBinary
-);
-
-
-/**
- * @param {!proto.NuntioConnect.Request} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.Response)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.Response>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.NuntioConnect.PublicServiceClient.prototype.heartbeat =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicService/Heartbeat',
-      request,
-      metadata || {},
-      methodDescriptor_PublicService_Heartbeat,
-      callback);
-};
-
-
-/**
- * @param {!proto.NuntioConnect.Request} request The
- *     request proto
- * @param {?Object<string, string>=} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.NuntioConnect.Response>}
- *     Promise that resolves to the response
- */
-proto.NuntioConnect.PublicServicePromiseClient.prototype.heartbeat =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicService/Heartbeat',
-      request,
-      metadata || {},
-      methodDescriptor_PublicService_Heartbeat);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
  *   !proto.NuntioConnect.ConnectPublicRequest,
  *   !proto.NuntioConnect.ConnectPublicResponse>}
  */
