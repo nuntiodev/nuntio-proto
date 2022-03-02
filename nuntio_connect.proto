@@ -186,7 +186,7 @@ message ClientMetadata {
     int32 ageLowerLimit = 5;
     int32 ageUpperLimit = 6;
     repeated CountryCode allowedCountries = 7;
-    bool onlyIdentifiedUsers = 8;
+    bool onlyVerifiedUsers = 8;
 }
 
 message ClientApp {
