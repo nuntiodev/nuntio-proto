@@ -139,8 +139,8 @@ proto.NuntioConnect.PublicServicePromiseClient.prototype.validateLoginChallenge 
  *   !proto.NuntioConnect.ConnectPublicRequest,
  *   !proto.NuntioConnect.ConnectPublicResponse>}
  */
-const methodDescriptor_PublicService_ValidateUserCredentials = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicService/ValidateUserCredentials',
+const methodDescriptor_PublicService_Login = new grpc.web.MethodDescriptor(
+  '/NuntioConnect.PublicService/Login',
   grpc.web.MethodType.UNARY,
   proto.NuntioConnect.ConnectPublicRequest,
   proto.NuntioConnect.ConnectPublicResponse,
@@ -165,13 +165,13 @@ const methodDescriptor_PublicService_ValidateUserCredentials = new grpc.web.Meth
  * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicServiceClient.prototype.validateUserCredentials =
+proto.NuntioConnect.PublicServiceClient.prototype.login =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicService/ValidateUserCredentials',
+      '/NuntioConnect.PublicService/Login',
       request,
       metadata || {},
-      methodDescriptor_PublicService_ValidateUserCredentials,
+      methodDescriptor_PublicService_Login,
       callback);
 };
 
@@ -184,13 +184,13 @@ proto.NuntioConnect.PublicServiceClient.prototype.validateUserCredentials =
  * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicServicePromiseClient.prototype.validateUserCredentials =
+proto.NuntioConnect.PublicServicePromiseClient.prototype.login =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicService/ValidateUserCredentials',
+      '/NuntioConnect.PublicService/Login',
       request,
       metadata || {},
-      methodDescriptor_PublicService_ValidateUserCredentials);
+      methodDescriptor_PublicService_Login);
 };
 
 
@@ -566,8 +566,8 @@ proto.NuntioConnect.PublicServicePromiseClient.prototype.resetPassword =
  *   !proto.NuntioConnect.ConnectPublicRequest,
  *   !proto.NuntioConnect.ConnectPublicResponse>}
  */
-const methodDescriptor_PublicService_VerifyUser = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicService/VerifyUser',
+const methodDescriptor_PublicService_Verify = new grpc.web.MethodDescriptor(
+  '/NuntioConnect.PublicService/Verify',
   grpc.web.MethodType.UNARY,
   proto.NuntioConnect.ConnectPublicRequest,
   proto.NuntioConnect.ConnectPublicResponse,
@@ -592,13 +592,13 @@ const methodDescriptor_PublicService_VerifyUser = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicServiceClient.prototype.verifyUser =
+proto.NuntioConnect.PublicServiceClient.prototype.verify =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicService/VerifyUser',
+      '/NuntioConnect.PublicService/Verify',
       request,
       metadata || {},
-      methodDescriptor_PublicService_VerifyUser,
+      methodDescriptor_PublicService_Verify,
       callback);
 };
 
@@ -611,13 +611,13 @@ proto.NuntioConnect.PublicServiceClient.prototype.verifyUser =
  * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicServicePromiseClient.prototype.verifyUser =
+proto.NuntioConnect.PublicServicePromiseClient.prototype.verify =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicService/VerifyUser',
+      '/NuntioConnect.PublicService/Verify',
       request,
       metadata || {},
-      methodDescriptor_PublicService_VerifyUser);
+      methodDescriptor_PublicService_Verify);
 };
 
 
@@ -975,67 +975,6 @@ proto.NuntioConnect.AdminServicePromiseClient.prototype.updateAppOAuth =
       request,
       metadata || {},
       methodDescriptor_AdminService_UpdateAppOAuth);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectAdminRequest,
- *   !proto.NuntioConnect.ConnectAdminResponse>}
- */
-const methodDescriptor_AdminService_ResetAppOAuth = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.AdminService/ResetAppOAuth',
-  grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectAdminRequest,
-  proto.NuntioConnect.ConnectAdminResponse,
-  /**
-   * @param {!proto.NuntioConnect.ConnectAdminRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.NuntioConnect.ConnectAdminResponse.deserializeBinary
-);
-
-
-/**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminResponse)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminResponse>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.NuntioConnect.AdminServiceClient.prototype.resetAppOAuth =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.AdminService/ResetAppOAuth',
-      request,
-      metadata || {},
-      methodDescriptor_AdminService_ResetAppOAuth,
-      callback);
-};
-
-
-/**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
- *     request proto
- * @param {?Object<string, string>=} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectAdminResponse>}
- *     Promise that resolves to the response
- */
-proto.NuntioConnect.AdminServicePromiseClient.prototype.resetAppOAuth =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.AdminService/ResetAppOAuth',
-      request,
-      metadata || {},
-      methodDescriptor_AdminService_ResetAppOAuth);
 };
 
 

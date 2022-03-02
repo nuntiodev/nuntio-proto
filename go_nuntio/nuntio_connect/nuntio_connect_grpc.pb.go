@@ -19,14 +19,14 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PublicServiceClient interface {
 	ValidateLoginChallenge(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
-	ValidateUserCredentials(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
+	Login(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	ValidateConsentChallenge(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	GiveConsent(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	Logout(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	CreateUser(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	SendResetEmail(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	ResetPassword(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
-	VerifyUser(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
+	Verify(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 }
 
 type publicServiceClient struct {
@@ -46,9 +46,9 @@ func (c *publicServiceClient) ValidateLoginChallenge(ctx context.Context, in *Co
 	return out, nil
 }
 
-func (c *publicServiceClient) ValidateUserCredentials(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error) {
+func (c *publicServiceClient) Login(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error) {
 	out := new(ConnectPublicResponse)
-	err := c.cc.Invoke(ctx, "/NuntioConnect.PublicService/ValidateUserCredentials", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/NuntioConnect.PublicService/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -109,9 +109,9 @@ func (c *publicServiceClient) ResetPassword(ctx context.Context, in *ConnectPubl
 	return out, nil
 }
 
-func (c *publicServiceClient) VerifyUser(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error) {
+func (c *publicServiceClient) Verify(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error) {
 	out := new(ConnectPublicResponse)
-	err := c.cc.Invoke(ctx, "/NuntioConnect.PublicService/VerifyUser", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/NuntioConnect.PublicService/Verify", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -123,14 +123,14 @@ func (c *publicServiceClient) VerifyUser(ctx context.Context, in *ConnectPublicR
 // for forward compatibility
 type PublicServiceServer interface {
 	ValidateLoginChallenge(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
-	ValidateUserCredentials(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
+	Login(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	ValidateConsentChallenge(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	GiveConsent(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	Logout(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	CreateUser(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	SendResetEmail(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	ResetPassword(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
-	VerifyUser(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
+	Verify(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 }
 
 // UnimplementedPublicServiceServer should be embedded to have forward compatible implementations.
@@ -140,8 +140,8 @@ type UnimplementedPublicServiceServer struct {
 func (UnimplementedPublicServiceServer) ValidateLoginChallenge(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ValidateLoginChallenge not implemented")
 }
-func (UnimplementedPublicServiceServer) ValidateUserCredentials(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ValidateUserCredentials not implemented")
+func (UnimplementedPublicServiceServer) Login(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
 func (UnimplementedPublicServiceServer) ValidateConsentChallenge(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ValidateConsentChallenge not implemented")
@@ -161,8 +161,8 @@ func (UnimplementedPublicServiceServer) SendResetEmail(context.Context, *Connect
 func (UnimplementedPublicServiceServer) ResetPassword(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
 }
-func (UnimplementedPublicServiceServer) VerifyUser(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method VerifyUser not implemented")
+func (UnimplementedPublicServiceServer) Verify(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Verify not implemented")
 }
 
 // UnsafePublicServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -194,20 +194,20 @@ func _PublicService_ValidateLoginChallenge_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PublicService_ValidateUserCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _PublicService_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectPublicRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PublicServiceServer).ValidateUserCredentials(ctx, in)
+		return srv.(PublicServiceServer).Login(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/NuntioConnect.PublicService/ValidateUserCredentials",
+		FullMethod: "/NuntioConnect.PublicService/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PublicServiceServer).ValidateUserCredentials(ctx, req.(*ConnectPublicRequest))
+		return srv.(PublicServiceServer).Login(ctx, req.(*ConnectPublicRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -320,20 +320,20 @@ func _PublicService_ResetPassword_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PublicService_VerifyUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _PublicService_Verify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectPublicRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PublicServiceServer).VerifyUser(ctx, in)
+		return srv.(PublicServiceServer).Verify(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/NuntioConnect.PublicService/VerifyUser",
+		FullMethod: "/NuntioConnect.PublicService/Verify",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PublicServiceServer).VerifyUser(ctx, req.(*ConnectPublicRequest))
+		return srv.(PublicServiceServer).Verify(ctx, req.(*ConnectPublicRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -350,8 +350,8 @@ var PublicService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PublicService_ValidateLoginChallenge_Handler,
 		},
 		{
-			MethodName: "ValidateUserCredentials",
-			Handler:    _PublicService_ValidateUserCredentials_Handler,
+			MethodName: "Login",
+			Handler:    _PublicService_Login_Handler,
 		},
 		{
 			MethodName: "ValidateConsentChallenge",
@@ -378,8 +378,8 @@ var PublicService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PublicService_ResetPassword_Handler,
 		},
 		{
-			MethodName: "VerifyUser",
-			Handler:    _PublicService_VerifyUser_Handler,
+			MethodName: "Verify",
+			Handler:    _PublicService_Verify_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -395,7 +395,6 @@ type AdminServiceClient interface {
 	GetAppById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateAppDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateAppOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	ResetAppOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateAppSecurity(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	GetAppMetrics(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	DeleteApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
@@ -454,15 +453,6 @@ func (c *adminServiceClient) UpdateAppOAuth(ctx context.Context, in *ConnectAdmi
 	return out, nil
 }
 
-func (c *adminServiceClient) ResetAppOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
-	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/NuntioConnect.AdminService/ResetAppOAuth", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *adminServiceClient) UpdateAppSecurity(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
 	out := new(ConnectAdminResponse)
 	err := c.cc.Invoke(ctx, "/NuntioConnect.AdminService/UpdateAppSecurity", in, out, opts...)
@@ -499,7 +489,6 @@ type AdminServiceServer interface {
 	GetAppById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateAppDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateAppOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	ResetAppOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateAppSecurity(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	GetAppMetrics(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	DeleteApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
@@ -523,9 +512,6 @@ func (UnimplementedAdminServiceServer) UpdateAppDetails(context.Context, *Connec
 }
 func (UnimplementedAdminServiceServer) UpdateAppOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppOAuth not implemented")
-}
-func (UnimplementedAdminServiceServer) ResetAppOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetAppOAuth not implemented")
 }
 func (UnimplementedAdminServiceServer) UpdateAppSecurity(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppSecurity not implemented")
@@ -638,24 +624,6 @@ func _AdminService_UpdateAppOAuth_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AdminService_ResetAppOAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConnectAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AdminServiceServer).ResetAppOAuth(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/NuntioConnect.AdminService/ResetAppOAuth",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminServiceServer).ResetAppOAuth(ctx, req.(*ConnectAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AdminService_UpdateAppSecurity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
@@ -736,10 +704,6 @@ var AdminService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateAppOAuth",
 			Handler:    _AdminService_UpdateAppOAuth_Handler,
-		},
-		{
-			MethodName: "ResetAppOAuth",
-			Handler:    _AdminService_ResetAppOAuth_Handler,
 		},
 		{
 			MethodName: "UpdateAppSecurity",
