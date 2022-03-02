@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package NuntioConnect;
 
-option go_package = "./go_softcorp";
+option go_package = "./go_nuntio/nuntio_connect";
 
 import "google/protobuf/timestamp.proto";
 
