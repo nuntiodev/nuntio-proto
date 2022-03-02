@@ -53,9 +53,8 @@ enum ScopeType {
     GENDER_SCOPE = 3;
     NAME_SCOPE = 4;
     BIRTHDAY_SCOPE = 5;
-    PREFERRED_LANGUAGE_SCOPE = 6;
-    COUNTRY_SCOPE = 7;
-    EMAIL_SCOPE = 8;
+    COUNTRY_SCOPE = 6;
+    EMAIL_SCOPE = 7;
 }
 enum AgeGroup {
     AGE_GROUP_INVALID = 0;
@@ -116,9 +115,8 @@ message Scope {
     bool readName = 7;
     bool readBirthday = 8;
     bool readCountry = 9;
-    bool readPrefLangauge = 10;
-    string name = 11;
-    string key = 12;
+    string name = 10;
+    string key = 11;
 }
 
 enum GrantType {
@@ -141,18 +139,6 @@ enum ResponeType {
 
 message OauthResponse {
     ResponeType responseType = 1;
-    string name = 2;
-}
-
-enum LanguageCodeType {
-    INVALID_LANGUAGE = 0 ;
-    LANGUAGE_DK = 1;
-    LANGUAGE_EN = 2;
-    LANGUAGE_DE = 3;
-}
-
-message LanguageCode {
-    LanguageCodeType languageCodeType = 1;
     string name = 2;
 }
 
