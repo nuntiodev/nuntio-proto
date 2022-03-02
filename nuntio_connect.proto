@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 
 service PublicService {
     rpc ValidateLoginChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc ValidateUserCredentials(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc Login(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc ValidateConsentChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc GiveConsent(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc Logout(ConnectPublicRequest) returns (ConnectPublicResponse) {}
