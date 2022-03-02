@@ -15,7 +15,7 @@ service PublicService {
     rpc CreateUser(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc SendResetEmail(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc ResetPassword(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc VerifyUser(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+    rpc Verify(ConnectPublicRequest) returns (ConnectPublicResponse) {}
 }
 
 service AdminService {
