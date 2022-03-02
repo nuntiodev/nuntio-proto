@@ -24,7 +24,6 @@ service AdminService {
     rpc GetAppById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateAppDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateAppOAuth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc ResetAppOAuth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateAppSecurity(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc GetAppMetrics(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc DeleteApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
