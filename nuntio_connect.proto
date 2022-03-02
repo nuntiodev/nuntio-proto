@@ -7,7 +7,6 @@ option go_package = "./go_nuntio/nuntio_connect";
 import "google/protobuf/timestamp.proto";
 
 service PublicService {
-    rpc Heartbeat(Request) returns (Response) {}
     rpc ValidateLoginChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc ValidateUserCredentials(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc ValidateConsentChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
