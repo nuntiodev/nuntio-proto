@@ -2752,7 +2752,7 @@ proto.NuntioConnect.ClientMetadata.toObject = function(includeInstance, msg) {
     ageupperlimit: jspb.Message.getFieldWithDefault(msg, 6, 0),
     allowedcountriesList: jspb.Message.toObjectList(msg.getAllowedcountriesList(),
     proto.NuntioConnect.CountryCode.toObject, includeInstance),
-    onlyidentifiedusers: jspb.Message.getBooleanFieldWithDefault(msg, 8, false)
+    onlyverifiedusers: jspb.Message.getBooleanFieldWithDefault(msg, 8, false)
   };
 
   if (includeInstance) {
@@ -2820,7 +2820,7 @@ proto.NuntioConnect.ClientMetadata.deserializeBinaryFromReader = function(msg, r
       break;
     case 8:
       var value = /** @type {boolean} */ (reader.readBool());
-      msg.setOnlyidentifiedusers(value);
+      msg.setOnlyverifiedusers(value);
       break;
     default:
       reader.skipField();
@@ -2901,7 +2901,7 @@ proto.NuntioConnect.ClientMetadata.serializeBinaryToWriter = function(message, w
       proto.NuntioConnect.CountryCode.serializeBinaryToWriter
     );
   }
-  f = message.getOnlyidentifiedusers();
+  f = message.getOnlyverifiedusers();
   if (f) {
     writer.writeBool(
       8,
@@ -3077,10 +3077,10 @@ proto.NuntioConnect.ClientMetadata.prototype.clearAllowedcountriesList = functio
 
 
 /**
- * optional bool onlyIdentifiedUsers = 8;
+ * optional bool onlyVerifiedUsers = 8;
  * @return {boolean}
  */
-proto.NuntioConnect.ClientMetadata.prototype.getOnlyidentifiedusers = function() {
+proto.NuntioConnect.ClientMetadata.prototype.getOnlyverifiedusers = function() {
   return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
 };
 
@@ -3089,7 +3089,7 @@ proto.NuntioConnect.ClientMetadata.prototype.getOnlyidentifiedusers = function()
  * @param {boolean} value
  * @return {!proto.NuntioConnect.ClientMetadata} returns this
  */
-proto.NuntioConnect.ClientMetadata.prototype.setOnlyidentifiedusers = function(value) {
+proto.NuntioConnect.ClientMetadata.prototype.setOnlyverifiedusers = function(value) {
   return jspb.Message.setProto3BooleanField(this, 8, value);
 };
 
