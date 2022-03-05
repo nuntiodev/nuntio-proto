@@ -29,6 +29,10 @@ service AdminService {
     rpc DeleteApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
 }
 
+enum Error {
+    ERROR_REQUIRE_IDENTIFICATION = 0;
+}
+
 enum Timespan {
     INVALID_TIMESPAN = 0;
     TIMESPAN_DAY = 1;
@@ -70,6 +74,13 @@ enum AgeGroup {
     AGE_GROUP_100_120 = 11;
 }
 
+message UserMetadata {
+    google.protobuf.Timestamp birthdate = 1;
+    string name = 2;
+    CountryCode countryCode = 3;
+    google.protobuf.Timestamp verifiedAt = 4;
+    google.protobuf.Timestamp verified = 5;
+}
 
 message ConnectMetric {
     google.protobuf.Timestamp date = 1;
@@ -210,8 +221,9 @@ message ConnectPublicRequest {
 
 message ConnectPublicResponse {
     ClientApp client = 1;
-    string nameOfUser = 2;
+    string email = 2;
     string redirectAddr = 3;
+    Error error = 4; 
 }
 
 message ConnectAdminRequest {
