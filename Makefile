@@ -16,7 +16,7 @@ build-user-js-proto:
 
 .PHONY: build-go-proto
 build-user-go-proto:
-	protoc -I. --go_out=. --go-grpc_out=require_unimplemented_servers=false:. ./nuntio.proto
+	protoc -I. --go_out=. --go-grpc_out=require_unimplemented_servers=false:. ./nuntio_user.proto
 	
 .PHONY: build-js-proto
 build-js-proto:
