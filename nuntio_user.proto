@@ -18,7 +18,7 @@ message User {
 message UserMetadata {
     google.protobuf.Timestamp birthdate = 1;
     string name = 2;
-    CountryCode country_code = 3;
+    Nuntio.CountryCode country_code = 3;
     google.protobuf.Timestamp verified_at = 4;
     bool verified = 5;
     Nuntio.Gender gender = 6;
