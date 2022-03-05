@@ -1,6 +1,6 @@
-yntax = "proto3";
+syntax = "proto3";
 
-package Nuntio;
+package NuntioUser;
 
 option go_package = "./go_nuntio/nuntio_user";
 
