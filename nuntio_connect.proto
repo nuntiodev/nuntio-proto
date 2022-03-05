@@ -81,6 +81,7 @@ message UserMetadata {
     CountryCode countryCode = 3;
     google.protobuf.Timestamp verifiedAt = 4;
     bool verified = 5;
+    Gender gender = 6;
 }
 
 message ConnectMetric {
