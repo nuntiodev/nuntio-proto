@@ -80,7 +80,7 @@ message UserMetadata {
     string name = 2;
     CountryCode countryCode = 3;
     google.protobuf.Timestamp verifiedAt = 4;
-    google.protobuf.Timestamp verified = 5;
+    bool verified = 5;
 }
 
 message ConnectMetric {
