@@ -75,6 +75,14 @@ enum AgeGroup {
     AGE_GROUP_100_120 = 11;
 }
 
+message User {
+    string id = 1;
+    string email = 2;
+    google.protobuf.Timestamp createdAt = 3;
+    google.protobuf.Timestamp updatedAt = 4
+    UserMetadata metadata = 5;
+}
+
 message UserMetadata {
     google.protobuf.Timestamp birthdate = 1;
     string name = 2;
