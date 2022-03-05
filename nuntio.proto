@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package Nuntio;
+
+option go_package = "./go_nuntio/nuntio";
+
+enum CountryCodeType {
+    INVALID_COUNTRY = 0;
+    COUTRY_DK = 1;
+    COUNTRY_NO = 2;
+    COUNTRY_DE = 3;    
+}
+
+enum Gender {
+    INVALID_GENDER = 0;
+    MALE = 1;
+    FEMALE = 2;
+    OTHER = 3;
+}
+
+enum VerificationProviderType {
+    INVALID = 0;
+    MIT_ID = 1;
+}
+
+message VerificationProvider {
+    VerificationProviderType type = 1;
+    string name = 2;
+}
+
+message CountryCode {
+    CountryCodeType type = 1;
+    string name = 2;
+}
+
+message Request {}
+
+message Response {
+    string msg = 1;
+}

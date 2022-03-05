@@ -5,6 +5,7 @@ package NuntioConnect;
 option go_package = "./go_nuntio/nuntio_connect";
 
 import "google/protobuf/timestamp.proto";
+import "nuntio.proto";
 
 service PublicService {
     rpc ValidateLoginChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
@@ -43,13 +44,6 @@ enum Timespan {
     TIMESPAN_ALL = 5;
 }
 
-enum Gender {
-    INVALID_GENDER = 0;
-    MALE = 1;
-    FEMALE = 2;
-    OTHER = 3;
-}
-
 enum ScopeType {
     INVALID_SCOPE = 0;
     DEFAULT_SCOPE = 1;
@@ -75,50 +69,33 @@ enum AgeGroup {
     AGE_GROUP_100_120 = 11;
 }
 
-message User {
-    string id = 1;
-    string email = 2;
-    google.protobuf.Timestamp createdAt = 3;
-    google.protobuf.Timestamp updatedAt = 4;
-    UserMetadata metadata = 5;
-}
-
-message UserMetadata {
-    google.protobuf.Timestamp birthdate = 1;
-    string name = 2;
-    CountryCode countryCode = 3;
-    google.protobuf.Timestamp verifiedAt = 4;
-    bool verified = 5;
-    Gender gender = 6;
-}
-
 message ConnectMetric {
     google.protobuf.Timestamp date = 1;
-    int32 numberOfRequests = 2;
-    int32 numberOfConsentTrue = 3;
-    int32 numberOfConsentFalse = 4;
-    int32 numberOfUsersValidated = 5;
-    int32 numberOfUsersNotValidated = 6;
-    int32 numberOfAgeGroupInvalid = 7;
-    int32 numberOfAgeGroup1To12 = 8;
-    int32 numberOfAgeGroup13To19 = 9;
-    int32 numberOfAgeGroup20To29 = 10;
-    int32 numberOfAgeGroup30To39 = 11;
-    int32 numberOfAgeGroup40To49 = 12;
-    int32 numberOfAgeGroup50To59 = 13;
-    int32 numberOfAgeGroup60To69 = 14;
-    int32 numberOfAgeGroup70To79 = 15;
-    int32 numberOfAgeGroup80To89 = 16;
-    int32 numberOfAgeGroup90To99 = 17;
-    int32 numberOfAgeGroup100To120 = 18;
-    int32 numberOfGenderInvalid = 19;
-    int32 numberOfFemales = 20;
-    int32 numberOfMales = 21;
-    int32 numberOfOthers = 22;
-    int32 amountFromCountryInvalid = 23;
-    int32 amountFromDk = 24;
-    int32 amountFromNo = 25;
-    int32 amountFromDe = 26;
+    int32 number_of_requests = 2;
+    int32 number_of_consent_true = 3;
+    int32 number_of_consent_false = 4;
+    int32 number_of_users_validated = 5;
+    int32 number_of_users_not_validated = 6;
+    int32 number_of_age_group_invalid = 7;
+    int32 number_of_age_group_1_to_12 = 8;
+    int32 number_of_age_group_13_to_19 = 9;
+    int32 number_of_age_group_20_to_29 = 10;
+    int32 number_of_age_group_30_to_39 = 11;
+    int32 number_pf_age_group_40_to_49 = 12;
+    int32 number_of_age_group_50_to_59 = 13;
+    int32 number_of_age_group_60_to_69 = 14;
+    int32 number_of_age_group_70_to_79 = 15;
+    int32 number_of_age_group_80_to_89 = 16;
+    int32 number_of_age_group_90_to_99 = 17;
+    int32 number_of_age_group_100_to_120 = 18;
+    int32 number_of_gender_invalid = 19;
+    int32 number_of_females = 20;
+    int32 number_of_males = 21;
+    int32 number_of_others = 22;
+    int32 amount_from_country_invalid = 23;
+    int32 amount_from_dk = 24;
+    int32 amount_from_no = 25;
+    int32 amount_from_de = 26;
 }
 
 message ConnectMetrics {
@@ -126,15 +103,15 @@ message ConnectMetrics {
 }
 
 message Scope {
-    ScopeType scopeType = 1;
-    bool readId = 2;
-    bool readEmail = 3;
-    bool readGender = 4;
-    bool readCreatedAt = 5;
-    bool offlineAccess = 6;
-    bool readName = 7;
-    bool readBirthday = 8;
-    bool readCountry = 9;
+    ScopeType scope_type = 1;
+    bool read_id = 2;
+    bool read_email = 3;
+    bool read_gender = 4;
+    bool read_created_at = 5;
+    bool offline_access = 6;
+    bool read_name = 7;
+    bool read_birthday = 8;
+    bool read_country = 9;
     string name = 10;
     string key = 11;
 }
@@ -146,7 +123,7 @@ enum GrantType {
 }
 
 message Grant {
-    GrantType grantType = 1;
+    GrantType grant_type = 1;
     string name = 2;
 }
 
@@ -158,81 +135,59 @@ enum ResponeType {
 }
 
 message OauthResponse {
-    ResponeType responseType = 1;
-    string name = 2;
-}
-
-enum CountryCodeType {
-    INVALID_COUNTRY = 0;
-    COUTRY_DK = 1;
-    COUNTRY_NO = 2;
-    COUNTRY_DE = 3;    
-}
-
-message CountryCode {
-    CountryCodeType countryCodeType = 1;
-    string name = 2;
-}
-
-enum SsnProviderType {
-    INVALID = 0;
-    MIT_ID = 1;
-}
-
-message SsnProvider {
-    SsnProviderType ssnProviderType = 1;
+    ResponeType response_type = 1;
     string name = 2;
 }
 
 message ClientMetadata {
-    bool isOpen = 1;
-    repeated string allowedEmails = 21;
+    bool is_open = 1;
+    repeated string allowed_emails = 21;
     string about = 3;
-    string ownerId = 4;
-    int32 ageLowerLimit = 5;
-    int32 ageUpperLimit = 6;
-    repeated CountryCode allowedCountries = 7;
-    bool onlyVerifiedUsers = 8;
+    string owner_id = 4;
+    int32 age_lower_limit = 5;
+    int32 age_upper_limit = 6;
+    repeated Nuntio.CountryCode allowed_countries = 7;
+    bool only_verified_users = 8;
 }
 
 message ClientApp {
     string id = 1;
     string name = 2;
     string password = 3;
-    string contactEmail = 4;
-    string organizationId = 5;
-    string appWebsite = 6;
-    string logoUrl = 7;
-    string termsUrl = 8;
-    ClientMetadata clientMetadata = 9;
+    string contact_email = 4;
+    string organization_id = 5;
+    string app_website = 6;
+    string logo_url = 7;
+    string terms_url = 8;
+    ClientMetadata client_metadata = 9;
     repeated string audience = 10;
     repeated Scope scopes = 11;
     repeated Grant grants = 12;
     repeated OauthResponse responses = 13;
     repeated string callbacks = 14;
-    google.protobuf.Timestamp createdAt = 15;
-    google.protobuf.Timestamp updatedAt = 16;
-    repeated Scope availableScopes = 17;
-    repeated Grant availableGrants = 18;
-    repeated OauthResponse availableResponses = 19;
-    repeated CountryCode availableCountries = 20;
+    google.protobuf.Timestamp created_at = 15;
+    google.protobuf.Timestamp updated_at = 16;
+    repeated Scope available_scopes = 17;
+    repeated Grant available_grants = 18;
+    repeated OauthResponse available_responses = 19;
+    repeated Nuntio.CountryCode available_countries = 20;
 }
 
 message ConnectPublicRequest {
     string challenge = 1;
     string email = 2;
     string password = 3;
-    Gender gender = 4;
+    Nuntio.Gender gender = 4;
     bool consent = 5;
-    string jwtIdToken = 6;
-    SsnProvider ssnProvider = 7;
+    string jwt_verification_token = 6;
+    VerificationProvider verification_provider = 7;
     string authToken = 8;
 }
 
 message ConnectPublicResponse {
     ClientApp client = 1;
     string email = 2;
-    string redirectAddr = 3;
+    string redirect_addr = 3;
     Error error = 4; 
 }
 
@@ -244,10 +199,4 @@ message ConnectAdminRequest {
 message ConnectAdminResponse {
     ClientApp app = 1;
     map<int32, ConnectMetrics> metrics = 2;
-}
-
-message Request {}
-
-message Response {
-    string msg = 1;
 }

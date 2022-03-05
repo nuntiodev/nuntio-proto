@@ -1,0 +1,26 @@
+yntax = "proto3";
+
+package Nuntio;
+
+option go_package = "./go_nuntio/nuntio_connect";
+
+import "google/protobuf/timestamp.proto";
+import "nuntio.proto";
+
+message User {
+    string id = 1;
+    string email = 2;
+    google.protobuf.Timestamp created_at = 3;
+    google.protobuf.Timestamp updated_at = 4;
+    UserMetadata metadata = 5;
+}
+
+message UserMetadata {
+    google.protobuf.Timestamp birthdate = 1;
+    string name = 2;
+    CountryCode country_code = 3;
+    google.protobuf.Timestamp verified_at = 4;
+    bool verified = 5;
+    Nuntio.Gender gender = 6;
+    Nuntio.VerificationProviderType verification_provider = 7;
+}
