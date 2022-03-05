@@ -17,6 +17,8 @@ grpc.web = require('grpc-web');
 
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
+
+var nuntio_pb = require('./nuntio_pb.js')
 const proto = {};
 proto.NuntioConnect = require('./nuntio_connect_pb.js');
 
@@ -676,33 +678,33 @@ proto.NuntioConnect.AdminServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.Request,
- *   !proto.NuntioConnect.Response>}
+ *   !proto.Nuntio.Request,
+ *   !proto.Nuntio.Response>}
  */
 const methodDescriptor_AdminService_Heartbeat = new grpc.web.MethodDescriptor(
   '/NuntioConnect.AdminService/Heartbeat',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.Request,
-  proto.NuntioConnect.Response,
+  nuntio_pb.Request,
+  nuntio_pb.Response,
   /**
-   * @param {!proto.NuntioConnect.Request} request
+   * @param {!proto.Nuntio.Request} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.Response.deserializeBinary
+  nuntio_pb.Response.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.Request} request The
+ * @param {!proto.Nuntio.Request} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.Response)}
+ * @param {function(?grpc.web.RpcError, ?proto.Nuntio.Response)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.Response>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Nuntio.Response>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.NuntioConnect.AdminServiceClient.prototype.heartbeat =
@@ -717,11 +719,11 @@ proto.NuntioConnect.AdminServiceClient.prototype.heartbeat =
 
 
 /**
- * @param {!proto.NuntioConnect.Request} request The
+ * @param {!proto.Nuntio.Request} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.Response>}
+ * @return {!Promise<!proto.Nuntio.Response>}
  *     Promise that resolves to the response
  */
 proto.NuntioConnect.AdminServicePromiseClient.prototype.heartbeat =

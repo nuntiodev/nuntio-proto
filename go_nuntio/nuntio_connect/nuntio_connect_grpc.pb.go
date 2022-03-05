@@ -3,6 +3,7 @@
 package nuntio_connect
 
 import (
+	nuntio "./go_nuntio/nuntio"
 	context "context"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
@@ -390,7 +391,7 @@ var PublicService_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AdminServiceClient interface {
-	Heartbeat(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
+	Heartbeat(ctx context.Context, in *nuntio.Request, opts ...grpc.CallOption) (*nuntio.Response, error)
 	CreateApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	GetAppById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateAppDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
@@ -408,8 +409,8 @@ func NewAdminServiceClient(cc grpc.ClientConnInterface) AdminServiceClient {
 	return &adminServiceClient{cc}
 }
 
-func (c *adminServiceClient) Heartbeat(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
-	out := new(Response)
+func (c *adminServiceClient) Heartbeat(ctx context.Context, in *nuntio.Request, opts ...grpc.CallOption) (*nuntio.Response, error) {
+	out := new(nuntio.Response)
 	err := c.cc.Invoke(ctx, "/NuntioConnect.AdminService/Heartbeat", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -484,7 +485,7 @@ func (c *adminServiceClient) DeleteApp(ctx context.Context, in *ConnectAdminRequ
 // All implementations should embed UnimplementedAdminServiceServer
 // for forward compatibility
 type AdminServiceServer interface {
-	Heartbeat(context.Context, *Request) (*Response, error)
+	Heartbeat(context.Context, *nuntio.Request) (*nuntio.Response, error)
 	CreateApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	GetAppById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateAppDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
@@ -498,7 +499,7 @@ type AdminServiceServer interface {
 type UnimplementedAdminServiceServer struct {
 }
 
-func (UnimplementedAdminServiceServer) Heartbeat(context.Context, *Request) (*Response, error) {
+func (UnimplementedAdminServiceServer) Heartbeat(context.Context, *nuntio.Request) (*nuntio.Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Heartbeat not implemented")
 }
 func (UnimplementedAdminServiceServer) CreateApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
@@ -535,7 +536,7 @@ func RegisterAdminServiceServer(s grpc.ServiceRegistrar, srv AdminServiceServer)
 }
 
 func _AdminService_Heartbeat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Request)
+	in := new(nuntio.Request)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -547,7 +548,7 @@ func _AdminService_Heartbeat_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/NuntioConnect.AdminService/Heartbeat",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminServiceServer).Heartbeat(ctx, req.(*Request))
+		return srv.(AdminServiceServer).Heartbeat(ctx, req.(*nuntio.Request))
 	}
 	return interceptor(ctx, in, info, handler)
 }
