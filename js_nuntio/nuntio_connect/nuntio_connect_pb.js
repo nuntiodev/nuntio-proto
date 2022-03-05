@@ -420,7 +420,7 @@ proto.NuntioConnect.UserMetadata.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     countrycode: (f = msg.getCountrycode()) && proto.NuntioConnect.CountryCode.toObject(includeInstance, f),
     verifiedat: (f = msg.getVerifiedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    verified: (f = msg.getVerified()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    verified: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -477,8 +477,7 @@ proto.NuntioConnect.UserMetadata.deserializeBinaryFromReader = function(msg, rea
       msg.setVerifiedat(value);
       break;
     case 5:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {boolean} */ (reader.readBool());
       msg.setVerified(value);
       break;
     default:
@@ -542,11 +541,10 @@ proto.NuntioConnect.UserMetadata.serializeBinaryToWriter = function(message, wri
     );
   }
   f = message.getVerified();
-  if (f != null) {
-    writer.writeMessage(
+  if (f) {
+    writer.writeBool(
       5,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -682,39 +680,20 @@ proto.NuntioConnect.UserMetadata.prototype.hasVerifiedat = function() {
 
 
 /**
- * optional google.protobuf.Timestamp verified = 5;
- * @return {?proto.google.protobuf.Timestamp}
- */
-proto.NuntioConnect.UserMetadata.prototype.getVerified = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
-};
-
-
-/**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
- * @return {!proto.NuntioConnect.UserMetadata} returns this
-*/
-proto.NuntioConnect.UserMetadata.prototype.setVerified = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.NuntioConnect.UserMetadata} returns this
- */
-proto.NuntioConnect.UserMetadata.prototype.clearVerified = function() {
-  return this.setVerified(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
+ * optional bool verified = 5;
  * @return {boolean}
  */
-proto.NuntioConnect.UserMetadata.prototype.hasVerified = function() {
-  return jspb.Message.getField(this, 5) != null;
+proto.NuntioConnect.UserMetadata.prototype.getVerified = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.NuntioConnect.UserMetadata} returns this
+ */
+proto.NuntioConnect.UserMetadata.prototype.setVerified = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 5, value);
 };
 
 
@@ -5409,7 +5388,8 @@ proto.NuntioConnect.Response.prototype.setMsg = function(value) {
  * @enum {number}
  */
 proto.NuntioConnect.Error = {
-  ERROR_REQUIRE_IDENTIFICATION: 0
+  NO_ERROR: 0,
+  ERROR_REQUIRE_IDENTIFICATION: 1
 };
 
 /**
