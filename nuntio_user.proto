@@ -2,7 +2,7 @@ yntax = "proto3";
 
 package Nuntio;
 
-option go_package = "./go_nuntio/nuntio_connect";
+option go_package = "./go_nuntio/nuntio_user";
 
 import "google/protobuf/timestamp.proto";
 import "nuntio.proto";

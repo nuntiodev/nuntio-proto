@@ -20,7 +20,7 @@ service PublicService {
 }
 
 service AdminService {
-    rpc Heartbeat(Request) returns (Response) {}
+    rpc Heartbeat(Nuntio.Request) returns (Nuntio.Response) {}
     rpc CreateApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc GetAppById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateAppDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
