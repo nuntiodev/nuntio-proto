@@ -180,7 +180,7 @@ message ConnectPublicRequest {
     Nuntio.Gender gender = 4;
     bool consent = 5;
     string jwt_verification_token = 6;
-    VerificationProvider verification_provider = 7;
+    Nuntio.VerificationProvider verification_provider = 7;
     string authToken = 8;
 }
 
