@@ -420,7 +420,8 @@ proto.NuntioConnect.UserMetadata.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     countrycode: (f = msg.getCountrycode()) && proto.NuntioConnect.CountryCode.toObject(includeInstance, f),
     verifiedat: (f = msg.getVerifiedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    verified: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+    verified: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
+    gender: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -479,6 +480,10 @@ proto.NuntioConnect.UserMetadata.deserializeBinaryFromReader = function(msg, rea
     case 5:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setVerified(value);
+      break;
+    case 6:
+      var value = /** @type {!proto.NuntioConnect.Gender} */ (reader.readEnum());
+      msg.setGender(value);
       break;
     default:
       reader.skipField();
@@ -544,6 +549,13 @@ proto.NuntioConnect.UserMetadata.serializeBinaryToWriter = function(message, wri
   if (f) {
     writer.writeBool(
       5,
+      f
+    );
+  }
+  f = message.getGender();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      6,
       f
     );
   }
@@ -694,6 +706,24 @@ proto.NuntioConnect.UserMetadata.prototype.getVerified = function() {
  */
 proto.NuntioConnect.UserMetadata.prototype.setVerified = function(value) {
   return jspb.Message.setProto3BooleanField(this, 5, value);
+};
+
+
+/**
+ * optional Gender gender = 6;
+ * @return {!proto.NuntioConnect.Gender}
+ */
+proto.NuntioConnect.UserMetadata.prototype.getGender = function() {
+  return /** @type {!proto.NuntioConnect.Gender} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {!proto.NuntioConnect.Gender} value
+ * @return {!proto.NuntioConnect.UserMetadata} returns this
+ */
+proto.NuntioConnect.UserMetadata.prototype.setGender = function(value) {
+  return jspb.Message.setProto3EnumField(this, 6, value);
 };
 
 
