@@ -30,7 +30,8 @@ service AdminService {
 }
 
 enum Error {
-    ERROR_REQUIRE_IDENTIFICATION = 0;
+    NO_ERROR = 0;
+    ERROR_REQUIRE_IDENTIFICATION = 1;
 }
 
 enum Timespan {
