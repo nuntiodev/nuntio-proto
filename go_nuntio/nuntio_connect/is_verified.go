@@ -7,7 +7,7 @@ func (x *User) IsVerified() error {
 		return errors.New("metadata is nil")
 	} else if x.Metadata.VerifiedAt.IsValid() == false {
 		return errors.New("user verifeid at is not valid")
-	} else if x.Metadata.Birthdata.IsValid() == false {
+	} else if x.Metadata.Birthdate.IsValid() == false {
 		return errors.New("user birthdate is not valid")
 	} else if x.Metadata.Name == "" {
 		return errors.New("users name is empty")
