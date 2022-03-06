@@ -77,11 +77,11 @@ message ConnectMetric {
     int32 number_of_users_validated = 5;
     int32 number_of_users_not_validated = 6;
     int32 number_of_age_group_invalid = 7;
-    int32 number_of_age_group_1_to_12 = 8;
+    int32 number_of_age_group_1to_12 = 8;
     int32 number_of_age_group_13_to_19 = 9;
     int32 number_of_age_group_20_to_29 = 10;
     int32 number_of_age_group_30_to_39 = 11;
-    int32 number_pf_age_group_40_to_49 = 12;
+    int32 number_of_age_group_40_to_49 = 12;
     int32 number_of_age_group_50_to_59 = 13;
     int32 number_of_age_group_60_to_69 = 14;
     int32 number_of_age_group_70_to_79 = 15;
