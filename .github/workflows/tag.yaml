@@ -86,6 +86,10 @@ jobs:
         working-directory: ./go_nuntio/nuntio_connect
         run: sed -i 's,nuntio "./go_nuntio/nuntio","github.com/softcorp-io/nuntio-proto/go_nuntio/nuntio",g' nuntio_connect.pb.go
 
+      - name: Rename gRPC imports
+        working-directory: ./go_nuntio/nuntio_connect
+        run: sed -i 's,nuntio "./go_nuntio/nuntio","github.com/softcorp-io/nuntio-proto/go_nuntio/nuntio",g' nuntio_connect_grpc.pb.go
+
       # Remove build files
       - name: remove protobuf zip
         run: rm protoc-3.19.1-linux-x86_64.zip
