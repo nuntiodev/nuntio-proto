@@ -3,7 +3,7 @@
 package nuntio_connect
 
 import (
-	nuntio "./go_nuntio/nuntio"
+	"github.com/softcorp-io/nuntio-proto/go_nuntio/nuntio"
 	context "context"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
