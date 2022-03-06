@@ -416,7 +416,7 @@ proto.NuntioUser.UserMetadata.toObject = function(includeInstance, msg) {
   var f, obj = {
     birthdate: (f = msg.getBirthdate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    countryCode: (f = msg.getCountryCode()) && nuntio_pb.CountryCode.toObject(includeInstance, f),
+    countryCode: jspb.Message.getFieldWithDefault(msg, 3, 0),
     verifiedAt: (f = msg.getVerifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     verified: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
     gender: jspb.Message.getFieldWithDefault(msg, 6, 0),
@@ -467,8 +467,7 @@ proto.NuntioUser.UserMetadata.deserializeBinaryFromReader = function(msg, reader
       msg.setName(value);
       break;
     case 3:
-      var value = new nuntio_pb.CountryCode;
-      reader.readMessage(value,nuntio_pb.CountryCode.deserializeBinaryFromReader);
+      var value = /** @type {!proto.Nuntio.CountryCodeType} */ (reader.readEnum());
       msg.setCountryCode(value);
       break;
     case 4:
@@ -533,11 +532,10 @@ proto.NuntioUser.UserMetadata.serializeBinaryToWriter = function(message, writer
     );
   }
   f = message.getCountryCode();
-  if (f != null) {
-    writer.writeMessage(
+  if (f !== 0.0) {
+    writer.writeEnum(
       3,
-      f,
-      nuntio_pb.CountryCode.serializeBinaryToWriter
+      f
     );
   }
   f = message.getVerifiedAt();
@@ -628,39 +626,20 @@ proto.NuntioUser.UserMetadata.prototype.setName = function(value) {
 
 
 /**
- * optional Nuntio.CountryCode country_code = 3;
- * @return {?proto.Nuntio.CountryCode}
+ * optional Nuntio.CountryCodeType country_code = 3;
+ * @return {!proto.Nuntio.CountryCodeType}
  */
 proto.NuntioUser.UserMetadata.prototype.getCountryCode = function() {
-  return /** @type{?proto.Nuntio.CountryCode} */ (
-    jspb.Message.getWrapperField(this, nuntio_pb.CountryCode, 3));
+  return /** @type {!proto.Nuntio.CountryCodeType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {?proto.Nuntio.CountryCode|undefined} value
+ * @param {!proto.Nuntio.CountryCodeType} value
  * @return {!proto.NuntioUser.UserMetadata} returns this
-*/
+ */
 proto.NuntioUser.UserMetadata.prototype.setCountryCode = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.NuntioUser.UserMetadata} returns this
- */
-proto.NuntioUser.UserMetadata.prototype.clearCountryCode = function() {
-  return this.setCountryCode(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.NuntioUser.UserMetadata.prototype.hasCountryCode = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.setProto3EnumField(this, 3, value);
 };
 
 
