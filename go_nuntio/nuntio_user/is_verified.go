@@ -19,9 +19,9 @@ func (x *User) IsVerified() error {
 		return errors.New("verified is empty")
 	} else if x.Metadata.Gender == nuntio.Gender_INVALID_GENDER {
 		return errors.New("invalid gender type")
-	} else if x.Metadata.CountryCode == nil || x.Metadata.CountryCode.Type == nuntio.CountryCodeType_INVALID_COUNTRY {
+	} else if x.Metadata.CountryCode == nuntio.CountryCodeType_INVALID_COUNTRY {
 		return errors.New("invalid country code")
-	} else if x.Metadata.VerificationProvider == nil || x.Metadata.VerificationProvider.Type == nuntio.VerificationProviderType_INVALID {
+	} else if x.Metadata.VerificationProvider == nuntio.VerificationProviderType_INVALID {
 		return errors.New("invalid verification provider")
 	}
 	return nil
