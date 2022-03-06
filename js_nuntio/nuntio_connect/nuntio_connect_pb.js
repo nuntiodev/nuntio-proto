@@ -312,11 +312,11 @@ proto.NuntioConnect.ConnectMetric.toObject = function(includeInstance, msg) {
     numberOfUsersValidated: jspb.Message.getFieldWithDefault(msg, 5, 0),
     numberOfUsersNotValidated: jspb.Message.getFieldWithDefault(msg, 6, 0),
     numberOfAgeGroupInvalid: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    numberOfAgeGroup1To12: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    numberOfAgeGroup1to12: jspb.Message.getFieldWithDefault(msg, 8, 0),
     numberOfAgeGroup13To19: jspb.Message.getFieldWithDefault(msg, 9, 0),
     numberOfAgeGroup20To29: jspb.Message.getFieldWithDefault(msg, 10, 0),
     numberOfAgeGroup30To39: jspb.Message.getFieldWithDefault(msg, 11, 0),
-    numberPfAgeGroup40To49: jspb.Message.getFieldWithDefault(msg, 12, 0),
+    numberOfAgeGroup40To49: jspb.Message.getFieldWithDefault(msg, 12, 0),
     numberOfAgeGroup50To59: jspb.Message.getFieldWithDefault(msg, 13, 0),
     numberOfAgeGroup60To69: jspb.Message.getFieldWithDefault(msg, 14, 0),
     numberOfAgeGroup70To79: jspb.Message.getFieldWithDefault(msg, 15, 0),
@@ -398,7 +398,7 @@ proto.NuntioConnect.ConnectMetric.deserializeBinaryFromReader = function(msg, re
       break;
     case 8:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setNumberOfAgeGroup1To12(value);
+      msg.setNumberOfAgeGroup1to12(value);
       break;
     case 9:
       var value = /** @type {number} */ (reader.readInt32());
@@ -414,7 +414,7 @@ proto.NuntioConnect.ConnectMetric.deserializeBinaryFromReader = function(msg, re
       break;
     case 12:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setNumberPfAgeGroup40To49(value);
+      msg.setNumberOfAgeGroup40To49(value);
       break;
     case 13:
       var value = /** @type {number} */ (reader.readInt32());
@@ -551,7 +551,7 @@ proto.NuntioConnect.ConnectMetric.serializeBinaryToWriter = function(message, wr
       f
     );
   }
-  f = message.getNumberOfAgeGroup1To12();
+  f = message.getNumberOfAgeGroup1to12();
   if (f !== 0) {
     writer.writeInt32(
       8,
@@ -579,7 +579,7 @@ proto.NuntioConnect.ConnectMetric.serializeBinaryToWriter = function(message, wr
       f
     );
   }
-  f = message.getNumberPfAgeGroup40To49();
+  f = message.getNumberOfAgeGroup40To49();
   if (f !== 0) {
     writer.writeInt32(
       12,
@@ -833,10 +833,10 @@ proto.NuntioConnect.ConnectMetric.prototype.setNumberOfAgeGroupInvalid = functio
 
 
 /**
- * optional int32 number_of_age_group_1_to_12 = 8;
+ * optional int32 number_of_age_group_1to_12 = 8;
  * @return {number}
  */
-proto.NuntioConnect.ConnectMetric.prototype.getNumberOfAgeGroup1To12 = function() {
+proto.NuntioConnect.ConnectMetric.prototype.getNumberOfAgeGroup1to12 = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
@@ -845,7 +845,7 @@ proto.NuntioConnect.ConnectMetric.prototype.getNumberOfAgeGroup1To12 = function(
  * @param {number} value
  * @return {!proto.NuntioConnect.ConnectMetric} returns this
  */
-proto.NuntioConnect.ConnectMetric.prototype.setNumberOfAgeGroup1To12 = function(value) {
+proto.NuntioConnect.ConnectMetric.prototype.setNumberOfAgeGroup1to12 = function(value) {
   return jspb.Message.setProto3IntField(this, 8, value);
 };
 
@@ -905,10 +905,10 @@ proto.NuntioConnect.ConnectMetric.prototype.setNumberOfAgeGroup30To39 = function
 
 
 /**
- * optional int32 number_pf_age_group_40_to_49 = 12;
+ * optional int32 number_of_age_group_40_to_49 = 12;
  * @return {number}
  */
-proto.NuntioConnect.ConnectMetric.prototype.getNumberPfAgeGroup40To49 = function() {
+proto.NuntioConnect.ConnectMetric.prototype.getNumberOfAgeGroup40To49 = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
 };
 
@@ -917,7 +917,7 @@ proto.NuntioConnect.ConnectMetric.prototype.getNumberPfAgeGroup40To49 = function
  * @param {number} value
  * @return {!proto.NuntioConnect.ConnectMetric} returns this
  */
-proto.NuntioConnect.ConnectMetric.prototype.setNumberPfAgeGroup40To49 = function(value) {
+proto.NuntioConnect.ConnectMetric.prototype.setNumberOfAgeGroup40To49 = function(value) {
   return jspb.Message.setProto3IntField(this, 12, value);
 };
 
