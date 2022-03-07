@@ -3,7 +3,6 @@
 package nuntio_connect
 
 import (
-	"github.com/softcorp-io/nuntio-proto/go_nuntio/nuntio"
 	context "context"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
@@ -19,6 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PublicServiceClient interface {
+	Heartbeat(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	ValidateLoginChallenge(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	Login(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
 	ValidateConsentChallenge(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error)
@@ -36,6 +36,15 @@ type publicServiceClient struct {
 
 func NewPublicServiceClient(cc grpc.ClientConnInterface) PublicServiceClient {
 	return &publicServiceClient{cc}
+}
+
+func (c *publicServiceClient) Heartbeat(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error) {
+	out := new(ConnectPublicResponse)
+	err := c.cc.Invoke(ctx, "/NuntioConnect.PublicService/Heartbeat", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *publicServiceClient) ValidateLoginChallenge(ctx context.Context, in *ConnectPublicRequest, opts ...grpc.CallOption) (*ConnectPublicResponse, error) {
@@ -123,6 +132,7 @@ func (c *publicServiceClient) Verify(ctx context.Context, in *ConnectPublicReque
 // All implementations should embed UnimplementedPublicServiceServer
 // for forward compatibility
 type PublicServiceServer interface {
+	Heartbeat(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	ValidateLoginChallenge(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	Login(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
 	ValidateConsentChallenge(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error)
@@ -138,6 +148,9 @@ type PublicServiceServer interface {
 type UnimplementedPublicServiceServer struct {
 }
 
+func (UnimplementedPublicServiceServer) Heartbeat(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Heartbeat not implemented")
+}
 func (UnimplementedPublicServiceServer) ValidateLoginChallenge(context.Context, *ConnectPublicRequest) (*ConnectPublicResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ValidateLoginChallenge not implemented")
 }
@@ -175,6 +188,24 @@ type UnsafePublicServiceServer interface {
 
 func RegisterPublicServiceServer(s grpc.ServiceRegistrar, srv PublicServiceServer) {
 	s.RegisterService(&PublicService_ServiceDesc, srv)
+}
+
+func _PublicService_Heartbeat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConnectPublicRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PublicServiceServer).Heartbeat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/NuntioConnect.PublicService/Heartbeat",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PublicServiceServer).Heartbeat(ctx, req.(*ConnectPublicRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _PublicService_ValidateLoginChallenge_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -347,6 +378,10 @@ var PublicService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*PublicServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "Heartbeat",
+			Handler:    _PublicService_Heartbeat_Handler,
+		},
+		{
 			MethodName: "ValidateLoginChallenge",
 			Handler:    _PublicService_ValidateLoginChallenge_Handler,
 		},
@@ -391,7 +426,7 @@ var PublicService_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AdminServiceClient interface {
-	Heartbeat(ctx context.Context, in *nuntio.Request, opts ...grpc.CallOption) (*nuntio.Response, error)
+	Heartbeat(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminRequest, error)
 	CreateApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	GetAppById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateAppDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
@@ -409,8 +444,8 @@ func NewAdminServiceClient(cc grpc.ClientConnInterface) AdminServiceClient {
 	return &adminServiceClient{cc}
 }
 
-func (c *adminServiceClient) Heartbeat(ctx context.Context, in *nuntio.Request, opts ...grpc.CallOption) (*nuntio.Response, error) {
-	out := new(nuntio.Response)
+func (c *adminServiceClient) Heartbeat(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminRequest, error) {
+	out := new(ConnectAdminRequest)
 	err := c.cc.Invoke(ctx, "/NuntioConnect.AdminService/Heartbeat", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -485,7 +520,7 @@ func (c *adminServiceClient) DeleteApp(ctx context.Context, in *ConnectAdminRequ
 // All implementations should embed UnimplementedAdminServiceServer
 // for forward compatibility
 type AdminServiceServer interface {
-	Heartbeat(context.Context, *nuntio.Request) (*nuntio.Response, error)
+	Heartbeat(context.Context, *ConnectAdminRequest) (*ConnectAdminRequest, error)
 	CreateApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	GetAppById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateAppDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
@@ -499,7 +534,7 @@ type AdminServiceServer interface {
 type UnimplementedAdminServiceServer struct {
 }
 
-func (UnimplementedAdminServiceServer) Heartbeat(context.Context, *nuntio.Request) (*nuntio.Response, error) {
+func (UnimplementedAdminServiceServer) Heartbeat(context.Context, *ConnectAdminRequest) (*ConnectAdminRequest, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Heartbeat not implemented")
 }
 func (UnimplementedAdminServiceServer) CreateApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
@@ -536,7 +571,7 @@ func RegisterAdminServiceServer(s grpc.ServiceRegistrar, srv AdminServiceServer)
 }
 
 func _AdminService_Heartbeat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(nuntio.Request)
+	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -548,7 +583,7 @@ func _AdminService_Heartbeat_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/NuntioConnect.AdminService/Heartbeat",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminServiceServer).Heartbeat(ctx, req.(*nuntio.Request))
+		return srv.(AdminServiceServer).Heartbeat(ctx, req.(*ConnectAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

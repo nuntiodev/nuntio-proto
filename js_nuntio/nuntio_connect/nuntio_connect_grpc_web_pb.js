@@ -80,6 +80,67 @@ proto.NuntioConnect.PublicServicePromiseClient =
  *   !proto.NuntioConnect.ConnectPublicRequest,
  *   !proto.NuntioConnect.ConnectPublicResponse>}
  */
+const methodDescriptor_PublicService_Heartbeat = new grpc.web.MethodDescriptor(
+  '/NuntioConnect.PublicService/Heartbeat',
+  grpc.web.MethodType.UNARY,
+  proto.NuntioConnect.ConnectPublicRequest,
+  proto.NuntioConnect.ConnectPublicResponse,
+  /**
+   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.NuntioConnect.PublicServiceClient.prototype.heartbeat =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/NuntioConnect.PublicService/Heartbeat',
+      request,
+      metadata || {},
+      methodDescriptor_PublicService_Heartbeat,
+      callback);
+};
+
+
+/**
+ * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ *     Promise that resolves to the response
+ */
+proto.NuntioConnect.PublicServicePromiseClient.prototype.heartbeat =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/NuntioConnect.PublicService/Heartbeat',
+      request,
+      metadata || {},
+      methodDescriptor_PublicService_Heartbeat);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.NuntioConnect.ConnectPublicRequest,
+ *   !proto.NuntioConnect.ConnectPublicResponse>}
+ */
 const methodDescriptor_PublicService_ValidateLoginChallenge = new grpc.web.MethodDescriptor(
   '/NuntioConnect.PublicService/ValidateLoginChallenge',
   grpc.web.MethodType.UNARY,
@@ -678,33 +739,33 @@ proto.NuntioConnect.AdminServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.Nuntio.Request,
- *   !proto.Nuntio.Response>}
+ *   !proto.NuntioConnect.ConnectAdminRequest,
+ *   !proto.NuntioConnect.ConnectAdminRequest>}
  */
 const methodDescriptor_AdminService_Heartbeat = new grpc.web.MethodDescriptor(
   '/NuntioConnect.AdminService/Heartbeat',
   grpc.web.MethodType.UNARY,
-  nuntio_pb.Request,
-  nuntio_pb.Response,
+  proto.NuntioConnect.ConnectAdminRequest,
+  proto.NuntioConnect.ConnectAdminRequest,
   /**
-   * @param {!proto.Nuntio.Request} request
+   * @param {!proto.NuntioConnect.ConnectAdminRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  nuntio_pb.Response.deserializeBinary
+  proto.NuntioConnect.ConnectAdminRequest.deserializeBinary
 );
 
 
 /**
- * @param {!proto.Nuntio.Request} request The
+ * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.Nuntio.Response)}
+ * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminRequest)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.Nuntio.Response>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminRequest>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.NuntioConnect.AdminServiceClient.prototype.heartbeat =
@@ -719,11 +780,11 @@ proto.NuntioConnect.AdminServiceClient.prototype.heartbeat =
 
 
 /**
- * @param {!proto.Nuntio.Request} request The
+ * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.Nuntio.Response>}
+ * @return {!Promise<!proto.NuntioConnect.ConnectAdminRequest>}
  *     Promise that resolves to the response
  */
 proto.NuntioConnect.AdminServicePromiseClient.prototype.heartbeat =
