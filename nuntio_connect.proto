@@ -21,7 +21,7 @@ service PublicService {
 }
 
 service AdminService {
-    rpc Heartbeat(ConnectAdminRequest) returns (ConnectAdminRequest) {}
+    rpc Heartbeat(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc CreateApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc GetAppById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateAppDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
