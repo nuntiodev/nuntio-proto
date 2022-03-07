@@ -740,13 +740,13 @@ proto.NuntioConnect.AdminServicePromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.NuntioConnect.ConnectAdminRequest,
- *   !proto.NuntioConnect.ConnectAdminRequest>}
+ *   !proto.NuntioConnect.ConnectAdminResponse>}
  */
 const methodDescriptor_AdminService_Heartbeat = new grpc.web.MethodDescriptor(
   '/NuntioConnect.AdminService/Heartbeat',
   grpc.web.MethodType.UNARY,
   proto.NuntioConnect.ConnectAdminRequest,
-  proto.NuntioConnect.ConnectAdminRequest,
+  proto.NuntioConnect.ConnectAdminResponse,
   /**
    * @param {!proto.NuntioConnect.ConnectAdminRequest} request
    * @return {!Uint8Array}
@@ -754,7 +754,7 @@ const methodDescriptor_AdminService_Heartbeat = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectAdminRequest.deserializeBinary
+  proto.NuntioConnect.ConnectAdminResponse.deserializeBinary
 );
 
 
@@ -763,9 +763,9 @@ const methodDescriptor_AdminService_Heartbeat = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminRequest)}
+ * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminRequest>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.NuntioConnect.AdminServiceClient.prototype.heartbeat =
@@ -784,7 +784,7 @@ proto.NuntioConnect.AdminServiceClient.prototype.heartbeat =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectAdminRequest>}
+ * @return {!Promise<!proto.NuntioConnect.ConnectAdminResponse>}
  *     Promise that resolves to the response
  */
 proto.NuntioConnect.AdminServicePromiseClient.prototype.heartbeat =

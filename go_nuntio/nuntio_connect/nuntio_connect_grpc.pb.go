@@ -426,7 +426,7 @@ var PublicService_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AdminServiceClient interface {
-	Heartbeat(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminRequest, error)
+	Heartbeat(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	CreateApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	GetAppById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateAppDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
@@ -444,8 +444,8 @@ func NewAdminServiceClient(cc grpc.ClientConnInterface) AdminServiceClient {
 	return &adminServiceClient{cc}
 }
 
-func (c *adminServiceClient) Heartbeat(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminRequest, error) {
-	out := new(ConnectAdminRequest)
+func (c *adminServiceClient) Heartbeat(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
+	out := new(ConnectAdminResponse)
 	err := c.cc.Invoke(ctx, "/NuntioConnect.AdminService/Heartbeat", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -520,7 +520,7 @@ func (c *adminServiceClient) DeleteApp(ctx context.Context, in *ConnectAdminRequ
 // All implementations should embed UnimplementedAdminServiceServer
 // for forward compatibility
 type AdminServiceServer interface {
-	Heartbeat(context.Context, *ConnectAdminRequest) (*ConnectAdminRequest, error)
+	Heartbeat(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	CreateApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	GetAppById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateAppDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
@@ -534,7 +534,7 @@ type AdminServiceServer interface {
 type UnimplementedAdminServiceServer struct {
 }
 
-func (UnimplementedAdminServiceServer) Heartbeat(context.Context, *ConnectAdminRequest) (*ConnectAdminRequest, error) {
+func (UnimplementedAdminServiceServer) Heartbeat(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Heartbeat not implemented")
 }
 func (UnimplementedAdminServiceServer) CreateApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
