@@ -8,6 +8,7 @@ import "google/protobuf/timestamp.proto";
 import "nuntio.proto";
 
 service PublicService {
+    rpc Heartbeat(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc ValidateLoginChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc Login(ConnectPublicRequest) returns (ConnectPublicResponse) {}
     rpc ValidateConsentChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
@@ -20,7 +21,7 @@ service PublicService {
 }
 
 service AdminService {
-    rpc Heartbeat(Nuntio.Request) returns (Nuntio.Response) {}
+    rpc Heartbeat(ConnectAdminRequest) returns (ConnectAdminRequest) {}
     rpc CreateApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc GetAppById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateAppDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}

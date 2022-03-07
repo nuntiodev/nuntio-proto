@@ -32,9 +32,3 @@ message CountryCode {
     CountryCodeType type = 1;
     string name = 2;
 }
-
-message Request {}
-
-message Response {
-    string msg = 1;
-}
