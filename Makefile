@@ -4,7 +4,7 @@ build-connect-go-proto:
 	
 .PHONY: build-connect-js-proto
 build-connect-js-proto:
-	protoc -I. nuntio_connect.proto --js_out=import_style=commonjs:./js_nuntio/nuntio_connect --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./js_nuntio/nuntio_connect
+	protoc -I. nuntio_connect.proto --js_out=import_style=commonjs:./js_nuntio --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./js_nuntio
 
 .PHONY: build-user-go-proto
 build-user-go-proto:
@@ -12,7 +12,7 @@ build-user-go-proto:
 	
 .PHONY: build-user-js-proto
 build-user-js-proto:
-	protoc -I. nuntio_user.proto --js_out=import_style=commonjs:./js_nuntio/nuntio_user --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./js_nuntio/nuntio_user
+	protoc -I. nuntio_user.proto --js_out=import_style=commonjs:./js_nuntio --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./js_nuntio
 
 .PHONY: build-go-proto
 build-user-go-proto:
@@ -20,7 +20,7 @@ build-user-go-proto:
 	
 .PHONY: build-js-proto
 build-js-proto:
-	protoc -I. nuntio.proto --js_out=import_style=commonjs:./js_nuntio/nuntio --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./js_nuntio/nuntio
+	protoc -I. nuntio.proto --js_out=import_style=commonjs:./js_nuntio --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./js_nuntio
 
 .PHONY: build-proto
 build-proto:
