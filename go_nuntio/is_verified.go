@@ -15,11 +15,11 @@ func (x *User) IsVerified() error {
 		return errors.New("users name is empty")
 	} else if x.Metadata.Verified == false {
 		return errors.New("verified is empty")
-	} else if x.Metadata.Gender == nuntio.Gender_INVALID_GENDER {
+	} else if x.Metadata.Gender == Gender_INVALID_GENDER {
 		return errors.New("invalid gender type")
-	} else if x.Metadata.CountryCode == nuntio.CountryCodeType_INVALID_COUNTRY {
+	} else if x.Metadata.CountryCode == CountryCodeType_INVALID_COUNTRY {
 		return errors.New("invalid country code")
-	} else if x.Metadata.VerificationProvider == nuntio.VerificationProviderType_INVALID {
+	} else if x.Metadata.VerificationProvider == VerificationProviderType_INVALID {
 		return errors.New("invalid verification provider")
 	}
 	return nil
