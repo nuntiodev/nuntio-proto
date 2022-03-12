@@ -2,8 +2,6 @@ package go_nuntio
 
 import (
 	"errors"
-
-	"github.com/softcorp-io/nuntio-proto/go_nuntio/nuntio"
 )
 
 func (x *User) IsVerified() error {
