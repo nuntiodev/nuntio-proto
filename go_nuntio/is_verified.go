@@ -1,4 +1,4 @@
-package nuntio_user
+package go_nuntio
 
 import (
 	"errors"

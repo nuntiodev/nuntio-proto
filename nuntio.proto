@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Nuntio;
 
-option go_package = "./go_nuntio/nuntio";
+option go_package = "./go_nuntio";
 
 enum CountryCodeType {
     INVALID_COUNTRY = 0;
