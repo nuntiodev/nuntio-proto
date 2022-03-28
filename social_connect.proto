@@ -36,15 +36,6 @@ enum Error {
     ERROR_REQUIRE_IDENTIFICATION = 1;
 }
 
-enum Timespan {
-    INVALID_TIMESPAN = 0;
-    TIMESPAN_DAY = 1;
-    TIMESPAN_WEEK = 2;
-    TIMESPAN_MONTH = 3;
-    TIMESPAN_YEAR = 4;
-    TIMESPAN_ALL = 5;
-}
-
 enum ScopeType {
     INVALID_SCOPE = 0;
     DEFAULT_SCOPE = 1;
@@ -54,53 +45,6 @@ enum ScopeType {
     BIRTHDAY_SCOPE = 5;
     COUNTRY_SCOPE = 6;
     EMAIL_SCOPE = 7;
-}
-enum AgeGroup {
-    AGE_GROUP_INVALID = 0;
-    AGE_GROUP_1_12 = 1;
-    AGE_GROUP_13_19 = 2;
-    AGE_GROUP_20_29 = 3;
-    AGE_GROUP_30_39 = 4;
-    AGE_GROUP_40_49 = 5;
-    AGE_GROUP_50_59 = 6;
-    AGE_GROUP_60_69 = 7;
-    AGE_GROUP_70_79 = 8;
-    AGE_GROUP_80_89 = 9;
-    AGE_GROUP_90_99 = 10;
-    AGE_GROUP_100_120 = 11;
-}
-
-message ConnectMetric {
-    google.protobuf.Timestamp date = 1;
-    int32 number_of_requests = 2;
-    int32 number_of_consent_true = 3;
-    int32 number_of_consent_false = 4;
-    int32 number_of_users_validated = 5;
-    int32 number_of_users_not_validated = 6;
-    int32 number_of_age_group_invalid = 7;
-    int32 number_of_age_group_1to_12 = 8;
-    int32 number_of_age_group_13_to_19 = 9;
-    int32 number_of_age_group_20_to_29 = 10;
-    int32 number_of_age_group_30_to_39 = 11;
-    int32 number_of_age_group_40_to_49 = 12;
-    int32 number_of_age_group_50_to_59 = 13;
-    int32 number_of_age_group_60_to_69 = 14;
-    int32 number_of_age_group_70_to_79 = 15;
-    int32 number_of_age_group_80_to_89 = 16;
-    int32 number_of_age_group_90_to_99 = 17;
-    int32 number_of_age_group_100_to_120 = 18;
-    int32 number_of_gender_invalid = 19;
-    int32 number_of_females = 20;
-    int32 number_of_males = 21;
-    int32 number_of_others = 22;
-    int32 amount_from_country_invalid = 23;
-    int32 amount_from_dk = 24;
-    int32 amount_from_no = 25;
-    int32 amount_from_de = 26;
-}
-
-message ConnectMetrics {
-    repeated ConnectMetric metrics = 1;
 }
 
 message Scope {
@@ -135,7 +79,7 @@ enum ResponeType {
     ID_RESPONSE = 3;
 }
 
-message OauthResponse {
+message Response {
     ResponeType response_type = 1;
     string name = 2;
 }
@@ -162,15 +106,15 @@ message ClientApp {
     string terms_url = 8;
     ClientMetadata client_metadata = 9;
     repeated string audience = 10;
-    repeated Scope scopes = 11;
+    map<ScopeType, bool> scopes = 11;
     repeated Grant grants = 12;
-    repeated OauthResponse responses = 13;
+    repeated Response responses = 13;
     repeated string callbacks = 14;
     google.protobuf.Timestamp created_at = 15;
     google.protobuf.Timestamp updated_at = 16;
     repeated Scope available_scopes = 17;
     repeated Grant available_grants = 18;
-    repeated OauthResponse available_responses = 19;
+    repeated hResponse available_responses = 19;
     repeated Social.CountryCode available_countries = 20;
 }
 
