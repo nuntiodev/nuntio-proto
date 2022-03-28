@@ -125,7 +125,7 @@ message ConnectPublicRequest {
     bool consent = 5;
     string jwt_verification_token = 6;
     Social.VerificationProvider verification_provider = 7;
-    string authToken = 8;
+    string auth_token = 8;
 }
 
 message ConnectPublicResponse {
