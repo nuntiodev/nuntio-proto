@@ -27,7 +27,6 @@ service AdminConnectService {
     rpc UpdateAppDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateAppOAuth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateAppSecurity(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc GetAppMetrics(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc DeleteApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
 }
 
@@ -138,10 +137,8 @@ message ConnectPublicResponse {
 
 message ConnectAdminRequest {
     ClientApp app = 1;
-    Timespan timespan = 2;
 }
 
 message ConnectAdminResponse {
     ClientApp app = 1;
-    map<int32, ConnectMetrics> metrics = 2;
 }
