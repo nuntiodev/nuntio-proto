@@ -105,9 +105,9 @@ message ClientApp {
     string terms_url = 8;
     ClientMetadata client_metadata = 9;
     repeated string audience = 10;
-    map<ScopeType, bool> scopes = 11;
-    map<GrantType, bool> grants = 12;
-    map<ResponseType, bool> responses = 13;
+    repeated ScopeType scopes = 11;
+    repeated GrantType grants = 12;
+    repeated ResponseType responses = 13;
     repeated string callbacks = 14;
     google.protobuf.Timestamp created_at = 15;
     google.protobuf.Timestamp updated_at = 16;
