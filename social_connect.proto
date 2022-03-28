@@ -71,7 +71,7 @@ message Grant {
     string name = 2;
 }
 
-enum ResponeType {
+enum ResponseType {
     INVALID_RESPONSE = 0;
     CODE_RESPONSE = 1;
     TOKEN_RESPONSE = 2;
@@ -79,7 +79,7 @@ enum ResponeType {
 }
 
 message Response {
-    ResponeType response_type = 1;
+    ResponseType response_type = 1;
     string name = 2;
 }
 
