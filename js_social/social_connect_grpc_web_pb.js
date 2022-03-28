@@ -1108,67 +1108,6 @@ proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateAppSecurity
  *   !proto.SocialConnect.ConnectAdminRequest,
  *   !proto.SocialConnect.ConnectAdminResponse>}
  */
-const methodDescriptor_AdminConnectService_GetAppMetrics = new grpc.web.MethodDescriptor(
-  '/SocialConnect.AdminConnectService/GetAppMetrics',
-  grpc.web.MethodType.UNARY,
-  proto.SocialConnect.ConnectAdminRequest,
-  proto.SocialConnect.ConnectAdminResponse,
-  /**
-   * @param {!proto.SocialConnect.ConnectAdminRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.SocialConnect.ConnectAdminResponse.deserializeBinary
-);
-
-
-/**
- * @param {!proto.SocialConnect.ConnectAdminRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.SocialConnect.ConnectAdminResponse)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.SocialConnect.ConnectAdminResponse>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.SocialConnect.AdminConnectServiceClient.prototype.getAppMetrics =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/GetAppMetrics',
-      request,
-      metadata || {},
-      methodDescriptor_AdminConnectService_GetAppMetrics,
-      callback);
-};
-
-
-/**
- * @param {!proto.SocialConnect.ConnectAdminRequest} request The
- *     request proto
- * @param {?Object<string, string>=} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.SocialConnect.ConnectAdminResponse>}
- *     Promise that resolves to the response
- */
-proto.SocialConnect.AdminConnectServicePromiseClient.prototype.getAppMetrics =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/GetAppMetrics',
-      request,
-      metadata || {},
-      methodDescriptor_AdminConnectService_GetAppMetrics);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.SocialConnect.ConnectAdminRequest,
- *   !proto.SocialConnect.ConnectAdminResponse>}
- */
 const methodDescriptor_AdminConnectService_DeleteApp = new grpc.web.MethodDescriptor(
   '/SocialConnect.AdminConnectService/DeleteApp',
   grpc.web.MethodType.UNARY,

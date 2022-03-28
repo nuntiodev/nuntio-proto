@@ -432,7 +432,6 @@ type AdminConnectServiceClient interface {
 	UpdateAppDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateAppOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateAppSecurity(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	GetAppMetrics(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	DeleteApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 }
 
@@ -498,15 +497,6 @@ func (c *adminConnectServiceClient) UpdateAppSecurity(ctx context.Context, in *C
 	return out, nil
 }
 
-func (c *adminConnectServiceClient) GetAppMetrics(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
-	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/GetAppMetrics", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *adminConnectServiceClient) DeleteApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
 	out := new(ConnectAdminResponse)
 	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/DeleteApp", in, out, opts...)
@@ -526,7 +516,6 @@ type AdminConnectServiceServer interface {
 	UpdateAppDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateAppOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateAppSecurity(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	GetAppMetrics(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	DeleteApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 }
 
@@ -551,9 +540,6 @@ func (UnimplementedAdminConnectServiceServer) UpdateAppOAuth(context.Context, *C
 }
 func (UnimplementedAdminConnectServiceServer) UpdateAppSecurity(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppSecurity not implemented")
-}
-func (UnimplementedAdminConnectServiceServer) GetAppMetrics(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAppMetrics not implemented")
 }
 func (UnimplementedAdminConnectServiceServer) DeleteApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteApp not implemented")
@@ -678,24 +664,6 @@ func _AdminConnectService_UpdateAppSecurity_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AdminConnectService_GetAppMetrics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConnectAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AdminConnectServiceServer).GetAppMetrics(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/SocialConnect.AdminConnectService/GetAppMetrics",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminConnectServiceServer).GetAppMetrics(ctx, req.(*ConnectAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AdminConnectService_DeleteApp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
@@ -744,10 +712,6 @@ var AdminConnectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateAppSecurity",
 			Handler:    _AdminConnectService_UpdateAppSecurity_Handler,
-		},
-		{
-			MethodName: "GetAppMetrics",
-			Handler:    _AdminConnectService_GetAppMetrics_Handler,
 		},
 		{
 			MethodName: "DeleteApp",
