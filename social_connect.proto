@@ -106,14 +106,14 @@ message ClientApp {
     ClientMetadata client_metadata = 9;
     repeated string audience = 10;
     map<ScopeType, bool> scopes = 11;
-    repeated Grant grants = 12;
-    repeated Response responses = 13;
+    map<GrantType, bool> grants = 12;
+    map<ResponseType, bool> responses = 13;
     repeated string callbacks = 14;
     google.protobuf.Timestamp created_at = 15;
     google.protobuf.Timestamp updated_at = 16;
     repeated Scope available_scopes = 17;
     repeated Grant available_grants = 18;
-    repeated hResponse available_responses = 19;
+    repeated Response available_responses = 19;
     repeated Social.CountryCode available_countries = 20;
 }
 
