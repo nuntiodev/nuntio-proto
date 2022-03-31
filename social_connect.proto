@@ -25,7 +25,7 @@ service AdminConnectService {
     rpc Create(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc GetById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc UpdateDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc UpdateOAuth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc UpdateOauth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
     rpc Delete(ConnectAdminRequest) returns (ConnectAdminResponse) {}
 }
 
