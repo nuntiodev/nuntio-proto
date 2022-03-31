@@ -1022,8 +1022,7 @@ proto.SocialConnect.ClientMetadata.toObject = function(includeInstance, msg) {
     ownerId: jspb.Message.getFieldWithDefault(msg, 4, ""),
     ageLowerLimit: jspb.Message.getFieldWithDefault(msg, 5, 0),
     ageUpperLimit: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    allowedCountriesList: jspb.Message.toObjectList(msg.getAllowedCountriesList(),
-    social_pb.CountryCode.toObject, includeInstance),
+    allowedCountriesList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
     onlyVerifiedUsers: jspb.Message.getBooleanFieldWithDefault(msg, 8, false)
   };
 
@@ -1086,9 +1085,10 @@ proto.SocialConnect.ClientMetadata.deserializeBinaryFromReader = function(msg, r
       msg.setAgeUpperLimit(value);
       break;
     case 7:
-      var value = new social_pb.CountryCode;
-      reader.readMessage(value,social_pb.CountryCode.deserializeBinaryFromReader);
-      msg.addAllowedCountries(value);
+      var values = /** @type {!Array<!proto.Social.CountryCode>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addAllowedCountries(values[i]);
+      }
       break;
     case 8:
       var value = /** @type {boolean} */ (reader.readBool());
@@ -1167,10 +1167,9 @@ proto.SocialConnect.ClientMetadata.serializeBinaryToWriter = function(message, w
   }
   f = message.getAllowedCountriesList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writePackedEnum(
       7,
-      f,
-      social_pb.CountryCode.serializeBinaryToWriter
+      f
     );
   }
   f = message.getOnlyVerifiedUsers();
@@ -1315,27 +1314,26 @@ proto.SocialConnect.ClientMetadata.prototype.setAgeUpperLimit = function(value) 
  * @return {!Array<!proto.Social.CountryCode>}
  */
 proto.SocialConnect.ClientMetadata.prototype.getAllowedCountriesList = function() {
-  return /** @type{!Array<!proto.Social.CountryCode>} */ (
-    jspb.Message.getRepeatedWrapperField(this, social_pb.CountryCode, 7));
+  return /** @type {!Array<!proto.Social.CountryCode>} */ (jspb.Message.getRepeatedField(this, 7));
 };
 
 
 /**
  * @param {!Array<!proto.Social.CountryCode>} value
  * @return {!proto.SocialConnect.ClientMetadata} returns this
-*/
+ */
 proto.SocialConnect.ClientMetadata.prototype.setAllowedCountriesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 7, value);
+  return jspb.Message.setField(this, 7, value || []);
 };
 
 
 /**
- * @param {!proto.Social.CountryCode=} opt_value
+ * @param {!proto.Social.CountryCode} value
  * @param {number=} opt_index
- * @return {!proto.Social.CountryCode}
+ * @return {!proto.SocialConnect.ClientMetadata} returns this
  */
-proto.SocialConnect.ClientMetadata.prototype.addAllowedCountries = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 7, opt_value, proto.Social.CountryCode, opt_index);
+proto.SocialConnect.ClientMetadata.prototype.addAllowedCountries = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
 };
 
 
@@ -1428,7 +1426,7 @@ proto.SocialConnect.ClientApp.toObject = function(includeInstance, msg) {
     availableResponsesList: jspb.Message.toObjectList(msg.getAvailableResponsesList(),
     proto.SocialConnect.Response.toObject, includeInstance),
     availableCountriesList: jspb.Message.toObjectList(msg.getAvailableCountriesList(),
-    social_pb.CountryCode.toObject, includeInstance)
+    social_pb.Country.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1554,8 +1552,8 @@ proto.SocialConnect.ClientApp.deserializeBinaryFromReader = function(msg, reader
       msg.addAvailableResponses(value);
       break;
     case 20:
-      var value = new social_pb.CountryCode;
-      reader.readMessage(value,social_pb.CountryCode.deserializeBinaryFromReader);
+      var value = new social_pb.Country;
+      reader.readMessage(value,social_pb.Country.deserializeBinaryFromReader);
       msg.addAvailableCountries(value);
       break;
     default:
@@ -1731,7 +1729,7 @@ proto.SocialConnect.ClientApp.serializeBinaryToWriter = function(message, writer
     writer.writeRepeatedMessage(
       20,
       f,
-      social_pb.CountryCode.serializeBinaryToWriter
+      social_pb.Country.serializeBinaryToWriter
     );
   }
 };
@@ -2292,17 +2290,17 @@ proto.SocialConnect.ClientApp.prototype.clearAvailableResponsesList = function()
 
 
 /**
- * repeated Social.CountryCode available_countries = 20;
- * @return {!Array<!proto.Social.CountryCode>}
+ * repeated Social.Country available_countries = 20;
+ * @return {!Array<!proto.Social.Country>}
  */
 proto.SocialConnect.ClientApp.prototype.getAvailableCountriesList = function() {
-  return /** @type{!Array<!proto.Social.CountryCode>} */ (
-    jspb.Message.getRepeatedWrapperField(this, social_pb.CountryCode, 20));
+  return /** @type{!Array<!proto.Social.Country>} */ (
+    jspb.Message.getRepeatedWrapperField(this, social_pb.Country, 20));
 };
 
 
 /**
- * @param {!Array<!proto.Social.CountryCode>} value
+ * @param {!Array<!proto.Social.Country>} value
  * @return {!proto.SocialConnect.ClientApp} returns this
 */
 proto.SocialConnect.ClientApp.prototype.setAvailableCountriesList = function(value) {
@@ -2311,12 +2309,12 @@ proto.SocialConnect.ClientApp.prototype.setAvailableCountriesList = function(val
 
 
 /**
- * @param {!proto.Social.CountryCode=} opt_value
+ * @param {!proto.Social.Country=} opt_value
  * @param {number=} opt_index
- * @return {!proto.Social.CountryCode}
+ * @return {!proto.Social.Country}
  */
 proto.SocialConnect.ClientApp.prototype.addAvailableCountries = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 20, opt_value, proto.Social.CountryCode, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 20, opt_value, proto.Social.Country, opt_index);
 };
 
 

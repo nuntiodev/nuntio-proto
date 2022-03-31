@@ -467,7 +467,7 @@ proto.SocialUser.UserMetadata.deserializeBinaryFromReader = function(msg, reader
       msg.setName(value);
       break;
     case 3:
-      var value = /** @type {!proto.Social.CountryCodeType} */ (reader.readEnum());
+      var value = /** @type {!proto.Social.CountryCode} */ (reader.readEnum());
       msg.setCountryCode(value);
       break;
     case 4:
@@ -626,16 +626,16 @@ proto.SocialUser.UserMetadata.prototype.setName = function(value) {
 
 
 /**
- * optional Social.CountryCodeType country_code = 3;
- * @return {!proto.Social.CountryCodeType}
+ * optional Social.CountryCode country_code = 3;
+ * @return {!proto.Social.CountryCode}
  */
 proto.SocialUser.UserMetadata.prototype.getCountryCode = function() {
-  return /** @type {!proto.Social.CountryCodeType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {!proto.Social.CountryCode} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {!proto.Social.CountryCodeType} value
+ * @param {!proto.Social.CountryCode} value
  * @return {!proto.SocialUser.UserMetadata} returns this
  */
 proto.SocialUser.UserMetadata.prototype.setCountryCode = function(value) {

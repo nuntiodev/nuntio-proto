@@ -21,8 +21,8 @@ var global = (function() {
   return Function('return this')();
 }.call(null));
 
+goog.exportSymbol('proto.Social.Country', null, global);
 goog.exportSymbol('proto.Social.CountryCode', null, global);
-goog.exportSymbol('proto.Social.CountryCodeType', null, global);
 goog.exportSymbol('proto.Social.Gender', null, global);
 goog.exportSymbol('proto.Social.VerificationProvider', null, global);
 goog.exportSymbol('proto.Social.VerificationProviderType', null, global);
@@ -57,16 +57,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.Social.CountryCode = function(opt_data) {
+proto.Social.Country = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.Social.CountryCode, jspb.Message);
+goog.inherits(proto.Social.Country, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.Social.CountryCode.displayName = 'proto.Social.CountryCode';
+  proto.Social.Country.displayName = 'proto.Social.Country';
 }
 
 
@@ -244,8 +244,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.Social.CountryCode.prototype.toObject = function(opt_includeInstance) {
-  return proto.Social.CountryCode.toObject(opt_includeInstance, this);
+proto.Social.Country.prototype.toObject = function(opt_includeInstance) {
+  return proto.Social.Country.toObject(opt_includeInstance, this);
 };
 
 
@@ -254,13 +254,13 @@ proto.Social.CountryCode.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.Social.CountryCode} msg The msg instance to transform.
+ * @param {!proto.Social.Country} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.Social.CountryCode.toObject = function(includeInstance, msg) {
+proto.Social.Country.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    countryCode: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
@@ -275,23 +275,23 @@ proto.Social.CountryCode.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.Social.CountryCode}
+ * @return {!proto.Social.Country}
  */
-proto.Social.CountryCode.deserializeBinary = function(bytes) {
+proto.Social.Country.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.Social.CountryCode;
-  return proto.Social.CountryCode.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.Social.Country;
+  return proto.Social.Country.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.Social.CountryCode} msg The message object to deserialize into.
+ * @param {!proto.Social.Country} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.Social.CountryCode}
+ * @return {!proto.Social.Country}
  */
-proto.Social.CountryCode.deserializeBinaryFromReader = function(msg, reader) {
+proto.Social.Country.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -299,8 +299,8 @@ proto.Social.CountryCode.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.Social.CountryCodeType} */ (reader.readEnum());
-      msg.setType(value);
+      var value = /** @type {!proto.Social.CountryCode} */ (reader.readEnum());
+      msg.setCountryCode(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -319,9 +319,9 @@ proto.Social.CountryCode.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.Social.CountryCode.prototype.serializeBinary = function() {
+proto.Social.Country.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.Social.CountryCode.serializeBinaryToWriter(this, writer);
+  proto.Social.Country.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -329,13 +329,13 @@ proto.Social.CountryCode.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.Social.CountryCode} message
+ * @param {!proto.Social.Country} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.Social.CountryCode.serializeBinaryToWriter = function(message, writer) {
+proto.Social.Country.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getType();
+  f = message.getCountryCode();
   if (f !== 0.0) {
     writer.writeEnum(
       1,
@@ -353,19 +353,19 @@ proto.Social.CountryCode.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional CountryCodeType type = 1;
- * @return {!proto.Social.CountryCodeType}
+ * optional CountryCode country_code = 1;
+ * @return {!proto.Social.CountryCode}
  */
-proto.Social.CountryCode.prototype.getType = function() {
-  return /** @type {!proto.Social.CountryCodeType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.Social.Country.prototype.getCountryCode = function() {
+  return /** @type {!proto.Social.CountryCode} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.Social.CountryCodeType} value
- * @return {!proto.Social.CountryCode} returns this
+ * @param {!proto.Social.CountryCode} value
+ * @return {!proto.Social.Country} returns this
  */
-proto.Social.CountryCode.prototype.setType = function(value) {
+proto.Social.Country.prototype.setCountryCode = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -374,16 +374,16 @@ proto.Social.CountryCode.prototype.setType = function(value) {
  * optional string name = 2;
  * @return {string}
  */
-proto.Social.CountryCode.prototype.getName = function() {
+proto.Social.Country.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.Social.CountryCode} returns this
+ * @return {!proto.Social.Country} returns this
  */
-proto.Social.CountryCode.prototype.setName = function(value) {
+proto.Social.Country.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -391,7 +391,7 @@ proto.Social.CountryCode.prototype.setName = function(value) {
 /**
  * @enum {number}
  */
-proto.Social.CountryCodeType = {
+proto.Social.CountryCode = {
   INVALID_COUNTRY: 0,
   COUTRY_DK: 1,
   COUNTRY_NO: 2,
