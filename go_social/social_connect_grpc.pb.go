@@ -427,12 +427,11 @@ var PublicConnectService_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AdminConnectServiceClient interface {
 	Heartbeat(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	CreateApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	GetAppById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	UpdateAppDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	UpdateAppOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	UpdateAppSecurity(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	DeleteApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
+	Create(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
+	GetById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
+	UpdateDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
+	UpdateOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
+	Delete(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 }
 
 type adminConnectServiceClient struct {
@@ -452,54 +451,45 @@ func (c *adminConnectServiceClient) Heartbeat(ctx context.Context, in *ConnectAd
 	return out, nil
 }
 
-func (c *adminConnectServiceClient) CreateApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
+func (c *adminConnectServiceClient) Create(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
 	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/CreateApp", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *adminConnectServiceClient) GetAppById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
+func (c *adminConnectServiceClient) GetById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
 	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/GetAppById", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/GetById", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *adminConnectServiceClient) UpdateAppDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
+func (c *adminConnectServiceClient) UpdateDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
 	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/UpdateAppDetails", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/UpdateDetails", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *adminConnectServiceClient) UpdateAppOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
+func (c *adminConnectServiceClient) UpdateOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
 	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/UpdateAppOAuth", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/UpdateOAuth", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *adminConnectServiceClient) UpdateAppSecurity(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
+func (c *adminConnectServiceClient) Delete(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
 	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/UpdateAppSecurity", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *adminConnectServiceClient) DeleteApp(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
-	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/DeleteApp", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -511,12 +501,11 @@ func (c *adminConnectServiceClient) DeleteApp(ctx context.Context, in *ConnectAd
 // for forward compatibility
 type AdminConnectServiceServer interface {
 	Heartbeat(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	CreateApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	GetAppById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	UpdateAppDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	UpdateAppOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	UpdateAppSecurity(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	DeleteApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
+	Create(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
+	GetById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
+	UpdateDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
+	UpdateOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
+	Delete(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 }
 
 // UnimplementedAdminConnectServiceServer should be embedded to have forward compatible implementations.
@@ -526,23 +515,20 @@ type UnimplementedAdminConnectServiceServer struct {
 func (UnimplementedAdminConnectServiceServer) Heartbeat(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Heartbeat not implemented")
 }
-func (UnimplementedAdminConnectServiceServer) CreateApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateApp not implemented")
+func (UnimplementedAdminConnectServiceServer) Create(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedAdminConnectServiceServer) GetAppById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAppById not implemented")
+func (UnimplementedAdminConnectServiceServer) GetById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
 }
-func (UnimplementedAdminConnectServiceServer) UpdateAppDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppDetails not implemented")
+func (UnimplementedAdminConnectServiceServer) UpdateDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDetails not implemented")
 }
-func (UnimplementedAdminConnectServiceServer) UpdateAppOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppOAuth not implemented")
+func (UnimplementedAdminConnectServiceServer) UpdateOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOAuth not implemented")
 }
-func (UnimplementedAdminConnectServiceServer) UpdateAppSecurity(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppSecurity not implemented")
-}
-func (UnimplementedAdminConnectServiceServer) DeleteApp(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteApp not implemented")
+func (UnimplementedAdminConnectServiceServer) Delete(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 
 // UnsafeAdminConnectServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -574,110 +560,92 @@ func _AdminConnectService_Heartbeat_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AdminConnectService_CreateApp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AdminConnectService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AdminConnectServiceServer).CreateApp(ctx, in)
+		return srv.(AdminConnectServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SocialConnect.AdminConnectService/CreateApp",
+		FullMethod: "/SocialConnect.AdminConnectService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminConnectServiceServer).CreateApp(ctx, req.(*ConnectAdminRequest))
+		return srv.(AdminConnectServiceServer).Create(ctx, req.(*ConnectAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AdminConnectService_GetAppById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AdminConnectService_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AdminConnectServiceServer).GetAppById(ctx, in)
+		return srv.(AdminConnectServiceServer).GetById(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SocialConnect.AdminConnectService/GetAppById",
+		FullMethod: "/SocialConnect.AdminConnectService/GetById",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminConnectServiceServer).GetAppById(ctx, req.(*ConnectAdminRequest))
+		return srv.(AdminConnectServiceServer).GetById(ctx, req.(*ConnectAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AdminConnectService_UpdateAppDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AdminConnectService_UpdateDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AdminConnectServiceServer).UpdateAppDetails(ctx, in)
+		return srv.(AdminConnectServiceServer).UpdateDetails(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SocialConnect.AdminConnectService/UpdateAppDetails",
+		FullMethod: "/SocialConnect.AdminConnectService/UpdateDetails",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminConnectServiceServer).UpdateAppDetails(ctx, req.(*ConnectAdminRequest))
+		return srv.(AdminConnectServiceServer).UpdateDetails(ctx, req.(*ConnectAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AdminConnectService_UpdateAppOAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AdminConnectService_UpdateOAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AdminConnectServiceServer).UpdateAppOAuth(ctx, in)
+		return srv.(AdminConnectServiceServer).UpdateOAuth(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SocialConnect.AdminConnectService/UpdateAppOAuth",
+		FullMethod: "/SocialConnect.AdminConnectService/UpdateOAuth",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminConnectServiceServer).UpdateAppOAuth(ctx, req.(*ConnectAdminRequest))
+		return srv.(AdminConnectServiceServer).UpdateOAuth(ctx, req.(*ConnectAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AdminConnectService_UpdateAppSecurity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AdminConnectService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AdminConnectServiceServer).UpdateAppSecurity(ctx, in)
+		return srv.(AdminConnectServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SocialConnect.AdminConnectService/UpdateAppSecurity",
+		FullMethod: "/SocialConnect.AdminConnectService/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminConnectServiceServer).UpdateAppSecurity(ctx, req.(*ConnectAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AdminConnectService_DeleteApp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConnectAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AdminConnectServiceServer).DeleteApp(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/SocialConnect.AdminConnectService/DeleteApp",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminConnectServiceServer).DeleteApp(ctx, req.(*ConnectAdminRequest))
+		return srv.(AdminConnectServiceServer).Delete(ctx, req.(*ConnectAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -694,28 +662,24 @@ var AdminConnectService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AdminConnectService_Heartbeat_Handler,
 		},
 		{
-			MethodName: "CreateApp",
-			Handler:    _AdminConnectService_CreateApp_Handler,
+			MethodName: "Create",
+			Handler:    _AdminConnectService_Create_Handler,
 		},
 		{
-			MethodName: "GetAppById",
-			Handler:    _AdminConnectService_GetAppById_Handler,
+			MethodName: "GetById",
+			Handler:    _AdminConnectService_GetById_Handler,
 		},
 		{
-			MethodName: "UpdateAppDetails",
-			Handler:    _AdminConnectService_UpdateAppDetails_Handler,
+			MethodName: "UpdateDetails",
+			Handler:    _AdminConnectService_UpdateDetails_Handler,
 		},
 		{
-			MethodName: "UpdateAppOAuth",
-			Handler:    _AdminConnectService_UpdateAppOAuth_Handler,
+			MethodName: "UpdateOAuth",
+			Handler:    _AdminConnectService_UpdateOAuth_Handler,
 		},
 		{
-			MethodName: "UpdateAppSecurity",
-			Handler:    _AdminConnectService_UpdateAppSecurity_Handler,
-		},
-		{
-			MethodName: "DeleteApp",
-			Handler:    _AdminConnectService_DeleteApp_Handler,
+			MethodName: "Delete",
+			Handler:    _AdminConnectService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
