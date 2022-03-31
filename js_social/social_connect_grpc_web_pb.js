@@ -803,8 +803,8 @@ proto.SocialConnect.AdminConnectServicePromiseClient.prototype.heartbeat =
  *   !proto.SocialConnect.ConnectAdminRequest,
  *   !proto.SocialConnect.ConnectAdminResponse>}
  */
-const methodDescriptor_AdminConnectService_CreateApp = new grpc.web.MethodDescriptor(
-  '/SocialConnect.AdminConnectService/CreateApp',
+const methodDescriptor_AdminConnectService_Create = new grpc.web.MethodDescriptor(
+  '/SocialConnect.AdminConnectService/Create',
   grpc.web.MethodType.UNARY,
   proto.SocialConnect.ConnectAdminRequest,
   proto.SocialConnect.ConnectAdminResponse,
@@ -829,13 +829,13 @@ const methodDescriptor_AdminConnectService_CreateApp = new grpc.web.MethodDescri
  * @return {!grpc.web.ClientReadableStream<!proto.SocialConnect.ConnectAdminResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.SocialConnect.AdminConnectServiceClient.prototype.createApp =
+proto.SocialConnect.AdminConnectServiceClient.prototype.create =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/CreateApp',
+      '/SocialConnect.AdminConnectService/Create',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_CreateApp,
+      methodDescriptor_AdminConnectService_Create,
       callback);
 };
 
@@ -848,13 +848,13 @@ proto.SocialConnect.AdminConnectServiceClient.prototype.createApp =
  * @return {!Promise<!proto.SocialConnect.ConnectAdminResponse>}
  *     Promise that resolves to the response
  */
-proto.SocialConnect.AdminConnectServicePromiseClient.prototype.createApp =
+proto.SocialConnect.AdminConnectServicePromiseClient.prototype.create =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/CreateApp',
+      '/SocialConnect.AdminConnectService/Create',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_CreateApp);
+      methodDescriptor_AdminConnectService_Create);
 };
 
 
@@ -864,8 +864,8 @@ proto.SocialConnect.AdminConnectServicePromiseClient.prototype.createApp =
  *   !proto.SocialConnect.ConnectAdminRequest,
  *   !proto.SocialConnect.ConnectAdminResponse>}
  */
-const methodDescriptor_AdminConnectService_GetAppById = new grpc.web.MethodDescriptor(
-  '/SocialConnect.AdminConnectService/GetAppById',
+const methodDescriptor_AdminConnectService_GetById = new grpc.web.MethodDescriptor(
+  '/SocialConnect.AdminConnectService/GetById',
   grpc.web.MethodType.UNARY,
   proto.SocialConnect.ConnectAdminRequest,
   proto.SocialConnect.ConnectAdminResponse,
@@ -890,13 +890,13 @@ const methodDescriptor_AdminConnectService_GetAppById = new grpc.web.MethodDescr
  * @return {!grpc.web.ClientReadableStream<!proto.SocialConnect.ConnectAdminResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.SocialConnect.AdminConnectServiceClient.prototype.getAppById =
+proto.SocialConnect.AdminConnectServiceClient.prototype.getById =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/GetAppById',
+      '/SocialConnect.AdminConnectService/GetById',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_GetAppById,
+      methodDescriptor_AdminConnectService_GetById,
       callback);
 };
 
@@ -909,13 +909,13 @@ proto.SocialConnect.AdminConnectServiceClient.prototype.getAppById =
  * @return {!Promise<!proto.SocialConnect.ConnectAdminResponse>}
  *     Promise that resolves to the response
  */
-proto.SocialConnect.AdminConnectServicePromiseClient.prototype.getAppById =
+proto.SocialConnect.AdminConnectServicePromiseClient.prototype.getById =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/GetAppById',
+      '/SocialConnect.AdminConnectService/GetById',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_GetAppById);
+      methodDescriptor_AdminConnectService_GetById);
 };
 
 
@@ -925,8 +925,8 @@ proto.SocialConnect.AdminConnectServicePromiseClient.prototype.getAppById =
  *   !proto.SocialConnect.ConnectAdminRequest,
  *   !proto.SocialConnect.ConnectAdminResponse>}
  */
-const methodDescriptor_AdminConnectService_UpdateAppDetails = new grpc.web.MethodDescriptor(
-  '/SocialConnect.AdminConnectService/UpdateAppDetails',
+const methodDescriptor_AdminConnectService_UpdateDetails = new grpc.web.MethodDescriptor(
+  '/SocialConnect.AdminConnectService/UpdateDetails',
   grpc.web.MethodType.UNARY,
   proto.SocialConnect.ConnectAdminRequest,
   proto.SocialConnect.ConnectAdminResponse,
@@ -951,13 +951,13 @@ const methodDescriptor_AdminConnectService_UpdateAppDetails = new grpc.web.Metho
  * @return {!grpc.web.ClientReadableStream<!proto.SocialConnect.ConnectAdminResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.SocialConnect.AdminConnectServiceClient.prototype.updateAppDetails =
+proto.SocialConnect.AdminConnectServiceClient.prototype.updateDetails =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/UpdateAppDetails',
+      '/SocialConnect.AdminConnectService/UpdateDetails',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateAppDetails,
+      methodDescriptor_AdminConnectService_UpdateDetails,
       callback);
 };
 
@@ -970,13 +970,13 @@ proto.SocialConnect.AdminConnectServiceClient.prototype.updateAppDetails =
  * @return {!Promise<!proto.SocialConnect.ConnectAdminResponse>}
  *     Promise that resolves to the response
  */
-proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateAppDetails =
+proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateDetails =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/UpdateAppDetails',
+      '/SocialConnect.AdminConnectService/UpdateDetails',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateAppDetails);
+      methodDescriptor_AdminConnectService_UpdateDetails);
 };
 
 
@@ -986,8 +986,8 @@ proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateAppDetails 
  *   !proto.SocialConnect.ConnectAdminRequest,
  *   !proto.SocialConnect.ConnectAdminResponse>}
  */
-const methodDescriptor_AdminConnectService_UpdateAppOAuth = new grpc.web.MethodDescriptor(
-  '/SocialConnect.AdminConnectService/UpdateAppOAuth',
+const methodDescriptor_AdminConnectService_UpdateOAuth = new grpc.web.MethodDescriptor(
+  '/SocialConnect.AdminConnectService/UpdateOAuth',
   grpc.web.MethodType.UNARY,
   proto.SocialConnect.ConnectAdminRequest,
   proto.SocialConnect.ConnectAdminResponse,
@@ -1012,13 +1012,13 @@ const methodDescriptor_AdminConnectService_UpdateAppOAuth = new grpc.web.MethodD
  * @return {!grpc.web.ClientReadableStream<!proto.SocialConnect.ConnectAdminResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.SocialConnect.AdminConnectServiceClient.prototype.updateAppOAuth =
+proto.SocialConnect.AdminConnectServiceClient.prototype.updateOAuth =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/UpdateAppOAuth',
+      '/SocialConnect.AdminConnectService/UpdateOAuth',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateAppOAuth,
+      methodDescriptor_AdminConnectService_UpdateOAuth,
       callback);
 };
 
@@ -1031,13 +1031,13 @@ proto.SocialConnect.AdminConnectServiceClient.prototype.updateAppOAuth =
  * @return {!Promise<!proto.SocialConnect.ConnectAdminResponse>}
  *     Promise that resolves to the response
  */
-proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateAppOAuth =
+proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateOAuth =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/UpdateAppOAuth',
+      '/SocialConnect.AdminConnectService/UpdateOAuth',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateAppOAuth);
+      methodDescriptor_AdminConnectService_UpdateOAuth);
 };
 
 
@@ -1047,8 +1047,8 @@ proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateAppOAuth =
  *   !proto.SocialConnect.ConnectAdminRequest,
  *   !proto.SocialConnect.ConnectAdminResponse>}
  */
-const methodDescriptor_AdminConnectService_UpdateAppSecurity = new grpc.web.MethodDescriptor(
-  '/SocialConnect.AdminConnectService/UpdateAppSecurity',
+const methodDescriptor_AdminConnectService_Delete = new grpc.web.MethodDescriptor(
+  '/SocialConnect.AdminConnectService/Delete',
   grpc.web.MethodType.UNARY,
   proto.SocialConnect.ConnectAdminRequest,
   proto.SocialConnect.ConnectAdminResponse,
@@ -1073,13 +1073,13 @@ const methodDescriptor_AdminConnectService_UpdateAppSecurity = new grpc.web.Meth
  * @return {!grpc.web.ClientReadableStream<!proto.SocialConnect.ConnectAdminResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.SocialConnect.AdminConnectServiceClient.prototype.updateAppSecurity =
+proto.SocialConnect.AdminConnectServiceClient.prototype.delete =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/UpdateAppSecurity',
+      '/SocialConnect.AdminConnectService/Delete',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateAppSecurity,
+      methodDescriptor_AdminConnectService_Delete,
       callback);
 };
 
@@ -1092,74 +1092,13 @@ proto.SocialConnect.AdminConnectServiceClient.prototype.updateAppSecurity =
  * @return {!Promise<!proto.SocialConnect.ConnectAdminResponse>}
  *     Promise that resolves to the response
  */
-proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateAppSecurity =
+proto.SocialConnect.AdminConnectServicePromiseClient.prototype.delete =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/UpdateAppSecurity',
+      '/SocialConnect.AdminConnectService/Delete',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateAppSecurity);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.SocialConnect.ConnectAdminRequest,
- *   !proto.SocialConnect.ConnectAdminResponse>}
- */
-const methodDescriptor_AdminConnectService_DeleteApp = new grpc.web.MethodDescriptor(
-  '/SocialConnect.AdminConnectService/DeleteApp',
-  grpc.web.MethodType.UNARY,
-  proto.SocialConnect.ConnectAdminRequest,
-  proto.SocialConnect.ConnectAdminResponse,
-  /**
-   * @param {!proto.SocialConnect.ConnectAdminRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.SocialConnect.ConnectAdminResponse.deserializeBinary
-);
-
-
-/**
- * @param {!proto.SocialConnect.ConnectAdminRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.SocialConnect.ConnectAdminResponse)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.SocialConnect.ConnectAdminResponse>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.SocialConnect.AdminConnectServiceClient.prototype.deleteApp =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/DeleteApp',
-      request,
-      metadata || {},
-      methodDescriptor_AdminConnectService_DeleteApp,
-      callback);
-};
-
-
-/**
- * @param {!proto.SocialConnect.ConnectAdminRequest} request The
- *     request proto
- * @param {?Object<string, string>=} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.SocialConnect.ConnectAdminResponse>}
- *     Promise that resolves to the response
- */
-proto.SocialConnect.AdminConnectServicePromiseClient.prototype.deleteApp =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/DeleteApp',
-      request,
-      metadata || {},
-      methodDescriptor_AdminConnectService_DeleteApp);
+      methodDescriptor_AdminConnectService_Delete);
 };
 
 
