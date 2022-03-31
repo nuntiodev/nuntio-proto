@@ -22,12 +22,11 @@ service PublicConnectService {
 
 service AdminConnectService {
     rpc Heartbeat(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc CreateApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc GetAppById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc UpdateAppDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc UpdateAppOAuth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc UpdateAppSecurity(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc DeleteApp(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc Create(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc GetById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc UpdateDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc UpdateOAuth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
+    rpc Delete(ConnectAdminRequest) returns (ConnectAdminResponse) {}
 }
 
 enum Error {
