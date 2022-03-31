@@ -430,7 +430,7 @@ type AdminConnectServiceClient interface {
 	Create(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	GetById(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	UpdateDetails(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
-	UpdateOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
+	UpdateOauth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 	Delete(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error)
 }
 
@@ -478,9 +478,9 @@ func (c *adminConnectServiceClient) UpdateDetails(ctx context.Context, in *Conne
 	return out, nil
 }
 
-func (c *adminConnectServiceClient) UpdateOAuth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
+func (c *adminConnectServiceClient) UpdateOauth(ctx context.Context, in *ConnectAdminRequest, opts ...grpc.CallOption) (*ConnectAdminResponse, error) {
 	out := new(ConnectAdminResponse)
-	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/UpdateOAuth", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/SocialConnect.AdminConnectService/UpdateOauth", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -504,7 +504,7 @@ type AdminConnectServiceServer interface {
 	Create(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	GetById(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	UpdateDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
-	UpdateOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
+	UpdateOauth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 	Delete(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error)
 }
 
@@ -524,8 +524,8 @@ func (UnimplementedAdminConnectServiceServer) GetById(context.Context, *ConnectA
 func (UnimplementedAdminConnectServiceServer) UpdateDetails(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDetails not implemented")
 }
-func (UnimplementedAdminConnectServiceServer) UpdateOAuth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateOAuth not implemented")
+func (UnimplementedAdminConnectServiceServer) UpdateOauth(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOauth not implemented")
 }
 func (UnimplementedAdminConnectServiceServer) Delete(context.Context, *ConnectAdminRequest) (*ConnectAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
@@ -614,20 +614,20 @@ func _AdminConnectService_UpdateDetails_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AdminConnectService_UpdateOAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AdminConnectService_UpdateOauth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AdminConnectServiceServer).UpdateOAuth(ctx, in)
+		return srv.(AdminConnectServiceServer).UpdateOauth(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SocialConnect.AdminConnectService/UpdateOAuth",
+		FullMethod: "/SocialConnect.AdminConnectService/UpdateOauth",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdminConnectServiceServer).UpdateOAuth(ctx, req.(*ConnectAdminRequest))
+		return srv.(AdminConnectServiceServer).UpdateOauth(ctx, req.(*ConnectAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -674,8 +674,8 @@ var AdminConnectService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AdminConnectService_UpdateDetails_Handler,
 		},
 		{
-			MethodName: "UpdateOAuth",
-			Handler:    _AdminConnectService_UpdateOAuth_Handler,
+			MethodName: "UpdateOauth",
+			Handler:    _AdminConnectService_UpdateOauth_Handler,
 		},
 		{
 			MethodName: "Delete",

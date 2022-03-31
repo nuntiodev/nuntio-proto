@@ -1308,7 +1308,7 @@ var file_social_connect_proto_rawDesc = []byte{
 	0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2e, 0x43,
 	0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x58, 0x0a, 0x0b, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f,
-	0x41, 0x75, 0x74, 0x68, 0x12, 0x22, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f, 0x6e,
+	0x61, 0x75, 0x74, 0x68, 0x12, 0x22, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f, 0x6e,
 	0x6e, 0x65, 0x63, 0x74, 0x2e, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x41, 0x64, 0x6d, 0x69,
 	0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61,
 	0x6c, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2e, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74,
@@ -1391,7 +1391,7 @@ var file_social_connect_proto_depIdxs = []int32{
 	11, // 31: SocialConnect.AdminConnectService.Create:input_type -> SocialConnect.ConnectAdminRequest
 	11, // 32: SocialConnect.AdminConnectService.GetById:input_type -> SocialConnect.ConnectAdminRequest
 	11, // 33: SocialConnect.AdminConnectService.UpdateDetails:input_type -> SocialConnect.ConnectAdminRequest
-	11, // 34: SocialConnect.AdminConnectService.UpdateOAuth:input_type -> SocialConnect.ConnectAdminRequest
+	11, // 34: SocialConnect.AdminConnectService.UpdateOauth:input_type -> SocialConnect.ConnectAdminRequest
 	11, // 35: SocialConnect.AdminConnectService.Delete:input_type -> SocialConnect.ConnectAdminRequest
 	10, // 36: SocialConnect.PublicConnectService.Heartbeat:output_type -> SocialConnect.ConnectPublicResponse
 	10, // 37: SocialConnect.PublicConnectService.ValidateLoginChallenge:output_type -> SocialConnect.ConnectPublicResponse
@@ -1407,7 +1407,7 @@ var file_social_connect_proto_depIdxs = []int32{
 	12, // 47: SocialConnect.AdminConnectService.Create:output_type -> SocialConnect.ConnectAdminResponse
 	12, // 48: SocialConnect.AdminConnectService.GetById:output_type -> SocialConnect.ConnectAdminResponse
 	12, // 49: SocialConnect.AdminConnectService.UpdateDetails:output_type -> SocialConnect.ConnectAdminResponse
-	12, // 50: SocialConnect.AdminConnectService.UpdateOAuth:output_type -> SocialConnect.ConnectAdminResponse
+	12, // 50: SocialConnect.AdminConnectService.UpdateOauth:output_type -> SocialConnect.ConnectAdminResponse
 	12, // 51: SocialConnect.AdminConnectService.Delete:output_type -> SocialConnect.ConnectAdminResponse
 	36, // [36:52] is the sub-list for method output_type
 	20, // [20:36] is the sub-list for method input_type

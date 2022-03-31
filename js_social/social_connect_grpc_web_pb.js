@@ -986,8 +986,8 @@ proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateDetails =
  *   !proto.SocialConnect.ConnectAdminRequest,
  *   !proto.SocialConnect.ConnectAdminResponse>}
  */
-const methodDescriptor_AdminConnectService_UpdateOAuth = new grpc.web.MethodDescriptor(
-  '/SocialConnect.AdminConnectService/UpdateOAuth',
+const methodDescriptor_AdminConnectService_UpdateOauth = new grpc.web.MethodDescriptor(
+  '/SocialConnect.AdminConnectService/UpdateOauth',
   grpc.web.MethodType.UNARY,
   proto.SocialConnect.ConnectAdminRequest,
   proto.SocialConnect.ConnectAdminResponse,
@@ -1012,13 +1012,13 @@ const methodDescriptor_AdminConnectService_UpdateOAuth = new grpc.web.MethodDesc
  * @return {!grpc.web.ClientReadableStream<!proto.SocialConnect.ConnectAdminResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.SocialConnect.AdminConnectServiceClient.prototype.updateOAuth =
+proto.SocialConnect.AdminConnectServiceClient.prototype.updateOauth =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/UpdateOAuth',
+      '/SocialConnect.AdminConnectService/UpdateOauth',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateOAuth,
+      methodDescriptor_AdminConnectService_UpdateOauth,
       callback);
 };
 
@@ -1031,13 +1031,13 @@ proto.SocialConnect.AdminConnectServiceClient.prototype.updateOAuth =
  * @return {!Promise<!proto.SocialConnect.ConnectAdminResponse>}
  *     Promise that resolves to the response
  */
-proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateOAuth =
+proto.SocialConnect.AdminConnectServicePromiseClient.prototype.updateOauth =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/SocialConnect.AdminConnectService/UpdateOAuth',
+      '/SocialConnect.AdminConnectService/UpdateOauth',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateOAuth);
+      methodDescriptor_AdminConnectService_UpdateOauth);
 };
 
 
