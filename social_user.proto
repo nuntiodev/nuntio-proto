@@ -18,7 +18,7 @@ message User {
 message UserMetadata {
     google.protobuf.Timestamp birthdate = 1;
     string name = 2;
-    Social.CountryCodeType country_code = 3;
+    Social.CountryCode country_code = 3;
     google.protobuf.Timestamp verified_at = 4;
     bool verified = 5;
     Social.Gender gender = 6;

@@ -4,7 +4,7 @@ package Social;
 
 option go_package = "./go_social";
 
-enum CountryCodeType {
+enum CountryCode {
     INVALID_COUNTRY = 0;
     COUTRY_DK = 1;
     COUNTRY_NO = 2;
@@ -28,7 +28,7 @@ message VerificationProvider {
     string name = 2;
 }
 
-message CountryCode {
-    CountryCodeType type = 1;
+message Country {
+    CountryCode country_code = 1;
     string name = 2;
 }

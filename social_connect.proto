@@ -114,7 +114,7 @@ message ClientApp {
     repeated Scope available_scopes = 17;
     repeated Grant available_grants = 18;
     repeated Response available_responses = 19;
-    repeated Social.CountryCode available_countries = 20;
+    repeated Social.Country available_countries = 20;
 }
 
 message ConnectPublicRequest {
