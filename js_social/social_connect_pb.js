@@ -1019,7 +1019,7 @@ proto.SocialConnect.ClientMetadata.toObject = function(includeInstance, msg) {
     isOpen: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
     allowedEmailsList: (f = jspb.Message.getRepeatedField(msg, 21)) == null ? undefined : f,
     about: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    ownerId: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    creatorId: jspb.Message.getFieldWithDefault(msg, 4, ""),
     ageLowerLimit: jspb.Message.getFieldWithDefault(msg, 5, 0),
     ageUpperLimit: jspb.Message.getFieldWithDefault(msg, 6, 0),
     allowedCountriesList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
@@ -1074,7 +1074,7 @@ proto.SocialConnect.ClientMetadata.deserializeBinaryFromReader = function(msg, r
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setOwnerId(value);
+      msg.setCreatorId(value);
       break;
     case 5:
       var value = /** @type {number} */ (reader.readInt32());
@@ -1144,7 +1144,7 @@ proto.SocialConnect.ClientMetadata.serializeBinaryToWriter = function(message, w
       f
     );
   }
-  f = message.getOwnerId();
+  f = message.getCreatorId();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -1256,10 +1256,10 @@ proto.SocialConnect.ClientMetadata.prototype.setAbout = function(value) {
 
 
 /**
- * optional string owner_id = 4;
+ * optional string creator_id = 4;
  * @return {string}
  */
-proto.SocialConnect.ClientMetadata.prototype.getOwnerId = function() {
+proto.SocialConnect.ClientMetadata.prototype.getCreatorId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -1268,7 +1268,7 @@ proto.SocialConnect.ClientMetadata.prototype.getOwnerId = function() {
  * @param {string} value
  * @return {!proto.SocialConnect.ClientMetadata} returns this
  */
-proto.SocialConnect.ClientMetadata.prototype.setOwnerId = function(value) {
+proto.SocialConnect.ClientMetadata.prototype.setCreatorId = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
