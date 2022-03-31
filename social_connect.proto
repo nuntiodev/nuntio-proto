@@ -86,7 +86,7 @@ message ClientMetadata {
     bool is_open = 1;
     repeated string allowed_emails = 21;
     string about = 3;
-    string owner_id = 4;
+    string creator_id = 4;
     int32 age_lower_limit = 5;
     int32 age_upper_limit = 6;
     repeated Social.CountryCode allowed_countries = 7;
