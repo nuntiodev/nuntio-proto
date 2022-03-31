@@ -99,7 +99,7 @@ message ClientApp {
     string name = 2;
     string password = 3;
     string contact_email = 4;
-    string organization_id = 5;
+    string owner_id = 5;
     string app_website = 6;
     string logo_url = 7;
     string terms_url = 8;
