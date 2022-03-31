@@ -1409,7 +1409,7 @@ proto.SocialConnect.ClientApp.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     password: jspb.Message.getFieldWithDefault(msg, 3, ""),
     contactEmail: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    organizationId: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    ownerId: jspb.Message.getFieldWithDefault(msg, 5, ""),
     appWebsite: jspb.Message.getFieldWithDefault(msg, 6, ""),
     logoUrl: jspb.Message.getFieldWithDefault(msg, 7, ""),
     termsUrl: jspb.Message.getFieldWithDefault(msg, 8, ""),
@@ -1483,7 +1483,7 @@ proto.SocialConnect.ClientApp.deserializeBinaryFromReader = function(msg, reader
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setOrganizationId(value);
+      msg.setOwnerId(value);
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
@@ -1615,7 +1615,7 @@ proto.SocialConnect.ClientApp.serializeBinaryToWriter = function(message, writer
       f
     );
   }
-  f = message.getOrganizationId();
+  f = message.getOwnerId();
   if (f.length > 0) {
     writer.writeString(
       5,
@@ -1810,10 +1810,10 @@ proto.SocialConnect.ClientApp.prototype.setContactEmail = function(value) {
 
 
 /**
- * optional string organization_id = 5;
+ * optional string owner_id = 5;
  * @return {string}
  */
-proto.SocialConnect.ClientApp.prototype.getOrganizationId = function() {
+proto.SocialConnect.ClientApp.prototype.getOwnerId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
@@ -1822,7 +1822,7 @@ proto.SocialConnect.ClientApp.prototype.getOrganizationId = function() {
  * @param {string} value
  * @return {!proto.SocialConnect.ClientApp} returns this
  */
-proto.SocialConnect.ClientApp.prototype.setOrganizationId = function(value) {
+proto.SocialConnect.ClientApp.prototype.setOwnerId = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
 };
 
