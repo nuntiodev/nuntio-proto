@@ -92,7 +92,7 @@ message Metadata {
     bool only_verified_users = 7;
 }
 
-message ClientApp {
+message App {
     string id = 1;
     string name = 2;
     string password = 3;
