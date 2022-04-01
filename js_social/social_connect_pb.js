@@ -983,7 +983,7 @@ proto.SocialConnect.Response.prototype.setName = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.SocialConnect.ClientMetadata.repeatedFields_ = [21,7];
+proto.SocialConnect.ClientMetadata.repeatedFields_ = [21,6];
 
 
 
@@ -1019,11 +1019,10 @@ proto.SocialConnect.ClientMetadata.toObject = function(includeInstance, msg) {
     isOpen: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
     allowedEmailsList: (f = jspb.Message.getRepeatedField(msg, 21)) == null ? undefined : f,
     about: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    creatorId: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    ageLowerLimit: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    ageUpperLimit: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    allowedCountriesList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
-    onlyVerifiedUsers: jspb.Message.getBooleanFieldWithDefault(msg, 8, false)
+    ageLowerLimit: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    ageUpperLimit: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    allowedCountriesList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
+    onlyVerifiedUsers: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -1073,24 +1072,20 @@ proto.SocialConnect.ClientMetadata.deserializeBinaryFromReader = function(msg, r
       msg.setAbout(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setCreatorId(value);
-      break;
-    case 5:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setAgeLowerLimit(value);
       break;
-    case 6:
+    case 5:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setAgeUpperLimit(value);
       break;
-    case 7:
+    case 6:
       var values = /** @type {!Array<!proto.Social.CountryCode>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
       for (var i = 0; i < values.length; i++) {
         msg.addAllowedCountries(values[i]);
       }
       break;
-    case 8:
+    case 7:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setOnlyVerifiedUsers(value);
       break;
@@ -1144,38 +1139,31 @@ proto.SocialConnect.ClientMetadata.serializeBinaryToWriter = function(message, w
       f
     );
   }
-  f = message.getCreatorId();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
   f = message.getAgeLowerLimit();
   if (f !== 0) {
     writer.writeInt32(
-      5,
+      4,
       f
     );
   }
   f = message.getAgeUpperLimit();
   if (f !== 0) {
     writer.writeInt32(
-      6,
+      5,
       f
     );
   }
   f = message.getAllowedCountriesList();
   if (f.length > 0) {
     writer.writePackedEnum(
-      7,
+      6,
       f
     );
   }
   f = message.getOnlyVerifiedUsers();
   if (f) {
     writer.writeBool(
-      8,
+      7,
       f
     );
   }
@@ -1256,29 +1244,11 @@ proto.SocialConnect.ClientMetadata.prototype.setAbout = function(value) {
 
 
 /**
- * optional string creator_id = 4;
- * @return {string}
- */
-proto.SocialConnect.ClientMetadata.prototype.getCreatorId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.SocialConnect.ClientMetadata} returns this
- */
-proto.SocialConnect.ClientMetadata.prototype.setCreatorId = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
-};
-
-
-/**
- * optional int32 age_lower_limit = 5;
+ * optional int32 age_lower_limit = 4;
  * @return {number}
  */
 proto.SocialConnect.ClientMetadata.prototype.getAgeLowerLimit = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
@@ -1287,16 +1257,16 @@ proto.SocialConnect.ClientMetadata.prototype.getAgeLowerLimit = function() {
  * @return {!proto.SocialConnect.ClientMetadata} returns this
  */
 proto.SocialConnect.ClientMetadata.prototype.setAgeLowerLimit = function(value) {
-  return jspb.Message.setProto3IntField(this, 5, value);
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
 /**
- * optional int32 age_upper_limit = 6;
+ * optional int32 age_upper_limit = 5;
  * @return {number}
  */
 proto.SocialConnect.ClientMetadata.prototype.getAgeUpperLimit = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
@@ -1305,16 +1275,16 @@ proto.SocialConnect.ClientMetadata.prototype.getAgeUpperLimit = function() {
  * @return {!proto.SocialConnect.ClientMetadata} returns this
  */
 proto.SocialConnect.ClientMetadata.prototype.setAgeUpperLimit = function(value) {
-  return jspb.Message.setProto3IntField(this, 6, value);
+  return jspb.Message.setProto3IntField(this, 5, value);
 };
 
 
 /**
- * repeated Social.CountryCode allowed_countries = 7;
+ * repeated Social.CountryCode allowed_countries = 6;
  * @return {!Array<!proto.Social.CountryCode>}
  */
 proto.SocialConnect.ClientMetadata.prototype.getAllowedCountriesList = function() {
-  return /** @type {!Array<!proto.Social.CountryCode>} */ (jspb.Message.getRepeatedField(this, 7));
+  return /** @type {!Array<!proto.Social.CountryCode>} */ (jspb.Message.getRepeatedField(this, 6));
 };
 
 
@@ -1323,7 +1293,7 @@ proto.SocialConnect.ClientMetadata.prototype.getAllowedCountriesList = function(
  * @return {!proto.SocialConnect.ClientMetadata} returns this
  */
 proto.SocialConnect.ClientMetadata.prototype.setAllowedCountriesList = function(value) {
-  return jspb.Message.setField(this, 7, value || []);
+  return jspb.Message.setField(this, 6, value || []);
 };
 
 
@@ -1333,7 +1303,7 @@ proto.SocialConnect.ClientMetadata.prototype.setAllowedCountriesList = function(
  * @return {!proto.SocialConnect.ClientMetadata} returns this
  */
 proto.SocialConnect.ClientMetadata.prototype.addAllowedCountries = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 6, value, opt_index);
 };
 
 
@@ -1347,11 +1317,11 @@ proto.SocialConnect.ClientMetadata.prototype.clearAllowedCountriesList = functio
 
 
 /**
- * optional bool only_verified_users = 8;
+ * optional bool only_verified_users = 7;
  * @return {boolean}
  */
 proto.SocialConnect.ClientMetadata.prototype.getOnlyVerifiedUsers = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
 };
 
 
@@ -1360,7 +1330,7 @@ proto.SocialConnect.ClientMetadata.prototype.getOnlyVerifiedUsers = function() {
  * @return {!proto.SocialConnect.ClientMetadata} returns this
  */
 proto.SocialConnect.ClientMetadata.prototype.setOnlyVerifiedUsers = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 8, value);
+  return jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 
