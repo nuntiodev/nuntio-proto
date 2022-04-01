@@ -101,7 +101,7 @@ message ClientApp {
     string app_website = 6;
     string logo_url = 7;
     string terms_url = 8;
-    ClientMetadata client_metadata = 9;
+    Metadata metadata = 9;
     repeated string audience = 10;
     repeated ScopeType scopes = 11;
     repeated GrantType grants = 12;
