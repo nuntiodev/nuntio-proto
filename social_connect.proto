@@ -127,16 +127,16 @@ message ConnectPublicRequest {
 }
 
 message ConnectPublicResponse {
-    ClientApp client = 1;
+    App app = 1;
     string email = 2;
     string redirect_addr = 3;
     Error error = 4; 
 }
 
 message ConnectAdminRequest {
-    ClientApp app = 1;
+    App app = 1;
 }
 
 message ConnectAdminResponse {
-    ClientApp app = 1;
+    App app = 1;
 }
