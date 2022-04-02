@@ -1376,11 +1376,11 @@ proto.SocialConnect.App.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     password: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    contactEmail: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    email: jspb.Message.getFieldWithDefault(msg, 4, ""),
     ownerId: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    appWebsite: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    logoUrl: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    termsUrl: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    website: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    logo: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    terms: jspb.Message.getFieldWithDefault(msg, 8, ""),
     metadata: (f = msg.getMetadata()) && proto.SocialConnect.Metadata.toObject(includeInstance, f),
     audienceList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
     scopesList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
@@ -1447,7 +1447,7 @@ proto.SocialConnect.App.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setContactEmail(value);
+      msg.setEmail(value);
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
@@ -1455,15 +1455,15 @@ proto.SocialConnect.App.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAppWebsite(value);
+      msg.setWebsite(value);
       break;
     case 7:
       var value = /** @type {string} */ (reader.readString());
-      msg.setLogoUrl(value);
+      msg.setLogo(value);
       break;
     case 8:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTermsUrl(value);
+      msg.setTerms(value);
       break;
     case 9:
       var value = new proto.SocialConnect.Metadata;
@@ -1576,7 +1576,7 @@ proto.SocialConnect.App.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getContactEmail();
+  f = message.getEmail();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -1590,21 +1590,21 @@ proto.SocialConnect.App.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getAppWebsite();
+  f = message.getWebsite();
   if (f.length > 0) {
     writer.writeString(
       6,
       f
     );
   }
-  f = message.getLogoUrl();
+  f = message.getLogo();
   if (f.length > 0) {
     writer.writeString(
       7,
       f
     );
   }
-  f = message.getTermsUrl();
+  f = message.getTerms();
   if (f.length > 0) {
     writer.writeString(
       8,
@@ -1760,10 +1760,10 @@ proto.SocialConnect.App.prototype.setPassword = function(value) {
 
 
 /**
- * optional string contact_email = 4;
+ * optional string email = 4;
  * @return {string}
  */
-proto.SocialConnect.App.prototype.getContactEmail = function() {
+proto.SocialConnect.App.prototype.getEmail = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -1772,7 +1772,7 @@ proto.SocialConnect.App.prototype.getContactEmail = function() {
  * @param {string} value
  * @return {!proto.SocialConnect.App} returns this
  */
-proto.SocialConnect.App.prototype.setContactEmail = function(value) {
+proto.SocialConnect.App.prototype.setEmail = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
@@ -1796,10 +1796,10 @@ proto.SocialConnect.App.prototype.setOwnerId = function(value) {
 
 
 /**
- * optional string app_website = 6;
+ * optional string website = 6;
  * @return {string}
  */
-proto.SocialConnect.App.prototype.getAppWebsite = function() {
+proto.SocialConnect.App.prototype.getWebsite = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
@@ -1808,16 +1808,16 @@ proto.SocialConnect.App.prototype.getAppWebsite = function() {
  * @param {string} value
  * @return {!proto.SocialConnect.App} returns this
  */
-proto.SocialConnect.App.prototype.setAppWebsite = function(value) {
+proto.SocialConnect.App.prototype.setWebsite = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * optional string logo_url = 7;
+ * optional string logo = 7;
  * @return {string}
  */
-proto.SocialConnect.App.prototype.getLogoUrl = function() {
+proto.SocialConnect.App.prototype.getLogo = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
@@ -1826,16 +1826,16 @@ proto.SocialConnect.App.prototype.getLogoUrl = function() {
  * @param {string} value
  * @return {!proto.SocialConnect.App} returns this
  */
-proto.SocialConnect.App.prototype.setLogoUrl = function(value) {
+proto.SocialConnect.App.prototype.setLogo = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
 /**
- * optional string terms_url = 8;
+ * optional string terms = 8;
  * @return {string}
  */
-proto.SocialConnect.App.prototype.getTermsUrl = function() {
+proto.SocialConnect.App.prototype.getTerms = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
@@ -1844,7 +1844,7 @@ proto.SocialConnect.App.prototype.getTermsUrl = function() {
  * @param {string} value
  * @return {!proto.SocialConnect.App} returns this
  */
-proto.SocialConnect.App.prototype.setTermsUrl = function(value) {
+proto.SocialConnect.App.prototype.setTerms = function(value) {
   return jspb.Message.setProto3StringField(this, 8, value);
 };
 
@@ -2334,7 +2334,7 @@ proto.SocialConnect.ConnectPublicRequest.toObject = function(includeInstance, ms
     password: jspb.Message.getFieldWithDefault(msg, 3, ""),
     gender: jspb.Message.getFieldWithDefault(msg, 4, 0),
     consent: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
-    jwtVerificationToken: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    identityToken: jspb.Message.getFieldWithDefault(msg, 6, ""),
     verificationProvider: (f = msg.getVerificationProvider()) && social_pb.VerificationProvider.toObject(includeInstance, f),
     authToken: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
@@ -2395,7 +2395,7 @@ proto.SocialConnect.ConnectPublicRequest.deserializeBinaryFromReader = function(
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setJwtVerificationToken(value);
+      msg.setIdentityToken(value);
       break;
     case 7:
       var value = new social_pb.VerificationProvider;
@@ -2470,7 +2470,7 @@ proto.SocialConnect.ConnectPublicRequest.serializeBinaryToWriter = function(mess
       f
     );
   }
-  f = message.getJwtVerificationToken();
+  f = message.getIdentityToken();
   if (f.length > 0) {
     writer.writeString(
       6,
@@ -2586,10 +2586,10 @@ proto.SocialConnect.ConnectPublicRequest.prototype.setConsent = function(value) 
 
 
 /**
- * optional string jwt_verification_token = 6;
+ * optional string identity_token = 6;
  * @return {string}
  */
-proto.SocialConnect.ConnectPublicRequest.prototype.getJwtVerificationToken = function() {
+proto.SocialConnect.ConnectPublicRequest.prototype.getIdentityToken = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
@@ -2598,7 +2598,7 @@ proto.SocialConnect.ConnectPublicRequest.prototype.getJwtVerificationToken = fun
  * @param {string} value
  * @return {!proto.SocialConnect.ConnectPublicRequest} returns this
  */
-proto.SocialConnect.ConnectPublicRequest.prototype.setJwtVerificationToken = function(value) {
+proto.SocialConnect.ConnectPublicRequest.prototype.setIdentityToken = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
 };
 
