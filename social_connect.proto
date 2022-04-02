@@ -96,11 +96,11 @@ message App {
     string id = 1;
     string name = 2;
     string password = 3;
-    string contact_email = 4;
+    string email = 4;
     string owner_id = 5;
-    string app_website = 6;
-    string logo_url = 7;
-    string terms_url = 8;
+    string website = 6;
+    string logo = 7;
+    string terms = 8;
     Metadata metadata = 9;
     repeated string audience = 10;
     repeated ScopeType scopes = 11;
@@ -121,7 +121,7 @@ message ConnectPublicRequest {
     string password = 3;
     Social.Gender gender = 4;
     bool consent = 5;
-    string jwt_verification_token = 6;
+    string identity_token = 6;
     Social.VerificationProvider verification_provider = 7;
     string auth_token = 8;
 }
