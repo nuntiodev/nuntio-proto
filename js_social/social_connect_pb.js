@@ -174,7 +174,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.SocialConnect.ConnectPublicResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.SocialConnect.ConnectPublicResponse.repeatedFields_, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.SocialConnect.ConnectPublicResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -2658,13 +2658,6 @@ proto.SocialConnect.ConnectPublicRequest.prototype.setAuthToken = function(value
 
 
 
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.SocialConnect.ConnectPublicResponse.repeatedFields_ = [4];
-
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2699,7 +2692,7 @@ proto.SocialConnect.ConnectPublicResponse.toObject = function(includeInstance, m
     app: (f = msg.getApp()) && proto.SocialConnect.App.toObject(includeInstance, f),
     email: jspb.Message.getFieldWithDefault(msg, 2, ""),
     redirectAddr: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    errorList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
+    error: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -2750,10 +2743,8 @@ proto.SocialConnect.ConnectPublicResponse.deserializeBinaryFromReader = function
       msg.setRedirectAddr(value);
       break;
     case 4:
-      var values = /** @type {!Array<!proto.Social.Error>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addError(values[i]);
-      }
+      var value = /** @type {!proto.Social.Error} */ (reader.readEnum());
+      msg.setError(value);
       break;
     default:
       reader.skipField();
@@ -2806,9 +2797,9 @@ proto.SocialConnect.ConnectPublicResponse.serializeBinaryToWriter = function(mes
       f
     );
   }
-  f = message.getErrorList();
-  if (f.length > 0) {
-    writer.writePackedEnum(
+  f = message.getError();
+  if (f !== 0.0) {
+    writer.writeEnum(
       4,
       f
     );
@@ -2890,39 +2881,20 @@ proto.SocialConnect.ConnectPublicResponse.prototype.setRedirectAddr = function(v
 
 
 /**
- * repeated Social.Error error = 4;
- * @return {!Array<!proto.Social.Error>}
+ * optional Social.Error error = 4;
+ * @return {!proto.Social.Error}
  */
-proto.SocialConnect.ConnectPublicResponse.prototype.getErrorList = function() {
-  return /** @type {!Array<!proto.Social.Error>} */ (jspb.Message.getRepeatedField(this, 4));
-};
-
-
-/**
- * @param {!Array<!proto.Social.Error>} value
- * @return {!proto.SocialConnect.ConnectPublicResponse} returns this
- */
-proto.SocialConnect.ConnectPublicResponse.prototype.setErrorList = function(value) {
-  return jspb.Message.setField(this, 4, value || []);
+proto.SocialConnect.ConnectPublicResponse.prototype.getError = function() {
+  return /** @type {!proto.Social.Error} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
  * @param {!proto.Social.Error} value
- * @param {number=} opt_index
  * @return {!proto.SocialConnect.ConnectPublicResponse} returns this
  */
-proto.SocialConnect.ConnectPublicResponse.prototype.addError = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 4, value, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.SocialConnect.ConnectPublicResponse} returns this
- */
-proto.SocialConnect.ConnectPublicResponse.prototype.clearErrorList = function() {
-  return this.setErrorList([]);
+proto.SocialConnect.ConnectPublicResponse.prototype.setError = function(value) {
+  return jspb.Message.setProto3EnumField(this, 4, value);
 };
 
 
