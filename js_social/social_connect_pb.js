@@ -2692,7 +2692,7 @@ proto.SocialConnect.ConnectPublicResponse.toObject = function(includeInstance, m
     app: (f = msg.getApp()) && proto.SocialConnect.App.toObject(includeInstance, f),
     email: jspb.Message.getFieldWithDefault(msg, 2, ""),
     redirectAddr: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    error: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    error: (f = msg.getError()) && social_pb.Error.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2743,7 +2743,8 @@ proto.SocialConnect.ConnectPublicResponse.deserializeBinaryFromReader = function
       msg.setRedirectAddr(value);
       break;
     case 4:
-      var value = /** @type {!proto.Social.Error} */ (reader.readEnum());
+      var value = new social_pb.Error;
+      reader.readMessage(value,social_pb.Error.deserializeBinaryFromReader);
       msg.setError(value);
       break;
     default:
@@ -2798,10 +2799,11 @@ proto.SocialConnect.ConnectPublicResponse.serializeBinaryToWriter = function(mes
     );
   }
   f = message.getError();
-  if (f !== 0.0) {
-    writer.writeEnum(
+  if (f != null) {
+    writer.writeMessage(
       4,
-      f
+      f,
+      social_pb.Error.serializeBinaryToWriter
     );
   }
 };
@@ -2882,19 +2884,38 @@ proto.SocialConnect.ConnectPublicResponse.prototype.setRedirectAddr = function(v
 
 /**
  * optional Social.Error error = 4;
- * @return {!proto.Social.Error}
+ * @return {?proto.Social.Error}
  */
 proto.SocialConnect.ConnectPublicResponse.prototype.getError = function() {
-  return /** @type {!proto.Social.Error} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type{?proto.Social.Error} */ (
+    jspb.Message.getWrapperField(this, social_pb.Error, 4));
 };
 
 
 /**
- * @param {!proto.Social.Error} value
+ * @param {?proto.Social.Error|undefined} value
+ * @return {!proto.SocialConnect.ConnectPublicResponse} returns this
+*/
+proto.SocialConnect.ConnectPublicResponse.prototype.setError = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.SocialConnect.ConnectPublicResponse} returns this
  */
-proto.SocialConnect.ConnectPublicResponse.prototype.setError = function(value) {
-  return jspb.Message.setProto3EnumField(this, 4, value);
+proto.SocialConnect.ConnectPublicResponse.prototype.clearError = function() {
+  return this.setError(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.SocialConnect.ConnectPublicResponse.prototype.hasError = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
