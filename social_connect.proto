@@ -29,11 +29,6 @@ service AdminConnectService {
     rpc Delete(ConnectAdminRequest) returns (ConnectAdminResponse) {}
 }
 
-enum Error {
-    NO_ERROR = 0;
-    ERROR_REQUIRE_IDENTIFICATION = 1;
-}
-
 enum ScopeType {
     INVALID_SCOPE = 0;
     DEFAULT_SCOPE = 1;
@@ -130,7 +125,7 @@ message ConnectPublicResponse {
     App app = 1;
     string email = 2;
     string redirect_addr = 3;
-    Error error = 4; 
+    repeated Social.Error error = 4; 
 }
 
 message ConnectAdminRequest {

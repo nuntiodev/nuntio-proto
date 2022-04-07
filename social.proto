@@ -32,3 +32,11 @@ message Country {
     CountryCode country_code = 1;
     string name = 2;
 }
+
+enum Error {
+    CONNECT_ONLY_VERIFIED = 0;
+    CONNCET_AGE_LOWER_BROKEN = 1;
+    CONNCET_AGE_UPPER_BROKEN = 2;
+    CONNCET_COUNTRY_NOT_ALLOWED = 3;
+    CONNECT_IS_NOT_OPEN = 4;
+}
