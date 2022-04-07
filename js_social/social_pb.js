@@ -443,7 +443,8 @@ proto.Social.Error.prototype.toObject = function(opt_includeInstance) {
  */
 proto.Social.Error.toObject = function(includeInstance, msg) {
   var f, obj = {
-    error: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    error: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    message: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -484,6 +485,10 @@ proto.Social.Error.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {!proto.Social.ErrorType} */ (reader.readEnum());
       msg.setError(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMessage(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -520,6 +525,13 @@ proto.Social.Error.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getMessage();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -538,6 +550,24 @@ proto.Social.Error.prototype.getError = function() {
  */
 proto.Social.Error.prototype.setError = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional string message = 2;
+ * @return {string}
+ */
+proto.Social.Error.prototype.getMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.Social.Error} returns this
+ */
+proto.Social.Error.prototype.setMessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
