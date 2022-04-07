@@ -125,7 +125,7 @@ message ConnectPublicResponse {
     App app = 1;
     string email = 2;
     string redirect_addr = 3;
-    repeated Social.Error error = 4; 
+    Social.Error error = 4; 
 }
 
 message ConnectAdminRequest {
