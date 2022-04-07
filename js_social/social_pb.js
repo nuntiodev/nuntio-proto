@@ -23,6 +23,7 @@ var global = (function() {
 
 goog.exportSymbol('proto.Social.Country', null, global);
 goog.exportSymbol('proto.Social.CountryCode', null, global);
+goog.exportSymbol('proto.Social.Error', null, global);
 goog.exportSymbol('proto.Social.Gender', null, global);
 goog.exportSymbol('proto.Social.VerificationProvider', null, global);
 goog.exportSymbol('proto.Social.VerificationProviderType', null, global);
@@ -414,6 +415,17 @@ proto.Social.Gender = {
 proto.Social.VerificationProviderType = {
   INVALID: 0,
   MIT_ID: 1
+};
+
+/**
+ * @enum {number}
+ */
+proto.Social.Error = {
+  CONNECT_ONLY_VERIFIED: 0,
+  CONNCET_AGE_LOWER_BROKEN: 1,
+  CONNCET_AGE_UPPER_BROKEN: 2,
+  CONNCET_COUNTRY_NOT_ALLOWED: 3,
+  CONNECT_IS_NOT_OPEN: 4
 };
 
 goog.object.extend(exports, proto.Social);

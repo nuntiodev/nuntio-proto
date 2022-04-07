@@ -21,52 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Error int32
-
-const (
-	Error_NO_ERROR                     Error = 0
-	Error_ERROR_REQUIRE_IDENTIFICATION Error = 1
-)
-
-// Enum value maps for Error.
-var (
-	Error_name = map[int32]string{
-		0: "NO_ERROR",
-		1: "ERROR_REQUIRE_IDENTIFICATION",
-	}
-	Error_value = map[string]int32{
-		"NO_ERROR":                     0,
-		"ERROR_REQUIRE_IDENTIFICATION": 1,
-	}
-)
-
-func (x Error) Enum() *Error {
-	p := new(Error)
-	*p = x
-	return p
-}
-
-func (x Error) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (Error) Descriptor() protoreflect.EnumDescriptor {
-	return file_social_connect_proto_enumTypes[0].Descriptor()
-}
-
-func (Error) Type() protoreflect.EnumType {
-	return &file_social_connect_proto_enumTypes[0]
-}
-
-func (x Error) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use Error.Descriptor instead.
-func (Error) EnumDescriptor() ([]byte, []int) {
-	return file_social_connect_proto_rawDescGZIP(), []int{0}
-}
-
 type ScopeType int32
 
 const (
@@ -115,11 +69,11 @@ func (x ScopeType) String() string {
 }
 
 func (ScopeType) Descriptor() protoreflect.EnumDescriptor {
-	return file_social_connect_proto_enumTypes[1].Descriptor()
+	return file_social_connect_proto_enumTypes[0].Descriptor()
 }
 
 func (ScopeType) Type() protoreflect.EnumType {
-	return &file_social_connect_proto_enumTypes[1]
+	return &file_social_connect_proto_enumTypes[0]
 }
 
 func (x ScopeType) Number() protoreflect.EnumNumber {
@@ -128,7 +82,7 @@ func (x ScopeType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ScopeType.Descriptor instead.
 func (ScopeType) EnumDescriptor() ([]byte, []int) {
-	return file_social_connect_proto_rawDescGZIP(), []int{1}
+	return file_social_connect_proto_rawDescGZIP(), []int{0}
 }
 
 type GrantType int32
@@ -164,11 +118,11 @@ func (x GrantType) String() string {
 }
 
 func (GrantType) Descriptor() protoreflect.EnumDescriptor {
-	return file_social_connect_proto_enumTypes[2].Descriptor()
+	return file_social_connect_proto_enumTypes[1].Descriptor()
 }
 
 func (GrantType) Type() protoreflect.EnumType {
-	return &file_social_connect_proto_enumTypes[2]
+	return &file_social_connect_proto_enumTypes[1]
 }
 
 func (x GrantType) Number() protoreflect.EnumNumber {
@@ -177,7 +131,7 @@ func (x GrantType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use GrantType.Descriptor instead.
 func (GrantType) EnumDescriptor() ([]byte, []int) {
-	return file_social_connect_proto_rawDescGZIP(), []int{2}
+	return file_social_connect_proto_rawDescGZIP(), []int{1}
 }
 
 type ResponseType int32
@@ -216,11 +170,11 @@ func (x ResponseType) String() string {
 }
 
 func (ResponseType) Descriptor() protoreflect.EnumDescriptor {
-	return file_social_connect_proto_enumTypes[3].Descriptor()
+	return file_social_connect_proto_enumTypes[2].Descriptor()
 }
 
 func (ResponseType) Type() protoreflect.EnumType {
-	return &file_social_connect_proto_enumTypes[3]
+	return &file_social_connect_proto_enumTypes[2]
 }
 
 func (x ResponseType) Number() protoreflect.EnumNumber {
@@ -229,7 +183,7 @@ func (x ResponseType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ResponseType.Descriptor instead.
 func (ResponseType) EnumDescriptor() ([]byte, []int) {
-	return file_social_connect_proto_rawDescGZIP(), []int{3}
+	return file_social_connect_proto_rawDescGZIP(), []int{2}
 }
 
 type Scope struct {
@@ -871,10 +825,10 @@ type ConnectPublicResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	App          *App   `protobuf:"bytes,1,opt,name=app,proto3" json:"app,omitempty"`
-	Email        string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	RedirectAddr string `protobuf:"bytes,3,opt,name=redirect_addr,json=redirectAddr,proto3" json:"redirect_addr,omitempty"`
-	Error        Error  `protobuf:"varint,4,opt,name=error,proto3,enum=SocialConnect.Error" json:"error,omitempty"`
+	App          *App    `protobuf:"bytes,1,opt,name=app,proto3" json:"app,omitempty"`
+	Email        string  `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	RedirectAddr string  `protobuf:"bytes,3,opt,name=redirect_addr,json=redirectAddr,proto3" json:"redirect_addr,omitempty"`
+	Error        []Error `protobuf:"varint,4,rep,packed,name=error,proto3,enum=Social.Error" json:"error,omitempty"`
 }
 
 func (x *ConnectPublicResponse) Reset() {
@@ -930,11 +884,11 @@ func (x *ConnectPublicResponse) GetRedirectAddr() string {
 	return ""
 }
 
-func (x *ConnectPublicResponse) GetError() Error {
+func (x *ConnectPublicResponse) GetError() []Error {
 	if x != nil {
 		return x.Error
 	}
-	return Error_NO_ERROR
+	return nil
 }
 
 type ConnectAdminRequest struct {
@@ -1165,7 +1119,7 @@ var file_social_connect_proto_rawDesc = []byte{
 	0x76, 0x69, 0x64, 0x65, 0x72, 0x52, 0x14, 0x76, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74,
 	0x69, 0x6f, 0x6e, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x12, 0x1d, 0x0a, 0x0a, 0x61,
 	0x75, 0x74, 0x68, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x09, 0x61, 0x75, 0x74, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0xa4, 0x01, 0x0a, 0x15, 0x43,
+	0x09, 0x61, 0x75, 0x74, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x9d, 0x01, 0x0a, 0x15, 0x43,
 	0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x24, 0x0a, 0x03, 0x61, 0x70, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x0b, 0x32, 0x12, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
@@ -1173,21 +1127,17 @@ var file_social_connect_proto_rawDesc = []byte{
 	0x61, 0x69, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c,
 	0x12, 0x23, 0x0a, 0x0d, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x5f, 0x61, 0x64, 0x64,
 	0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65, 0x63,
-	0x74, 0x41, 0x64, 0x64, 0x72, 0x12, 0x2a, 0x0a, 0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x0e, 0x32, 0x14, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f, 0x6e,
-	0x6e, 0x65, 0x63, 0x74, 0x2e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x52, 0x05, 0x65, 0x72, 0x72, 0x6f,
-	0x72, 0x22, 0x3b, 0x0a, 0x13, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x41, 0x64, 0x6d, 0x69,
-	0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x24, 0x0a, 0x03, 0x61, 0x70, 0x70, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f,
-	0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2e, 0x41, 0x70, 0x70, 0x52, 0x03, 0x61, 0x70, 0x70, 0x22, 0x3c,
-	0x0a, 0x14, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x24, 0x0a, 0x03, 0x61, 0x70, 0x70, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f, 0x6e, 0x6e,
-	0x65, 0x63, 0x74, 0x2e, 0x41, 0x70, 0x70, 0x52, 0x03, 0x61, 0x70, 0x70, 0x2a, 0x37, 0x0a, 0x05,
-	0x45, 0x72, 0x72, 0x6f, 0x72, 0x12, 0x0c, 0x0a, 0x08, 0x4e, 0x4f, 0x5f, 0x45, 0x52, 0x52, 0x4f,
-	0x52, 0x10, 0x00, 0x12, 0x20, 0x0a, 0x1c, 0x45, 0x52, 0x52, 0x4f, 0x52, 0x5f, 0x52, 0x45, 0x51,
-	0x55, 0x49, 0x52, 0x45, 0x5f, 0x49, 0x44, 0x45, 0x4e, 0x54, 0x49, 0x46, 0x49, 0x43, 0x41, 0x54,
-	0x49, 0x4f, 0x4e, 0x10, 0x01, 0x2a, 0xa5, 0x01, 0x0a, 0x09, 0x53, 0x63, 0x6f, 0x70, 0x65, 0x54,
+	0x74, 0x41, 0x64, 0x64, 0x72, 0x12, 0x23, 0x0a, 0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x18, 0x04,
+	0x20, 0x03, 0x28, 0x0e, 0x32, 0x0d, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x2e, 0x45, 0x72,
+	0x72, 0x6f, 0x72, 0x52, 0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x22, 0x3b, 0x0a, 0x13, 0x43, 0x6f,
+	0x6e, 0x6e, 0x65, 0x63, 0x74, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x24, 0x0a, 0x03, 0x61, 0x70, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12,
+	0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2e, 0x41,
+	0x70, 0x70, 0x52, 0x03, 0x61, 0x70, 0x70, 0x22, 0x3c, 0x0a, 0x14, 0x43, 0x6f, 0x6e, 0x6e, 0x65,
+	0x63, 0x74, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x24, 0x0a, 0x03, 0x61, 0x70, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x53,
+	0x6f, 0x63, 0x69, 0x61, 0x6c, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2e, 0x41, 0x70, 0x70,
+	0x52, 0x03, 0x61, 0x70, 0x70, 0x2a, 0xa5, 0x01, 0x0a, 0x09, 0x53, 0x63, 0x6f, 0x70, 0x65, 0x54,
 	0x79, 0x70, 0x65, 0x12, 0x11, 0x0a, 0x0d, 0x49, 0x4e, 0x56, 0x41, 0x4c, 0x49, 0x44, 0x5f, 0x53,
 	0x43, 0x4f, 0x50, 0x45, 0x10, 0x00, 0x12, 0x11, 0x0a, 0x0d, 0x44, 0x45, 0x46, 0x41, 0x55, 0x4c,
 	0x54, 0x5f, 0x53, 0x43, 0x4f, 0x50, 0x45, 0x10, 0x01, 0x12, 0x18, 0x0a, 0x14, 0x4f, 0x46, 0x46,
@@ -1318,81 +1268,81 @@ func file_social_connect_proto_rawDescGZIP() []byte {
 	return file_social_connect_proto_rawDescData
 }
 
-var file_social_connect_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_social_connect_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_social_connect_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_social_connect_proto_goTypes = []interface{}{
-	(Error)(0),                    // 0: SocialConnect.Error
-	(ScopeType)(0),                // 1: SocialConnect.ScopeType
-	(GrantType)(0),                // 2: SocialConnect.GrantType
-	(ResponseType)(0),             // 3: SocialConnect.ResponseType
-	(*Scope)(nil),                 // 4: SocialConnect.Scope
-	(*Grant)(nil),                 // 5: SocialConnect.Grant
-	(*Response)(nil),              // 6: SocialConnect.Response
-	(*Metadata)(nil),              // 7: SocialConnect.Metadata
-	(*App)(nil),                   // 8: SocialConnect.App
-	(*ConnectPublicRequest)(nil),  // 9: SocialConnect.ConnectPublicRequest
-	(*ConnectPublicResponse)(nil), // 10: SocialConnect.ConnectPublicResponse
-	(*ConnectAdminRequest)(nil),   // 11: SocialConnect.ConnectAdminRequest
-	(*ConnectAdminResponse)(nil),  // 12: SocialConnect.ConnectAdminResponse
-	(CountryCode)(0),              // 13: Social.CountryCode
-	(*timestamppb.Timestamp)(nil), // 14: google.protobuf.Timestamp
-	(*Country)(nil),               // 15: Social.Country
-	(Gender)(0),                   // 16: Social.Gender
-	(*VerificationProvider)(nil),  // 17: Social.VerificationProvider
+	(ScopeType)(0),                // 0: SocialConnect.ScopeType
+	(GrantType)(0),                // 1: SocialConnect.GrantType
+	(ResponseType)(0),             // 2: SocialConnect.ResponseType
+	(*Scope)(nil),                 // 3: SocialConnect.Scope
+	(*Grant)(nil),                 // 4: SocialConnect.Grant
+	(*Response)(nil),              // 5: SocialConnect.Response
+	(*Metadata)(nil),              // 6: SocialConnect.Metadata
+	(*App)(nil),                   // 7: SocialConnect.App
+	(*ConnectPublicRequest)(nil),  // 8: SocialConnect.ConnectPublicRequest
+	(*ConnectPublicResponse)(nil), // 9: SocialConnect.ConnectPublicResponse
+	(*ConnectAdminRequest)(nil),   // 10: SocialConnect.ConnectAdminRequest
+	(*ConnectAdminResponse)(nil),  // 11: SocialConnect.ConnectAdminResponse
+	(CountryCode)(0),              // 12: Social.CountryCode
+	(*timestamppb.Timestamp)(nil), // 13: google.protobuf.Timestamp
+	(*Country)(nil),               // 14: Social.Country
+	(Gender)(0),                   // 15: Social.Gender
+	(*VerificationProvider)(nil),  // 16: Social.VerificationProvider
+	(Error)(0),                    // 17: Social.Error
 }
 var file_social_connect_proto_depIdxs = []int32{
-	1,  // 0: SocialConnect.Scope.scope_type:type_name -> SocialConnect.ScopeType
-	2,  // 1: SocialConnect.Grant.grant_type:type_name -> SocialConnect.GrantType
-	3,  // 2: SocialConnect.Response.response_type:type_name -> SocialConnect.ResponseType
-	13, // 3: SocialConnect.Metadata.allowed_countries:type_name -> Social.CountryCode
-	7,  // 4: SocialConnect.App.metadata:type_name -> SocialConnect.Metadata
-	1,  // 5: SocialConnect.App.scopes:type_name -> SocialConnect.ScopeType
-	2,  // 6: SocialConnect.App.grants:type_name -> SocialConnect.GrantType
-	3,  // 7: SocialConnect.App.responses:type_name -> SocialConnect.ResponseType
-	14, // 8: SocialConnect.App.created_at:type_name -> google.protobuf.Timestamp
-	14, // 9: SocialConnect.App.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 10: SocialConnect.App.available_scopes:type_name -> SocialConnect.Scope
-	5,  // 11: SocialConnect.App.available_grants:type_name -> SocialConnect.Grant
-	6,  // 12: SocialConnect.App.available_responses:type_name -> SocialConnect.Response
-	15, // 13: SocialConnect.App.available_countries:type_name -> Social.Country
-	16, // 14: SocialConnect.ConnectPublicRequest.gender:type_name -> Social.Gender
-	17, // 15: SocialConnect.ConnectPublicRequest.verification_provider:type_name -> Social.VerificationProvider
-	8,  // 16: SocialConnect.ConnectPublicResponse.app:type_name -> SocialConnect.App
-	0,  // 17: SocialConnect.ConnectPublicResponse.error:type_name -> SocialConnect.Error
-	8,  // 18: SocialConnect.ConnectAdminRequest.app:type_name -> SocialConnect.App
-	8,  // 19: SocialConnect.ConnectAdminResponse.app:type_name -> SocialConnect.App
-	9,  // 20: SocialConnect.PublicConnectService.Heartbeat:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 21: SocialConnect.PublicConnectService.ValidateLoginChallenge:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 22: SocialConnect.PublicConnectService.Login:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 23: SocialConnect.PublicConnectService.ValidateConsentChallenge:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 24: SocialConnect.PublicConnectService.GiveConsent:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 25: SocialConnect.PublicConnectService.Logout:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 26: SocialConnect.PublicConnectService.CreateUser:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 27: SocialConnect.PublicConnectService.SendResetEmail:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 28: SocialConnect.PublicConnectService.ResetPassword:input_type -> SocialConnect.ConnectPublicRequest
-	9,  // 29: SocialConnect.PublicConnectService.Verify:input_type -> SocialConnect.ConnectPublicRequest
-	11, // 30: SocialConnect.AdminConnectService.Heartbeat:input_type -> SocialConnect.ConnectAdminRequest
-	11, // 31: SocialConnect.AdminConnectService.Create:input_type -> SocialConnect.ConnectAdminRequest
-	11, // 32: SocialConnect.AdminConnectService.GetById:input_type -> SocialConnect.ConnectAdminRequest
-	11, // 33: SocialConnect.AdminConnectService.UpdateDetails:input_type -> SocialConnect.ConnectAdminRequest
-	11, // 34: SocialConnect.AdminConnectService.UpdateOauth:input_type -> SocialConnect.ConnectAdminRequest
-	11, // 35: SocialConnect.AdminConnectService.Delete:input_type -> SocialConnect.ConnectAdminRequest
-	10, // 36: SocialConnect.PublicConnectService.Heartbeat:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 37: SocialConnect.PublicConnectService.ValidateLoginChallenge:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 38: SocialConnect.PublicConnectService.Login:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 39: SocialConnect.PublicConnectService.ValidateConsentChallenge:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 40: SocialConnect.PublicConnectService.GiveConsent:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 41: SocialConnect.PublicConnectService.Logout:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 42: SocialConnect.PublicConnectService.CreateUser:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 43: SocialConnect.PublicConnectService.SendResetEmail:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 44: SocialConnect.PublicConnectService.ResetPassword:output_type -> SocialConnect.ConnectPublicResponse
-	10, // 45: SocialConnect.PublicConnectService.Verify:output_type -> SocialConnect.ConnectPublicResponse
-	12, // 46: SocialConnect.AdminConnectService.Heartbeat:output_type -> SocialConnect.ConnectAdminResponse
-	12, // 47: SocialConnect.AdminConnectService.Create:output_type -> SocialConnect.ConnectAdminResponse
-	12, // 48: SocialConnect.AdminConnectService.GetById:output_type -> SocialConnect.ConnectAdminResponse
-	12, // 49: SocialConnect.AdminConnectService.UpdateDetails:output_type -> SocialConnect.ConnectAdminResponse
-	12, // 50: SocialConnect.AdminConnectService.UpdateOauth:output_type -> SocialConnect.ConnectAdminResponse
-	12, // 51: SocialConnect.AdminConnectService.Delete:output_type -> SocialConnect.ConnectAdminResponse
+	0,  // 0: SocialConnect.Scope.scope_type:type_name -> SocialConnect.ScopeType
+	1,  // 1: SocialConnect.Grant.grant_type:type_name -> SocialConnect.GrantType
+	2,  // 2: SocialConnect.Response.response_type:type_name -> SocialConnect.ResponseType
+	12, // 3: SocialConnect.Metadata.allowed_countries:type_name -> Social.CountryCode
+	6,  // 4: SocialConnect.App.metadata:type_name -> SocialConnect.Metadata
+	0,  // 5: SocialConnect.App.scopes:type_name -> SocialConnect.ScopeType
+	1,  // 6: SocialConnect.App.grants:type_name -> SocialConnect.GrantType
+	2,  // 7: SocialConnect.App.responses:type_name -> SocialConnect.ResponseType
+	13, // 8: SocialConnect.App.created_at:type_name -> google.protobuf.Timestamp
+	13, // 9: SocialConnect.App.updated_at:type_name -> google.protobuf.Timestamp
+	3,  // 10: SocialConnect.App.available_scopes:type_name -> SocialConnect.Scope
+	4,  // 11: SocialConnect.App.available_grants:type_name -> SocialConnect.Grant
+	5,  // 12: SocialConnect.App.available_responses:type_name -> SocialConnect.Response
+	14, // 13: SocialConnect.App.available_countries:type_name -> Social.Country
+	15, // 14: SocialConnect.ConnectPublicRequest.gender:type_name -> Social.Gender
+	16, // 15: SocialConnect.ConnectPublicRequest.verification_provider:type_name -> Social.VerificationProvider
+	7,  // 16: SocialConnect.ConnectPublicResponse.app:type_name -> SocialConnect.App
+	17, // 17: SocialConnect.ConnectPublicResponse.error:type_name -> Social.Error
+	7,  // 18: SocialConnect.ConnectAdminRequest.app:type_name -> SocialConnect.App
+	7,  // 19: SocialConnect.ConnectAdminResponse.app:type_name -> SocialConnect.App
+	8,  // 20: SocialConnect.PublicConnectService.Heartbeat:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 21: SocialConnect.PublicConnectService.ValidateLoginChallenge:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 22: SocialConnect.PublicConnectService.Login:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 23: SocialConnect.PublicConnectService.ValidateConsentChallenge:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 24: SocialConnect.PublicConnectService.GiveConsent:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 25: SocialConnect.PublicConnectService.Logout:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 26: SocialConnect.PublicConnectService.CreateUser:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 27: SocialConnect.PublicConnectService.SendResetEmail:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 28: SocialConnect.PublicConnectService.ResetPassword:input_type -> SocialConnect.ConnectPublicRequest
+	8,  // 29: SocialConnect.PublicConnectService.Verify:input_type -> SocialConnect.ConnectPublicRequest
+	10, // 30: SocialConnect.AdminConnectService.Heartbeat:input_type -> SocialConnect.ConnectAdminRequest
+	10, // 31: SocialConnect.AdminConnectService.Create:input_type -> SocialConnect.ConnectAdminRequest
+	10, // 32: SocialConnect.AdminConnectService.GetById:input_type -> SocialConnect.ConnectAdminRequest
+	10, // 33: SocialConnect.AdminConnectService.UpdateDetails:input_type -> SocialConnect.ConnectAdminRequest
+	10, // 34: SocialConnect.AdminConnectService.UpdateOauth:input_type -> SocialConnect.ConnectAdminRequest
+	10, // 35: SocialConnect.AdminConnectService.Delete:input_type -> SocialConnect.ConnectAdminRequest
+	9,  // 36: SocialConnect.PublicConnectService.Heartbeat:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 37: SocialConnect.PublicConnectService.ValidateLoginChallenge:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 38: SocialConnect.PublicConnectService.Login:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 39: SocialConnect.PublicConnectService.ValidateConsentChallenge:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 40: SocialConnect.PublicConnectService.GiveConsent:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 41: SocialConnect.PublicConnectService.Logout:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 42: SocialConnect.PublicConnectService.CreateUser:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 43: SocialConnect.PublicConnectService.SendResetEmail:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 44: SocialConnect.PublicConnectService.ResetPassword:output_type -> SocialConnect.ConnectPublicResponse
+	9,  // 45: SocialConnect.PublicConnectService.Verify:output_type -> SocialConnect.ConnectPublicResponse
+	11, // 46: SocialConnect.AdminConnectService.Heartbeat:output_type -> SocialConnect.ConnectAdminResponse
+	11, // 47: SocialConnect.AdminConnectService.Create:output_type -> SocialConnect.ConnectAdminResponse
+	11, // 48: SocialConnect.AdminConnectService.GetById:output_type -> SocialConnect.ConnectAdminResponse
+	11, // 49: SocialConnect.AdminConnectService.UpdateDetails:output_type -> SocialConnect.ConnectAdminResponse
+	11, // 50: SocialConnect.AdminConnectService.UpdateOauth:output_type -> SocialConnect.ConnectAdminResponse
+	11, // 51: SocialConnect.AdminConnectService.Delete:output_type -> SocialConnect.ConnectAdminResponse
 	36, // [36:52] is the sub-list for method output_type
 	20, // [20:36] is the sub-list for method input_type
 	20, // [20:20] is the sub-list for extension type_name
@@ -1521,7 +1471,7 @@ func file_social_connect_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_social_connect_proto_rawDesc,
-			NumEnums:      4,
+			NumEnums:      3,
 			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   2,
