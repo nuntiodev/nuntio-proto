@@ -33,7 +33,11 @@ message Country {
     string name = 2;
 }
 
-enum Error {
+message Error {
+    ErrorType error = 1;
+}
+
+enum ErrorType {
     NO_ERROR = 0;
     CONNECT_ONLY_VERIFIED = 1;
     CONNCET_AGE_LOWER_BROKEN = 2;
