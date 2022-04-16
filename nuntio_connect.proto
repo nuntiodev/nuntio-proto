@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package SocialConnect;
+package NuntioConnect;
 
-option go_package = "./go_social";
+option go_package = "./go_nuntio";
 
 import "google/protobuf/timestamp.proto";
-import "social.proto";
+import "nuntio.proto";
 
 service PublicConnectService {
     rpc Heartbeat(ConnectPublicRequest) returns (ConnectPublicResponse) {}
@@ -83,7 +83,7 @@ message Metadata {
     string about = 3;
     int32 age_lower_limit = 4;
     int32 age_upper_limit = 5;
-    repeated Social.CountryCode allowed_countries = 6;
+    repeated Nuntio.CountryCode allowed_countries = 6;
     bool only_verified_users = 7;
 }
 
@@ -107,17 +107,17 @@ message App {
     repeated Scope available_scopes = 17;
     repeated Grant available_grants = 18;
     repeated Response available_responses = 19;
-    repeated Social.Country available_countries = 20;
+    repeated Nuntio.Country available_countries = 20;
 }
 
 message ConnectPublicRequest {
     string challenge = 1;
     string email = 2;
     string password = 3;
-    Social.Gender gender = 4;
+    Nuntio.Gender gender = 4;
     bool consent = 5;
     string identity_token = 6;
-    Social.VerificationProvider verification_provider = 7;
+    Nuntio.VerificationProvider verification_provider = 7;
     string auth_token = 8;
 }
 
@@ -125,7 +125,7 @@ message ConnectPublicResponse {
     App app = 1;
     string email = 2;
     string redirect_addr = 3;
-    Social.Error error = 4; 
+    Nuntio.Error error = 4; 
 }
 
 message ConnectAdminRequest {

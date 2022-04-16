@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package Social;
+package Nuntio;
 
-option go_package = "./go_social";
+option go_package = "./go_nuntio";
 
 enum CountryCode {
     INVALID_COUNTRY = 0;

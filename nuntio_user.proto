@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package SocialUser;
+package NuntioUser;
 
-option go_package = "./go_social";
+option go_package = "./go_nuntio";
 
 import "google/protobuf/timestamp.proto";
-import "social.proto";
+import "nuntio.proto";
 
 message User {
     string id = 1;
@@ -18,9 +18,9 @@ message User {
 message UserMetadata {
     google.protobuf.Timestamp birthdate = 1;
     string name = 2;
-    Social.CountryCode country_code = 3;
+    Nuntio.CountryCode country_code = 3;
     google.protobuf.Timestamp verified_at = 4;
     bool verified = 5;
-    Social.Gender gender = 6;
-    Social.VerificationProviderType verification_provider = 7;
+    Nuntio.Gender gender = 6;
+    Nuntio.VerificationProviderType verification_provider = 7;
 }
