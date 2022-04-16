@@ -1,5 +1,5 @@
 {
-  "name": "js_softcorp_social",
+  "name": "js_nuntio",
   "version": "0.0.6",
   "description": "",
   "main": "index.js",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/softcorp-io/social-proto.git"
+    "url": "git+https://github.com/nuntiodev/nuntio-proto.git"
   },
-  "author": "softcorp",
+  "author": "nuntio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/softcorp-io/social-proto/issues"
+    "url": "https://github.com/nuntiodev/nuntio-proto/issues"
   },
-  "homepage": "https://github.com/softcorp-io/social-proto#readme"
+  "homepage": "https://github.com/nuntiodev/nuntio-proto#readme"
 }

@@ -1,4 +1,4 @@
-package go_social
+package go_nuntio
 
 import (
 	"errors"
