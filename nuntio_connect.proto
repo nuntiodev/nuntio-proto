@@ -1,80 +1,31 @@
 syntax = "proto3";
 
-package NuntioConnect;
+package Connect;
 
 option go_package = "./go_nuntio";
 
 import "google/protobuf/timestamp.proto";
 import "nuntio.proto";
 
-service PublicConnectService {
-    rpc Heartbeat(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc ValidateLoginChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc Login(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc ValidateConsentChallenge(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc GiveConsent(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc Logout(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc CreateUser(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc SendResetEmail(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc ResetPassword(ConnectPublicRequest) returns (ConnectPublicResponse) {}
-    rpc Verify(ConnectPublicRequest) returns (ConnectPublicResponse) {}
+service Authenticate {
+    rpc Heartbeat(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc ValidateLoginChallenge(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc Login(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc ValidateConsentChallenge(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc GiveConsent(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc Logout(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc CreateUser(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc SendResetEmail(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc ResetPassword(AuthenticateRequest) returns (AuthenticateResponse) {}
+    rpc Verify(AuthenticateRequest) returns (AuthenticateResponse) {}
 }
 
-service AdminConnectService {
-    rpc Heartbeat(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc Create(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc GetById(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc UpdateDetails(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc UpdateOauth(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-    rpc Delete(ConnectAdminRequest) returns (ConnectAdminResponse) {}
-}
-
-enum ScopeType {
-    INVALID_SCOPE = 0;
-    DEFAULT_SCOPE = 1;
-    OFFLINE_ACCESS_SCOPE = 2;
-    GENDER_SCOPE = 3;
-    NAME_SCOPE = 4;
-    BIRTHDAY_SCOPE = 5;
-    COUNTRY_SCOPE = 6;
-    EMAIL_SCOPE = 7;
-}
-
-message Scope {
-    ScopeType scope_type = 1;
-    bool read_id = 2;
-    bool read_email = 3;
-    bool read_gender = 4;
-    bool read_created_at = 5;
-    bool offline_access = 6;
-    bool read_name = 7;
-    bool read_birthday = 8;
-    bool read_country = 9;
-    string name = 10;
-    string key = 11;
-}
-
-enum GrantType {
-    INVALID_GRANT = 0;
-    AUTH_GRANT = 1;
-    REFRESH_GRANT = 2;
-}
-
-message Grant {
-    GrantType grant_type = 1;
-    string name = 2;
-}
-
-enum ResponseType {
-    INVALID_RESPONSE = 0;
-    CODE_RESPONSE = 1;
-    TOKEN_RESPONSE = 2;
-    ID_RESPONSE = 3;
-}
-
-message Response {
-    ResponseType response_type = 1;
-    string name = 2;
+service Service {
+    rpc Heartbeat(ConnectRequest) returns (ConnectResponse) {}
+    rpc Create(ConnectRequest) returns (ConnectResponse) {}
+    rpc GetById(ConnectRequest) returns (ConnectResponse) {}
+    rpc UpdateDetails(ConnectRequest) returns (ConnectResponse) {}
+    rpc Delete(ConnectRequest) returns (ConnectResponse) {}
 }
 
 message Metadata {
@@ -98,19 +49,14 @@ message App {
     string terms = 8;
     Metadata metadata = 9;
     repeated string audience = 10;
-    repeated ScopeType scopes = 11;
-    repeated GrantType grants = 12;
-    repeated ResponseType responses = 13;
-    repeated string callbacks = 14;
-    google.protobuf.Timestamp created_at = 15;
-    google.protobuf.Timestamp updated_at = 16;
-    repeated Scope available_scopes = 17;
-    repeated Grant available_grants = 18;
-    repeated Response available_responses = 19;
-    repeated Nuntio.Country available_countries = 20;
+    repeated string scopes = 11;
+    repeated string callbacks = 12;
+    google.protobuf.Timestamp created_at = 13;
+    google.protobuf.Timestamp updated_at = 14;
+    repeated Nuntio.Country available_countries = 15;
 }
 
-message ConnectPublicRequest {
+message AuthenticateRequest {
     string challenge = 1;
     string email = 2;
     string password = 3;
@@ -121,17 +67,17 @@ message ConnectPublicRequest {
     string auth_token = 8;
 }
 
-message ConnectPublicResponse {
+message AuthenticateResponse {
     App app = 1;
     string email = 2;
     string redirect_addr = 3;
     Nuntio.Error error = 4; 
 }
 
-message ConnectAdminRequest {
+message ConnectRequest {
     App app = 1;
 }
 
-message ConnectAdminResponse {
+message ConnectResponse {
     App app = 1;
 }
