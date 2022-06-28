@@ -1720,7 +1720,8 @@ proto.Connect.AuthenticateRequest.toObject = function(includeInstance, msg) {
     consent: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
     identityToken: jspb.Message.getFieldWithDefault(msg, 5, ""),
     verificationProvider: (f = msg.getVerificationProvider()) && proto.Connect.VerificationProvider.toObject(includeInstance, f),
-    authToken: jspb.Message.getFieldWithDefault(msg, 7, "")
+    authToken: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    usermetadata: (f = msg.getUsermetadata()) && proto.Connect.UserMetadata.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1785,6 +1786,11 @@ proto.Connect.AuthenticateRequest.deserializeBinaryFromReader = function(msg, re
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setAuthToken(value);
+      break;
+    case 8:
+      var value = new proto.Connect.UserMetadata;
+      reader.readMessage(value,proto.Connect.UserMetadata.deserializeBinaryFromReader);
+      msg.setUsermetadata(value);
       break;
     default:
       reader.skipField();
@@ -1863,6 +1869,14 @@ proto.Connect.AuthenticateRequest.serializeBinaryToWriter = function(message, wr
     writer.writeString(
       7,
       f
+    );
+  }
+  f = message.getUsermetadata();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      proto.Connect.UserMetadata.serializeBinaryToWriter
     );
   }
 };
@@ -2010,6 +2024,43 @@ proto.Connect.AuthenticateRequest.prototype.getAuthToken = function() {
  */
 proto.Connect.AuthenticateRequest.prototype.setAuthToken = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional UserMetadata userMetadata = 8;
+ * @return {?proto.Connect.UserMetadata}
+ */
+proto.Connect.AuthenticateRequest.prototype.getUsermetadata = function() {
+  return /** @type{?proto.Connect.UserMetadata} */ (
+    jspb.Message.getWrapperField(this, proto.Connect.UserMetadata, 8));
+};
+
+
+/**
+ * @param {?proto.Connect.UserMetadata|undefined} value
+ * @return {!proto.Connect.AuthenticateRequest} returns this
+*/
+proto.Connect.AuthenticateRequest.prototype.setUsermetadata = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.Connect.AuthenticateRequest} returns this
+ */
+proto.Connect.AuthenticateRequest.prototype.clearUsermetadata = function() {
+  return this.setUsermetadata(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.Connect.AuthenticateRequest.prototype.hasUsermetadata = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
