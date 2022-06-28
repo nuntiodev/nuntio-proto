@@ -16,11 +16,9 @@ message User {
 }
 
 message UserMetadata {
-    google.protobuf.Timestamp birthdate = 1;
-    string name = 2;
-    Nuntio.CountryCode country_code = 3;
-    google.protobuf.Timestamp verified_at = 4;
-    bool verified = 5;
-    Nuntio.Gender gender = 6;
-    Nuntio.VerificationProviderType verification_provider = 7;
+    Nuntio.CountryCode country_code = 1;
+    google.protobuf.Timestamp verified_at = 2;
+    bool verified = 3;
+    Nuntio.Gender gender = 4;
+    Nuntio.VerificationProviderType verification_provider = 5;
 }
