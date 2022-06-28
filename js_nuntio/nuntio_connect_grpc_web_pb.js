@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for NuntioConnect
+ * @fileoverview gRPC-Web generated client stub for Connect
  * @enhanceable
  * @public
  */
@@ -20,7 +20,7 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 
 var nuntio_pb = require('./nuntio_pb.js')
 const proto = {};
-proto.NuntioConnect = require('./nuntio_connect_pb.js');
+proto.Connect = require('./nuntio_connect_pb.js');
 
 /**
  * @param {string} hostname
@@ -30,7 +30,7 @@ proto.NuntioConnect = require('./nuntio_connect_pb.js');
  * @struct
  * @final
  */
-proto.NuntioConnect.PublicConnectServiceClient =
+proto.Connect.AuthenticateClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -56,7 +56,7 @@ proto.NuntioConnect.PublicConnectServiceClient =
  * @struct
  * @final
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient =
+proto.Connect.AuthenticatePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -77,610 +77,610 @@ proto.NuntioConnect.PublicConnectServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_Heartbeat = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/Heartbeat',
+const methodDescriptor_Authenticate_Heartbeat = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/Heartbeat',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.heartbeat =
+proto.Connect.AuthenticateClient.prototype.heartbeat =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/Heartbeat',
+      '/Connect.Authenticate/Heartbeat',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_Heartbeat,
+      methodDescriptor_Authenticate_Heartbeat,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.heartbeat =
+proto.Connect.AuthenticatePromiseClient.prototype.heartbeat =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/Heartbeat',
+      '/Connect.Authenticate/Heartbeat',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_Heartbeat);
+      methodDescriptor_Authenticate_Heartbeat);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_ValidateLoginChallenge = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/ValidateLoginChallenge',
+const methodDescriptor_Authenticate_ValidateLoginChallenge = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/ValidateLoginChallenge',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.validateLoginChallenge =
+proto.Connect.AuthenticateClient.prototype.validateLoginChallenge =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/ValidateLoginChallenge',
+      '/Connect.Authenticate/ValidateLoginChallenge',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_ValidateLoginChallenge,
+      methodDescriptor_Authenticate_ValidateLoginChallenge,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.validateLoginChallenge =
+proto.Connect.AuthenticatePromiseClient.prototype.validateLoginChallenge =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/ValidateLoginChallenge',
+      '/Connect.Authenticate/ValidateLoginChallenge',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_ValidateLoginChallenge);
+      methodDescriptor_Authenticate_ValidateLoginChallenge);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_Login = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/Login',
+const methodDescriptor_Authenticate_Login = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/Login',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.login =
+proto.Connect.AuthenticateClient.prototype.login =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/Login',
+      '/Connect.Authenticate/Login',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_Login,
+      methodDescriptor_Authenticate_Login,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.login =
+proto.Connect.AuthenticatePromiseClient.prototype.login =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/Login',
+      '/Connect.Authenticate/Login',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_Login);
+      methodDescriptor_Authenticate_Login);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_ValidateConsentChallenge = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/ValidateConsentChallenge',
+const methodDescriptor_Authenticate_ValidateConsentChallenge = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/ValidateConsentChallenge',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.validateConsentChallenge =
+proto.Connect.AuthenticateClient.prototype.validateConsentChallenge =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/ValidateConsentChallenge',
+      '/Connect.Authenticate/ValidateConsentChallenge',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_ValidateConsentChallenge,
+      methodDescriptor_Authenticate_ValidateConsentChallenge,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.validateConsentChallenge =
+proto.Connect.AuthenticatePromiseClient.prototype.validateConsentChallenge =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/ValidateConsentChallenge',
+      '/Connect.Authenticate/ValidateConsentChallenge',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_ValidateConsentChallenge);
+      methodDescriptor_Authenticate_ValidateConsentChallenge);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_GiveConsent = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/GiveConsent',
+const methodDescriptor_Authenticate_GiveConsent = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/GiveConsent',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.giveConsent =
+proto.Connect.AuthenticateClient.prototype.giveConsent =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/GiveConsent',
+      '/Connect.Authenticate/GiveConsent',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_GiveConsent,
+      methodDescriptor_Authenticate_GiveConsent,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.giveConsent =
+proto.Connect.AuthenticatePromiseClient.prototype.giveConsent =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/GiveConsent',
+      '/Connect.Authenticate/GiveConsent',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_GiveConsent);
+      methodDescriptor_Authenticate_GiveConsent);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_Logout = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/Logout',
+const methodDescriptor_Authenticate_Logout = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/Logout',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.logout =
+proto.Connect.AuthenticateClient.prototype.logout =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/Logout',
+      '/Connect.Authenticate/Logout',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_Logout,
+      methodDescriptor_Authenticate_Logout,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.logout =
+proto.Connect.AuthenticatePromiseClient.prototype.logout =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/Logout',
+      '/Connect.Authenticate/Logout',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_Logout);
+      methodDescriptor_Authenticate_Logout);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_CreateUser = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/CreateUser',
+const methodDescriptor_Authenticate_CreateUser = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/CreateUser',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.createUser =
+proto.Connect.AuthenticateClient.prototype.createUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/CreateUser',
+      '/Connect.Authenticate/CreateUser',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_CreateUser,
+      methodDescriptor_Authenticate_CreateUser,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.createUser =
+proto.Connect.AuthenticatePromiseClient.prototype.createUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/CreateUser',
+      '/Connect.Authenticate/CreateUser',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_CreateUser);
+      methodDescriptor_Authenticate_CreateUser);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_SendResetEmail = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/SendResetEmail',
+const methodDescriptor_Authenticate_SendResetEmail = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/SendResetEmail',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.sendResetEmail =
+proto.Connect.AuthenticateClient.prototype.sendResetEmail =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/SendResetEmail',
+      '/Connect.Authenticate/SendResetEmail',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_SendResetEmail,
+      methodDescriptor_Authenticate_SendResetEmail,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.sendResetEmail =
+proto.Connect.AuthenticatePromiseClient.prototype.sendResetEmail =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/SendResetEmail',
+      '/Connect.Authenticate/SendResetEmail',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_SendResetEmail);
+      methodDescriptor_Authenticate_SendResetEmail);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_ResetPassword = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/ResetPassword',
+const methodDescriptor_Authenticate_ResetPassword = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/ResetPassword',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.resetPassword =
+proto.Connect.AuthenticateClient.prototype.resetPassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/ResetPassword',
+      '/Connect.Authenticate/ResetPassword',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_ResetPassword,
+      methodDescriptor_Authenticate_ResetPassword,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.resetPassword =
+proto.Connect.AuthenticatePromiseClient.prototype.resetPassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/ResetPassword',
+      '/Connect.Authenticate/ResetPassword',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_ResetPassword);
+      methodDescriptor_Authenticate_ResetPassword);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectPublicRequest,
- *   !proto.NuntioConnect.ConnectPublicResponse>}
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_PublicConnectService_Verify = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.PublicConnectService/Verify',
+const methodDescriptor_Authenticate_Verify = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/Verify',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectPublicRequest,
-  proto.NuntioConnect.ConnectPublicResponse,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectPublicRequest} request
+   * @param {!proto.Connect.AuthenticateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectPublicResponse.deserializeBinary
+  proto.Connect.AuthenticateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectPublicResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectPublicResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.PublicConnectServiceClient.prototype.verify =
+proto.Connect.AuthenticateClient.prototype.verify =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/Verify',
+      '/Connect.Authenticate/Verify',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_Verify,
+      methodDescriptor_Authenticate_Verify,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectPublicRequest} request The
+ * @param {!proto.Connect.AuthenticateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectPublicResponse>}
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.verify =
+proto.Connect.AuthenticatePromiseClient.prototype.verify =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.PublicConnectService/Verify',
+      '/Connect.Authenticate/Verify',
       request,
       metadata || {},
-      methodDescriptor_PublicConnectService_Verify);
+      methodDescriptor_Authenticate_Verify);
 };
 
 
@@ -692,7 +692,7 @@ proto.NuntioConnect.PublicConnectServicePromiseClient.prototype.verify =
  * @struct
  * @final
  */
-proto.NuntioConnect.AdminConnectServiceClient =
+proto.Connect.ServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -718,7 +718,7 @@ proto.NuntioConnect.AdminConnectServiceClient =
  * @struct
  * @final
  */
-proto.NuntioConnect.AdminConnectServicePromiseClient =
+proto.Connect.ServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -739,368 +739,307 @@ proto.NuntioConnect.AdminConnectServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectAdminRequest,
- *   !proto.NuntioConnect.ConnectAdminResponse>}
+ *   !proto.Connect.ConnectRequest,
+ *   !proto.Connect.ConnectResponse>}
  */
-const methodDescriptor_AdminConnectService_Heartbeat = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.AdminConnectService/Heartbeat',
+const methodDescriptor_Service_Heartbeat = new grpc.web.MethodDescriptor(
+  '/Connect.Service/Heartbeat',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectAdminRequest,
-  proto.NuntioConnect.ConnectAdminResponse,
+  proto.Connect.ConnectRequest,
+  proto.Connect.ConnectResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectAdminRequest} request
+   * @param {!proto.Connect.ConnectRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectAdminResponse.deserializeBinary
+  proto.Connect.ConnectResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.ConnectResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.ConnectResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.AdminConnectServiceClient.prototype.heartbeat =
+proto.Connect.ServiceClient.prototype.heartbeat =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/Heartbeat',
+      '/Connect.Service/Heartbeat',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_Heartbeat,
+      methodDescriptor_Service_Heartbeat,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectAdminResponse>}
+ * @return {!Promise<!proto.Connect.ConnectResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.AdminConnectServicePromiseClient.prototype.heartbeat =
+proto.Connect.ServicePromiseClient.prototype.heartbeat =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/Heartbeat',
+      '/Connect.Service/Heartbeat',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_Heartbeat);
+      methodDescriptor_Service_Heartbeat);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectAdminRequest,
- *   !proto.NuntioConnect.ConnectAdminResponse>}
+ *   !proto.Connect.ConnectRequest,
+ *   !proto.Connect.ConnectResponse>}
  */
-const methodDescriptor_AdminConnectService_Create = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.AdminConnectService/Create',
+const methodDescriptor_Service_Create = new grpc.web.MethodDescriptor(
+  '/Connect.Service/Create',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectAdminRequest,
-  proto.NuntioConnect.ConnectAdminResponse,
+  proto.Connect.ConnectRequest,
+  proto.Connect.ConnectResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectAdminRequest} request
+   * @param {!proto.Connect.ConnectRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectAdminResponse.deserializeBinary
+  proto.Connect.ConnectResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.ConnectResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.ConnectResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.AdminConnectServiceClient.prototype.create =
+proto.Connect.ServiceClient.prototype.create =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/Create',
+      '/Connect.Service/Create',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_Create,
+      methodDescriptor_Service_Create,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectAdminResponse>}
+ * @return {!Promise<!proto.Connect.ConnectResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.AdminConnectServicePromiseClient.prototype.create =
+proto.Connect.ServicePromiseClient.prototype.create =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/Create',
+      '/Connect.Service/Create',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_Create);
+      methodDescriptor_Service_Create);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectAdminRequest,
- *   !proto.NuntioConnect.ConnectAdminResponse>}
+ *   !proto.Connect.ConnectRequest,
+ *   !proto.Connect.ConnectResponse>}
  */
-const methodDescriptor_AdminConnectService_GetById = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.AdminConnectService/GetById',
+const methodDescriptor_Service_GetById = new grpc.web.MethodDescriptor(
+  '/Connect.Service/GetById',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectAdminRequest,
-  proto.NuntioConnect.ConnectAdminResponse,
+  proto.Connect.ConnectRequest,
+  proto.Connect.ConnectResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectAdminRequest} request
+   * @param {!proto.Connect.ConnectRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectAdminResponse.deserializeBinary
+  proto.Connect.ConnectResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.ConnectResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.ConnectResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.AdminConnectServiceClient.prototype.getById =
+proto.Connect.ServiceClient.prototype.getById =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/GetById',
+      '/Connect.Service/GetById',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_GetById,
+      methodDescriptor_Service_GetById,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectAdminResponse>}
+ * @return {!Promise<!proto.Connect.ConnectResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.AdminConnectServicePromiseClient.prototype.getById =
+proto.Connect.ServicePromiseClient.prototype.getById =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/GetById',
+      '/Connect.Service/GetById',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_GetById);
+      methodDescriptor_Service_GetById);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectAdminRequest,
- *   !proto.NuntioConnect.ConnectAdminResponse>}
+ *   !proto.Connect.ConnectRequest,
+ *   !proto.Connect.ConnectResponse>}
  */
-const methodDescriptor_AdminConnectService_UpdateDetails = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.AdminConnectService/UpdateDetails',
+const methodDescriptor_Service_UpdateDetails = new grpc.web.MethodDescriptor(
+  '/Connect.Service/UpdateDetails',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectAdminRequest,
-  proto.NuntioConnect.ConnectAdminResponse,
+  proto.Connect.ConnectRequest,
+  proto.Connect.ConnectResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectAdminRequest} request
+   * @param {!proto.Connect.ConnectRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectAdminResponse.deserializeBinary
+  proto.Connect.ConnectResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.ConnectResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.ConnectResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.AdminConnectServiceClient.prototype.updateDetails =
+proto.Connect.ServiceClient.prototype.updateDetails =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/UpdateDetails',
+      '/Connect.Service/UpdateDetails',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateDetails,
+      methodDescriptor_Service_UpdateDetails,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectAdminResponse>}
+ * @return {!Promise<!proto.Connect.ConnectResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.AdminConnectServicePromiseClient.prototype.updateDetails =
+proto.Connect.ServicePromiseClient.prototype.updateDetails =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/UpdateDetails',
+      '/Connect.Service/UpdateDetails',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateDetails);
+      methodDescriptor_Service_UpdateDetails);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectAdminRequest,
- *   !proto.NuntioConnect.ConnectAdminResponse>}
+ *   !proto.Connect.ConnectRequest,
+ *   !proto.Connect.ConnectResponse>}
  */
-const methodDescriptor_AdminConnectService_UpdateOauth = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.AdminConnectService/UpdateOauth',
+const methodDescriptor_Service_Delete = new grpc.web.MethodDescriptor(
+  '/Connect.Service/Delete',
   grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectAdminRequest,
-  proto.NuntioConnect.ConnectAdminResponse,
+  proto.Connect.ConnectRequest,
+  proto.Connect.ConnectResponse,
   /**
-   * @param {!proto.NuntioConnect.ConnectAdminRequest} request
+   * @param {!proto.Connect.ConnectRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.NuntioConnect.ConnectAdminResponse.deserializeBinary
+  proto.Connect.ConnectResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.ConnectResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.ConnectResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.NuntioConnect.AdminConnectServiceClient.prototype.updateOauth =
+proto.Connect.ServiceClient.prototype.delete =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/UpdateOauth',
+      '/Connect.Service/Delete',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateOauth,
+      methodDescriptor_Service_Delete,
       callback);
 };
 
 
 /**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
+ * @param {!proto.Connect.ConnectRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectAdminResponse>}
+ * @return {!Promise<!proto.Connect.ConnectResponse>}
  *     Promise that resolves to the response
  */
-proto.NuntioConnect.AdminConnectServicePromiseClient.prototype.updateOauth =
+proto.Connect.ServicePromiseClient.prototype.delete =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/UpdateOauth',
+      '/Connect.Service/Delete',
       request,
       metadata || {},
-      methodDescriptor_AdminConnectService_UpdateOauth);
+      methodDescriptor_Service_Delete);
 };
 
 
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.NuntioConnect.ConnectAdminRequest,
- *   !proto.NuntioConnect.ConnectAdminResponse>}
- */
-const methodDescriptor_AdminConnectService_Delete = new grpc.web.MethodDescriptor(
-  '/NuntioConnect.AdminConnectService/Delete',
-  grpc.web.MethodType.UNARY,
-  proto.NuntioConnect.ConnectAdminRequest,
-  proto.NuntioConnect.ConnectAdminResponse,
-  /**
-   * @param {!proto.NuntioConnect.ConnectAdminRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.NuntioConnect.ConnectAdminResponse.deserializeBinary
-);
-
-
-/**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.NuntioConnect.ConnectAdminResponse)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.NuntioConnect.ConnectAdminResponse>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.NuntioConnect.AdminConnectServiceClient.prototype.delete =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/Delete',
-      request,
-      metadata || {},
-      methodDescriptor_AdminConnectService_Delete,
-      callback);
-};
-
-
-/**
- * @param {!proto.NuntioConnect.ConnectAdminRequest} request The
- *     request proto
- * @param {?Object<string, string>=} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.NuntioConnect.ConnectAdminResponse>}
- *     Promise that resolves to the response
- */
-proto.NuntioConnect.AdminConnectServicePromiseClient.prototype.delete =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/NuntioConnect.AdminConnectService/Delete',
-      request,
-      metadata || {},
-      methodDescriptor_AdminConnectService_Delete);
-};
-
-
-module.exports = proto.NuntioConnect;
+module.exports = proto.Connect;
 

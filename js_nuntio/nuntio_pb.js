@@ -576,9 +576,9 @@ proto.Nuntio.Error.prototype.setMessage = function(value) {
  */
 proto.Nuntio.CountryCode = {
   INVALID_COUNTRY: 0,
-  COUTRY_DK: 1,
-  COUNTRY_NO: 2,
-  COUNTRY_DE: 3
+  DK: 1,
+  NO: 2,
+  DE: 3
 };
 
 /**
@@ -596,7 +596,7 @@ proto.Nuntio.Gender = {
  */
 proto.Nuntio.VerificationProviderType = {
   INVALID: 0,
-  MIT_ID: 1
+  MITID: 1
 };
 
 /**
@@ -605,9 +605,9 @@ proto.Nuntio.VerificationProviderType = {
 proto.Nuntio.ErrorType = {
   NO_ERROR: 0,
   CONNECT_ONLY_VERIFIED: 1,
-  CONNCET_AGE_LOWER_BROKEN: 2,
-  CONNCET_AGE_UPPER_BROKEN: 3,
-  CONNCET_COUNTRY_NOT_ALLOWED: 4,
+  CONNECT_AGE_LOWER_BROKEN: 2,
+  CONNECT_AGE_UPPER_BROKEN: 3,
+  CONNECT_COUNTRY_NOT_ALLOWED: 4,
   CONNECT_IS_NOT_OPEN: 5,
   CONNECT_WEAK_PASSWORD: 6
 };
