@@ -27,7 +27,6 @@ type AuthenticateClient interface {
 	CreateUser(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 	SendResetEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 	ResetPassword(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
-	Verify(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 }
 
 type authenticateClient struct {
@@ -119,15 +118,6 @@ func (c *authenticateClient) ResetPassword(ctx context.Context, in *Authenticate
 	return out, nil
 }
 
-func (c *authenticateClient) Verify(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
-	out := new(AuthenticateResponse)
-	err := c.cc.Invoke(ctx, "/Connect.Authenticate/Verify", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AuthenticateServer is the server API for Authenticate service.
 // All implementations should embed UnimplementedAuthenticateServer
 // for forward compatibility
@@ -141,7 +131,6 @@ type AuthenticateServer interface {
 	CreateUser(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	SendResetEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	ResetPassword(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
-	Verify(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 }
 
 // UnimplementedAuthenticateServer should be embedded to have forward compatible implementations.
@@ -174,9 +163,6 @@ func (UnimplementedAuthenticateServer) SendResetEmail(context.Context, *Authenti
 }
 func (UnimplementedAuthenticateServer) ResetPassword(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
-}
-func (UnimplementedAuthenticateServer) Verify(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Verify not implemented")
 }
 
 // UnsafeAuthenticateServer may be embedded to opt out of forward compatibility for this service.
@@ -352,24 +338,6 @@ func _Authenticate_ResetPassword_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Authenticate_Verify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AuthenticateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthenticateServer).Verify(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/Connect.Authenticate/Verify",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticateServer).Verify(ctx, req.(*AuthenticateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // Authenticate_ServiceDesc is the grpc.ServiceDesc for Authenticate service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -412,10 +380,6 @@ var Authenticate_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResetPassword",
 			Handler:    _Authenticate_ResetPassword_Handler,
-		},
-		{
-			MethodName: "Verify",
-			Handler:    _Authenticate_Verify_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
