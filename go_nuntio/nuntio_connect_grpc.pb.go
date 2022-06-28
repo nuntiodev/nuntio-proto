@@ -430,6 +430,7 @@ type ServiceClient interface {
 	Create(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
 	GetById(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
 	UpdateDetails(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
+	UpdatePassword(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
 	Delete(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
 }
 
@@ -477,6 +478,15 @@ func (c *serviceClient) UpdateDetails(ctx context.Context, in *ConnectRequest, o
 	return out, nil
 }
 
+func (c *serviceClient) UpdatePassword(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error) {
+	out := new(ConnectResponse)
+	err := c.cc.Invoke(ctx, "/Connect.Service/UpdatePassword", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *serviceClient) Delete(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error) {
 	out := new(ConnectResponse)
 	err := c.cc.Invoke(ctx, "/Connect.Service/Delete", in, out, opts...)
@@ -494,6 +504,7 @@ type ServiceServer interface {
 	Create(context.Context, *ConnectRequest) (*ConnectResponse, error)
 	GetById(context.Context, *ConnectRequest) (*ConnectResponse, error)
 	UpdateDetails(context.Context, *ConnectRequest) (*ConnectResponse, error)
+	UpdatePassword(context.Context, *ConnectRequest) (*ConnectResponse, error)
 	Delete(context.Context, *ConnectRequest) (*ConnectResponse, error)
 }
 
@@ -512,6 +523,9 @@ func (UnimplementedServiceServer) GetById(context.Context, *ConnectRequest) (*Co
 }
 func (UnimplementedServiceServer) UpdateDetails(context.Context, *ConnectRequest) (*ConnectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDetails not implemented")
+}
+func (UnimplementedServiceServer) UpdatePassword(context.Context, *ConnectRequest) (*ConnectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePassword not implemented")
 }
 func (UnimplementedServiceServer) Delete(context.Context, *ConnectRequest) (*ConnectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
@@ -600,6 +614,24 @@ func _Service_UpdateDetails_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_UpdatePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConnectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).UpdatePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Connect.Service/UpdatePassword",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).UpdatePassword(ctx, req.(*ConnectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Service_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ConnectRequest)
 	if err := dec(in); err != nil {
@@ -640,6 +672,10 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateDetails",
 			Handler:    _Service_UpdateDetails_Handler,
+		},
+		{
+			MethodName: "UpdatePassword",
+			Handler:    _Service_UpdatePassword_Handler,
 		},
 		{
 			MethodName: "Delete",

@@ -984,6 +984,67 @@ proto.Connect.ServicePromiseClient.prototype.updateDetails =
  *   !proto.Connect.ConnectRequest,
  *   !proto.Connect.ConnectResponse>}
  */
+const methodDescriptor_Service_UpdatePassword = new grpc.web.MethodDescriptor(
+  '/Connect.Service/UpdatePassword',
+  grpc.web.MethodType.UNARY,
+  proto.Connect.ConnectRequest,
+  proto.Connect.ConnectResponse,
+  /**
+   * @param {!proto.Connect.ConnectRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.Connect.ConnectResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.Connect.ConnectRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.ConnectResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.ConnectResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.Connect.ServiceClient.prototype.updatePassword =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/Connect.Service/UpdatePassword',
+      request,
+      metadata || {},
+      methodDescriptor_Service_UpdatePassword,
+      callback);
+};
+
+
+/**
+ * @param {!proto.Connect.ConnectRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.Connect.ConnectResponse>}
+ *     Promise that resolves to the response
+ */
+proto.Connect.ServicePromiseClient.prototype.updatePassword =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/Connect.Service/UpdatePassword',
+      request,
+      metadata || {},
+      methodDescriptor_Service_UpdatePassword);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.Connect.ConnectRequest,
+ *   !proto.Connect.ConnectResponse>}
+ */
 const methodDescriptor_Service_Delete = new grpc.web.MethodDescriptor(
   '/Connect.Service/Delete',
   grpc.web.MethodType.UNARY,
