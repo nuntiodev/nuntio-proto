@@ -25,8 +25,9 @@ type AuthenticateClient interface {
 	GiveConsent(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 	Logout(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 	CreateUser(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
-	SendResetEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
+	SendResetPasswordEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 	ResetPassword(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
+	VerifyEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 }
 
 type authenticateClient struct {
@@ -100,9 +101,9 @@ func (c *authenticateClient) CreateUser(ctx context.Context, in *AuthenticateReq
 	return out, nil
 }
 
-func (c *authenticateClient) SendResetEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
+func (c *authenticateClient) SendResetPasswordEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
 	out := new(AuthenticateResponse)
-	err := c.cc.Invoke(ctx, "/Connect.Authenticate/SendResetEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/Connect.Authenticate/SendResetPasswordEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,6 +113,15 @@ func (c *authenticateClient) SendResetEmail(ctx context.Context, in *Authenticat
 func (c *authenticateClient) ResetPassword(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
 	out := new(AuthenticateResponse)
 	err := c.cc.Invoke(ctx, "/Connect.Authenticate/ResetPassword", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authenticateClient) VerifyEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
+	out := new(AuthenticateResponse)
+	err := c.cc.Invoke(ctx, "/Connect.Authenticate/VerifyEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -129,8 +139,9 @@ type AuthenticateServer interface {
 	GiveConsent(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	Logout(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	CreateUser(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
-	SendResetEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
+	SendResetPasswordEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	ResetPassword(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
+	VerifyEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 }
 
 // UnimplementedAuthenticateServer should be embedded to have forward compatible implementations.
@@ -158,11 +169,14 @@ func (UnimplementedAuthenticateServer) Logout(context.Context, *AuthenticateRequ
 func (UnimplementedAuthenticateServer) CreateUser(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedAuthenticateServer) SendResetEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendResetEmail not implemented")
+func (UnimplementedAuthenticateServer) SendResetPasswordEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendResetPasswordEmail not implemented")
 }
 func (UnimplementedAuthenticateServer) ResetPassword(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
+}
+func (UnimplementedAuthenticateServer) VerifyEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyEmail not implemented")
 }
 
 // UnsafeAuthenticateServer may be embedded to opt out of forward compatibility for this service.
@@ -302,20 +316,20 @@ func _Authenticate_CreateUser_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Authenticate_SendResetEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Authenticate_SendResetPasswordEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AuthenticateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthenticateServer).SendResetEmail(ctx, in)
+		return srv.(AuthenticateServer).SendResetPasswordEmail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Connect.Authenticate/SendResetEmail",
+		FullMethod: "/Connect.Authenticate/SendResetPasswordEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticateServer).SendResetEmail(ctx, req.(*AuthenticateRequest))
+		return srv.(AuthenticateServer).SendResetPasswordEmail(ctx, req.(*AuthenticateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -334,6 +348,24 @@ func _Authenticate_ResetPassword_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticateServer).ResetPassword(ctx, req.(*AuthenticateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Authenticate_VerifyEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthenticateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticateServer).VerifyEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Connect.Authenticate/VerifyEmail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticateServer).VerifyEmail(ctx, req.(*AuthenticateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -374,12 +406,16 @@ var Authenticate_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Authenticate_CreateUser_Handler,
 		},
 		{
-			MethodName: "SendResetEmail",
-			Handler:    _Authenticate_SendResetEmail_Handler,
+			MethodName: "SendResetPasswordEmail",
+			Handler:    _Authenticate_SendResetPasswordEmail_Handler,
 		},
 		{
 			MethodName: "ResetPassword",
 			Handler:    _Authenticate_ResetPassword_Handler,
+		},
+		{
+			MethodName: "VerifyEmail",
+			Handler:    _Authenticate_VerifyEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -2642,7 +2642,8 @@ proto.Connect.VerificationProviderType = {
 proto.Connect.ErrorType = {
   NO_ERROR: 0,
   CONNECT_IS_NOT_OPEN: 1,
-  CONNECT_WEAK_PASSWORD: 2
+  CONNECT_WEAK_PASSWORD: 2,
+  EMAIL_IS_NOT_VERIFIED: 3
 };
 
 /**

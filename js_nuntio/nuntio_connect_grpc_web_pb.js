@@ -505,8 +505,8 @@ proto.Connect.AuthenticatePromiseClient.prototype.createUser =
  *   !proto.Connect.AuthenticateRequest,
  *   !proto.Connect.AuthenticateResponse>}
  */
-const methodDescriptor_Authenticate_SendResetEmail = new grpc.web.MethodDescriptor(
-  '/Connect.Authenticate/SendResetEmail',
+const methodDescriptor_Authenticate_SendResetPasswordEmail = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/SendResetPasswordEmail',
   grpc.web.MethodType.UNARY,
   proto.Connect.AuthenticateRequest,
   proto.Connect.AuthenticateResponse,
@@ -531,13 +531,13 @@ const methodDescriptor_Authenticate_SendResetEmail = new grpc.web.MethodDescript
  * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.Connect.AuthenticateClient.prototype.sendResetEmail =
+proto.Connect.AuthenticateClient.prototype.sendResetPasswordEmail =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/Connect.Authenticate/SendResetEmail',
+      '/Connect.Authenticate/SendResetPasswordEmail',
       request,
       metadata || {},
-      methodDescriptor_Authenticate_SendResetEmail,
+      methodDescriptor_Authenticate_SendResetPasswordEmail,
       callback);
 };
 
@@ -550,13 +550,13 @@ proto.Connect.AuthenticateClient.prototype.sendResetEmail =
  * @return {!Promise<!proto.Connect.AuthenticateResponse>}
  *     Promise that resolves to the response
  */
-proto.Connect.AuthenticatePromiseClient.prototype.sendResetEmail =
+proto.Connect.AuthenticatePromiseClient.prototype.sendResetPasswordEmail =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/Connect.Authenticate/SendResetEmail',
+      '/Connect.Authenticate/SendResetPasswordEmail',
       request,
       metadata || {},
-      methodDescriptor_Authenticate_SendResetEmail);
+      methodDescriptor_Authenticate_SendResetPasswordEmail);
 };
 
 
@@ -618,6 +618,67 @@ proto.Connect.AuthenticatePromiseClient.prototype.resetPassword =
       request,
       metadata || {},
       methodDescriptor_Authenticate_ResetPassword);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
+ */
+const methodDescriptor_Authenticate_VerifyEmail = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/VerifyEmail',
+  grpc.web.MethodType.UNARY,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
+  /**
+   * @param {!proto.Connect.AuthenticateRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.Connect.AuthenticateResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.Connect.AuthenticateRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.Connect.AuthenticateClient.prototype.verifyEmail =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/Connect.Authenticate/VerifyEmail',
+      request,
+      metadata || {},
+      methodDescriptor_Authenticate_VerifyEmail,
+      callback);
+};
+
+
+/**
+ * @param {!proto.Connect.AuthenticateRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
+ *     Promise that resolves to the response
+ */
+proto.Connect.AuthenticatePromiseClient.prototype.verifyEmail =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/Connect.Authenticate/VerifyEmail',
+      request,
+      metadata || {},
+      methodDescriptor_Authenticate_VerifyEmail);
 };
 
 
