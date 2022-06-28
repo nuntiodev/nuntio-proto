@@ -105,6 +105,7 @@ message AuthenticateRequest {
     string identity_token = 5;
     VerificationProvider verification_provider = 6;
     string auth_token = 7;
+    UserMetadata userMetadata = 8;
 }
 
 message AuthenticateResponse {
