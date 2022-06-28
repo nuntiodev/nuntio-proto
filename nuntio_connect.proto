@@ -24,6 +24,7 @@ service Service {
     rpc Create(ConnectRequest) returns (ConnectResponse) {}
     rpc GetById(ConnectRequest) returns (ConnectResponse) {}
     rpc UpdateDetails(ConnectRequest) returns (ConnectResponse) {}
+    rpc UpdatePassword(ConnectRequest) returns (ConnectResponse) {}
     rpc Delete(ConnectRequest) returns (ConnectResponse) {}
 }
 
