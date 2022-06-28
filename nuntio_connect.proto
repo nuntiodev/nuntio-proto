@@ -16,7 +16,6 @@ service Authenticate {
     rpc CreateUser(AuthenticateRequest) returns (AuthenticateResponse) {}
     rpc SendResetEmail(AuthenticateRequest) returns (AuthenticateResponse) {}
     rpc ResetPassword(AuthenticateRequest) returns (AuthenticateResponse) {}
-    rpc Verify(AuthenticateRequest) returns (AuthenticateResponse) {}
 }
 
 service Service {
