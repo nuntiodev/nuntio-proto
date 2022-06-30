@@ -174,7 +174,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.Connect.AuthenticateRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.Connect.AuthenticateRequest.repeatedFields_, null);
 };
 goog.inherits(proto.Connect.AuthenticateRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1683,6 +1683,13 @@ proto.Connect.App.prototype.hasUpdatedAt = function() {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.Connect.AuthenticateRequest.repeatedFields_ = [9];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1721,7 +1728,8 @@ proto.Connect.AuthenticateRequest.toObject = function(includeInstance, msg) {
     identityToken: jspb.Message.getFieldWithDefault(msg, 5, ""),
     verificationProvider: (f = msg.getVerificationProvider()) && proto.Connect.VerificationProvider.toObject(includeInstance, f),
     authToken: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    usermetadata: (f = msg.getUsermetadata()) && proto.Connect.UserMetadata.toObject(includeInstance, f)
+    usermetadata: (f = msg.getUsermetadata()) && proto.Connect.UserMetadata.toObject(includeInstance, f),
+    scopesList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1791,6 +1799,10 @@ proto.Connect.AuthenticateRequest.deserializeBinaryFromReader = function(msg, re
       var value = new proto.Connect.UserMetadata;
       reader.readMessage(value,proto.Connect.UserMetadata.deserializeBinaryFromReader);
       msg.setUsermetadata(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addScopes(value);
       break;
     default:
       reader.skipField();
@@ -1877,6 +1889,13 @@ proto.Connect.AuthenticateRequest.serializeBinaryToWriter = function(message, wr
       8,
       f,
       proto.Connect.UserMetadata.serializeBinaryToWriter
+    );
+  }
+  f = message.getScopesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      9,
+      f
     );
   }
 };
@@ -2061,6 +2080,43 @@ proto.Connect.AuthenticateRequest.prototype.clearUsermetadata = function() {
  */
 proto.Connect.AuthenticateRequest.prototype.hasUsermetadata = function() {
   return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * repeated string scopes = 9;
+ * @return {!Array<string>}
+ */
+proto.Connect.AuthenticateRequest.prototype.getScopesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 9));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.Connect.AuthenticateRequest} returns this
+ */
+proto.Connect.AuthenticateRequest.prototype.setScopesList = function(value) {
+  return jspb.Message.setField(this, 9, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.Connect.AuthenticateRequest} returns this
+ */
+proto.Connect.AuthenticateRequest.prototype.addScopes = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 9, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.Connect.AuthenticateRequest} returns this
+ */
+proto.Connect.AuthenticateRequest.prototype.clearScopesList = function() {
+  return this.setScopesList([]);
 };
 
 
