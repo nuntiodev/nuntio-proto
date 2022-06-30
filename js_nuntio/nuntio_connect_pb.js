@@ -174,7 +174,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.Connect.AuthenticateRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.Connect.AuthenticateRequest.repeatedFields_, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.Connect.AuthenticateRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -195,7 +195,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.Connect.AuthenticateResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.Connect.AuthenticateResponse.repeatedFields_, null);
 };
 goog.inherits(proto.Connect.AuthenticateResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1683,13 +1683,6 @@ proto.Connect.App.prototype.hasUpdatedAt = function() {
 
 
 
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.Connect.AuthenticateRequest.repeatedFields_ = [9];
-
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1728,8 +1721,7 @@ proto.Connect.AuthenticateRequest.toObject = function(includeInstance, msg) {
     identityToken: jspb.Message.getFieldWithDefault(msg, 5, ""),
     verificationProvider: (f = msg.getVerificationProvider()) && proto.Connect.VerificationProvider.toObject(includeInstance, f),
     authToken: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    usermetadata: (f = msg.getUsermetadata()) && proto.Connect.UserMetadata.toObject(includeInstance, f),
-    scopesList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f
+    usermetadata: (f = msg.getUsermetadata()) && proto.Connect.UserMetadata.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1799,10 +1791,6 @@ proto.Connect.AuthenticateRequest.deserializeBinaryFromReader = function(msg, re
       var value = new proto.Connect.UserMetadata;
       reader.readMessage(value,proto.Connect.UserMetadata.deserializeBinaryFromReader);
       msg.setUsermetadata(value);
-      break;
-    case 9:
-      var value = /** @type {string} */ (reader.readString());
-      msg.addScopes(value);
       break;
     default:
       reader.skipField();
@@ -1889,13 +1877,6 @@ proto.Connect.AuthenticateRequest.serializeBinaryToWriter = function(message, wr
       8,
       f,
       proto.Connect.UserMetadata.serializeBinaryToWriter
-    );
-  }
-  f = message.getScopesList();
-  if (f.length > 0) {
-    writer.writeRepeatedString(
-      9,
-      f
     );
   }
 };
@@ -2083,43 +2064,13 @@ proto.Connect.AuthenticateRequest.prototype.hasUsermetadata = function() {
 };
 
 
-/**
- * repeated string scopes = 9;
- * @return {!Array<string>}
- */
-proto.Connect.AuthenticateRequest.prototype.getScopesList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 9));
-};
-
 
 /**
- * @param {!Array<string>} value
- * @return {!proto.Connect.AuthenticateRequest} returns this
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
  */
-proto.Connect.AuthenticateRequest.prototype.setScopesList = function(value) {
-  return jspb.Message.setField(this, 9, value || []);
-};
-
-
-/**
- * @param {string} value
- * @param {number=} opt_index
- * @return {!proto.Connect.AuthenticateRequest} returns this
- */
-proto.Connect.AuthenticateRequest.prototype.addScopes = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 9, value, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.Connect.AuthenticateRequest} returns this
- */
-proto.Connect.AuthenticateRequest.prototype.clearScopesList = function() {
-  return this.setScopesList([]);
-};
-
-
+proto.Connect.AuthenticateResponse.repeatedFields_ = [5];
 
 
 
@@ -2155,7 +2106,8 @@ proto.Connect.AuthenticateResponse.toObject = function(includeInstance, msg) {
     app: (f = msg.getApp()) && proto.Connect.App.toObject(includeInstance, f),
     email: jspb.Message.getFieldWithDefault(msg, 2, ""),
     redirectAddr: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    error: (f = msg.getError()) && proto.Connect.Error.toObject(includeInstance, f)
+    error: (f = msg.getError()) && proto.Connect.Error.toObject(includeInstance, f),
+    scopesList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -2209,6 +2161,10 @@ proto.Connect.AuthenticateResponse.deserializeBinaryFromReader = function(msg, r
       var value = new proto.Connect.Error;
       reader.readMessage(value,proto.Connect.Error.deserializeBinaryFromReader);
       msg.setError(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addScopes(value);
       break;
     default:
       reader.skipField();
@@ -2267,6 +2223,13 @@ proto.Connect.AuthenticateResponse.serializeBinaryToWriter = function(message, w
       4,
       f,
       proto.Connect.Error.serializeBinaryToWriter
+    );
+  }
+  f = message.getScopesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      5,
+      f
     );
   }
 };
@@ -2379,6 +2342,43 @@ proto.Connect.AuthenticateResponse.prototype.clearError = function() {
  */
 proto.Connect.AuthenticateResponse.prototype.hasError = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * repeated string scopes = 5;
+ * @return {!Array<string>}
+ */
+proto.Connect.AuthenticateResponse.prototype.getScopesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 5));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.Connect.AuthenticateResponse} returns this
+ */
+proto.Connect.AuthenticateResponse.prototype.setScopesList = function(value) {
+  return jspb.Message.setField(this, 5, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.Connect.AuthenticateResponse} returns this
+ */
+proto.Connect.AuthenticateResponse.prototype.addScopes = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.Connect.AuthenticateResponse} returns this
+ */
+proto.Connect.AuthenticateResponse.prototype.clearScopesList = function() {
+  return this.setScopesList([]);
 };
 
 
