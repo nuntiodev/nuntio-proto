@@ -108,6 +108,7 @@ message AuthenticateRequest {
     VerificationProvider verification_provider = 6;
     string auth_token = 7;
     UserMetadata userMetadata = 8;
+    repeated string scopes = 9;
 }
 
 message AuthenticateResponse {
