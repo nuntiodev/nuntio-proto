@@ -683,6 +683,67 @@ proto.Connect.AuthenticatePromiseClient.prototype.verifyEmail =
 
 
 /**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.Connect.AuthenticateRequest,
+ *   !proto.Connect.AuthenticateResponse>}
+ */
+const methodDescriptor_Authenticate_SendVerificationEmail = new grpc.web.MethodDescriptor(
+  '/Connect.Authenticate/SendVerificationEmail',
+  grpc.web.MethodType.UNARY,
+  proto.Connect.AuthenticateRequest,
+  proto.Connect.AuthenticateResponse,
+  /**
+   * @param {!proto.Connect.AuthenticateRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.Connect.AuthenticateResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.Connect.AuthenticateRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.Connect.AuthenticateResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.Connect.AuthenticateResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.Connect.AuthenticateClient.prototype.sendVerificationEmail =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/Connect.Authenticate/SendVerificationEmail',
+      request,
+      metadata || {},
+      methodDescriptor_Authenticate_SendVerificationEmail,
+      callback);
+};
+
+
+/**
+ * @param {!proto.Connect.AuthenticateRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.Connect.AuthenticateResponse>}
+ *     Promise that resolves to the response
+ */
+proto.Connect.AuthenticatePromiseClient.prototype.sendVerificationEmail =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/Connect.Authenticate/SendVerificationEmail',
+      request,
+      metadata || {},
+      methodDescriptor_Authenticate_SendVerificationEmail);
+};
+
+
+/**
  * @param {string} hostname
  * @param {?Object} credentials
  * @param {?grpc.web.ClientOptions} options
