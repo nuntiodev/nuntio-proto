@@ -28,6 +28,8 @@ type AuthenticateClient interface {
 	SendResetPasswordEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 	ResetPassword(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 	VerifyEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
+	SetEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
+	SetPassword(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 	SendVerificationEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 }
 
@@ -129,6 +131,24 @@ func (c *authenticateClient) VerifyEmail(ctx context.Context, in *AuthenticateRe
 	return out, nil
 }
 
+func (c *authenticateClient) SetEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
+	out := new(AuthenticateResponse)
+	err := c.cc.Invoke(ctx, "/Connect.Authenticate/SetEmail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authenticateClient) SetPassword(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
+	out := new(AuthenticateResponse)
+	err := c.cc.Invoke(ctx, "/Connect.Authenticate/SetPassword", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *authenticateClient) SendVerificationEmail(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
 	out := new(AuthenticateResponse)
 	err := c.cc.Invoke(ctx, "/Connect.Authenticate/SendVerificationEmail", in, out, opts...)
@@ -152,6 +172,8 @@ type AuthenticateServer interface {
 	SendResetPasswordEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	ResetPassword(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	VerifyEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
+	SetEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
+	SetPassword(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	SendVerificationEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 }
 
@@ -188,6 +210,12 @@ func (UnimplementedAuthenticateServer) ResetPassword(context.Context, *Authentic
 }
 func (UnimplementedAuthenticateServer) VerifyEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyEmail not implemented")
+}
+func (UnimplementedAuthenticateServer) SetEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetEmail not implemented")
+}
+func (UnimplementedAuthenticateServer) SetPassword(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetPassword not implemented")
 }
 func (UnimplementedAuthenticateServer) SendVerificationEmail(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendVerificationEmail not implemented")
@@ -384,6 +412,42 @@ func _Authenticate_VerifyEmail_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Authenticate_SetEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthenticateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticateServer).SetEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Connect.Authenticate/SetEmail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticateServer).SetEmail(ctx, req.(*AuthenticateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Authenticate_SetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthenticateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticateServer).SetPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Connect.Authenticate/SetPassword",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticateServer).SetPassword(ctx, req.(*AuthenticateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Authenticate_SendVerificationEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AuthenticateRequest)
 	if err := dec(in); err != nil {
@@ -448,6 +512,14 @@ var Authenticate_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VerifyEmail",
 			Handler:    _Authenticate_VerifyEmail_Handler,
+		},
+		{
+			MethodName: "SetEmail",
+			Handler:    _Authenticate_SetEmail_Handler,
+		},
+		{
+			MethodName: "SetPassword",
+			Handler:    _Authenticate_SetPassword_Handler,
 		},
 		{
 			MethodName: "SendVerificationEmail",
