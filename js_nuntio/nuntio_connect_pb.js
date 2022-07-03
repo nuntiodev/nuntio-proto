@@ -817,7 +817,8 @@ proto.Connect.UserMetadata.toObject = function(includeInstance, msg) {
   var f, obj = {
     countryCode: jspb.Message.getFieldWithDefault(msg, 1, 0),
     gender: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    verificationProvider: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    verificationProvider: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    ssnHash: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -866,6 +867,10 @@ proto.Connect.UserMetadata.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {!proto.Connect.VerificationProviderType} */ (reader.readEnum());
       msg.setVerificationProvider(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSsnHash(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -913,6 +918,13 @@ proto.Connect.UserMetadata.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0.0) {
     writer.writeEnum(
       3,
+      f
+    );
+  }
+  f = message.getSsnHash();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -970,6 +982,24 @@ proto.Connect.UserMetadata.prototype.getVerificationProvider = function() {
  */
 proto.Connect.UserMetadata.prototype.setVerificationProvider = function(value) {
   return jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * optional string ssn_hash = 4;
+ * @return {string}
+ */
+proto.Connect.UserMetadata.prototype.getSsnHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.Connect.UserMetadata} returns this
+ */
+proto.Connect.UserMetadata.prototype.setSsnHash = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
