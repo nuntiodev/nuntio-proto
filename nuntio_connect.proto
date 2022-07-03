@@ -64,6 +64,7 @@ message UserMetadata {
     CountryCode country_code = 1;
     Gender gender = 2;
     VerificationProviderType verification_provider = 3;
+    string ssn_hash = 4;
 }
 
 
